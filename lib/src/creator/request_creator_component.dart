@@ -5,22 +5,14 @@ import 'package:angular2/router.dart';
 import 'package:resources_loader/resources_loader.dart';
 
 @Component(
-    selector: 'request-settings',
-    templateUrl: 'request_settings_component.html',
+    selector: 'request-creator',
+    templateUrl: 'request_creator_component.html',
     directives: const [RouterLink])
-class RequestSettingsComponent implements OnInit {
+class RequestCreatorComponent implements OnInit {
   static const DisplayName = const { 'displayName': 'Формирование заявки' };
-  static const String route_name = 'RequestSettings';
-  static const String route_path = 'settings';
-  static const Route route = const Route(
-      path: RequestSettingsComponent.route_path,
-      component: RequestSettingsComponent,
-      name: RequestSettingsComponent.route_name,
-      useAsDefault: true);
-
   final ResourcesLoaderService _resourcesLoaderService;
 
-  RequestSettingsComponent(this._resourcesLoaderService) {}
+  RequestCreatorComponent(this._resourcesLoaderService) {}
 
   void breadcrumbInit(){
 
@@ -42,7 +34,7 @@ class RequestSettingsComponent implements OnInit {
     oldActiveLink.classes.remove('active');
 
     var newActiveLink =
-    querySelector('.aside-menu .nav-tabs li a[href="#settings"]')
+    querySelector('.aside-menu .nav-tabs li a[href="#creator"]')
     as AnchorElement;
     newActiveLink.classes.add('active');
 
@@ -51,7 +43,7 @@ class RequestSettingsComponent implements OnInit {
     oldActivePanel.classes.remove('active');
 
     var newActivePanel =
-    querySelector('.aside-menu .tab-content div[id="settings"]')
+    querySelector('.aside-menu .tab-content div[id="creator"]')
     as DivElement;
     newActivePanel.classes.add('active');
 

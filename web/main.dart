@@ -16,7 +16,7 @@ import 'package:alert/alert_service.dart';
 import 'package:aside/aside_service.dart';
 import 'package:angular_utils/cm_router_link.dart';
 
-import 'package:requests/request_settings_component.dart';
+import 'package:requests/request_creator_component.dart';
 import 'package:requests/request_cc2_component.dart';
 import 'package:requests/request_cc3_component.dart';
 import 'package:requests/request_documents_component.dart';
