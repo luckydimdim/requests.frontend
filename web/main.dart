@@ -13,6 +13,7 @@ import 'package:requests/in_memory_data_service.dart';
 import 'package:logger/logger_service.dart';
 import 'package:config/config_service.dart';
 import 'package:alert/alert_service.dart';
+import 'package:aside/aside_service.dart';
 import 'package:angular_utils/cm_router_link.dart';
 
 import 'package:requests/request_settings_component.dart';
@@ -59,6 +60,7 @@ main() async {
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(ResourcesLoaderService),
     const Provider(AlertService),
+    const Provider(AsideService),
     const Provider(LoggerService),
     const Provider(ConfigService),
     provide(Client, useClass: InMemoryDataService)
