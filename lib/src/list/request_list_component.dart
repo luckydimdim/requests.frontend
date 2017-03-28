@@ -1,23 +1,21 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
-import 'package:resources_loader/resources_loader.dart';
+
+import 'package:aside/aside_service.dart';
 
 @Component(selector: 'request-list')
 @View(
   templateUrl: 'request_list_component.html',
   directives: const [RouterLink])
-class RequestListComponent implements OnInit {
+class RequestListComponent implements AfterViewInit {
   static const DisplayName = const { 'displayName': 'Список заявок' };
   final Router _router;
-  final ResourcesLoaderService _resourcesLoaderService;
+  final AsideService _asideService;
 
-  RequestListComponent(this._router, this._resourcesLoaderService) {}
-
-  void breadcrumbInit(){
-  }
+  RequestListComponent(this._router, this._asideService) {}
 
   @override
-  void ngOnInit() {
-    breadcrumbInit();
+  ngAfterViewInit() {
+    //_asideService.addPane();
   }
 }
