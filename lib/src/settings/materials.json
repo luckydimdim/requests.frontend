@@ -1,0 +1,357 @@
+[
+  {
+    "Code": "001",
+    "recid": 1,
+    "Name": "Стены",
+    "Cost": 3000,
+    "children": [
+      {
+        "Code": "001.1",
+        "recid": 2,
+        "Name": "Кирпич",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "19.01.2017"
+      },
+      {
+        "Code": "001.2",
+        "recid": 3,
+        "Name": "Пеноблоки",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "25.01.2017"
+      },
+      {
+        "Code": "001.3",
+        "recid": 4,
+        "Name": "Утеплитель",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "05.02.2017"
+      }
+    ]
+  },
+  {
+    "Code": "002",
+    "recid": 5,
+    "Name": "Общее",
+    "Cost": 2000,
+    "children": [
+      {
+        "Code": "002.1",
+        "recid": 6,
+        "Name": "Песок",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "20.02.2017"
+      },
+      {
+        "Code": "002.2",
+        "recid": 7,
+        "Name": "Уголки арочные",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "01.03.2017"
+      }
+    ]
+  },
+  {
+    "Code": "003",
+    "recid": 8,
+    "Name": "Стены",
+    "Cost": 3000,
+    "children": [
+      {
+        "Code": "003.1",
+        "recid": 9,
+        "Name": "Кирпич",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "19.01.2017"
+      },
+      {
+        "Code": "003.2",
+        "recid": 10,
+        "Name": "Пеноблоки",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "25.01.2017"
+      },
+      {
+        "Code": "003.3",
+        "recid": 11,
+        "Name": "Утеплитель",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "05.02.2017"
+      }
+    ]
+  },
+  {
+    "Code": "004",
+    "recid": 12,
+    "Name": "Общее",
+    "Cost": 2000,
+    "children": [
+      {
+        "Code": "004.1",
+        "recid": 13,
+        "Name": "Песок",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "20.02.2017"
+      },
+      {
+        "Code": "004.2",
+        "recid": 14,
+        "Name": "Уголки арочные",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "01.03.2017"
+      }
+    ]
+  },
+  {
+    "Code": "005",
+    "recid": 15,
+    "Name": "Стены",
+    "Cost": 3000,
+    "children": [
+      {
+        "Code": "005.1",
+        "recid": 16,
+        "Name": "Кирпич",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "19.01.2017"
+      },
+      {
+        "Code": "005.2",
+        "recid": 17,
+        "Name": "Пеноблоки",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "25.01.2017"
+      },
+      {
+        "Code": "005.3",
+        "recid": 18,
+        "Name": "Утеплитель",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "05.02.2017"
+      }
+    ]
+  },
+  {
+    "Code": "006",
+    "recid": 19,
+    "Name": "Общее",
+    "Cost": 2000,
+    "children": [
+      {
+        "Code": "006.1",
+        "recid": 20,
+        "Name": "Песок",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "20.02.2017"
+      },
+      {
+        "Code": "006.2",
+        "recid": 21,
+        "Name": "Уголки арочные",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "01.03.2017"
+      }
+    ]
+  },
+  {
+    "Code": "007",
+    "recid": 22,
+    "Name": "Стены",
+    "Cost": 3000,
+    "children": [
+      {
+        "Code": "007.1",
+        "recid": 23,
+        "Name": "Кирпич",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "19.01.2017"
+      },
+      {
+        "Code": "007.2",
+        "recid": 24,
+        "Name": "Пеноблоки",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "25.01.2017"
+      },
+      {
+        "Code": "007.3",
+        "recid": 25,
+        "Name": "Утеплитель",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "05.02.2017"
+      }
+    ]
+  },
+  {
+    "Code": "008",
+    "recid": 26,
+    "Name": "Общее",
+    "Cost": 2000,
+    "children": [
+      {
+        "Code": "008.1",
+        "recid": 27,
+        "Name": "Песок",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "20.02.2017"
+      },
+      {
+        "Code": "008.2",
+        "recid": 28,
+        "Name": "Уголки арочные",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "01.03.2017"
+      }
+    ]
+  },
+  {
+    "Code": "009",
+    "recid": 29,
+    "Name": "Стены",
+    "Cost": 3000,
+    "children": [
+      {
+        "Code": "009.1",
+        "recid": 30,
+        "Name": "Кирпич",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "19.01.2017"
+      },
+      {
+        "Code": "009.2",
+        "recid": 31,
+        "Name": "Пеноблоки",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "25.01.2017"
+      },
+      {
+        "Code": "009.3",
+        "recid": 32,
+        "Name": "Утеплитель",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "05.02.2017"
+      }
+    ]
+  },
+  {
+    "Code": "010",
+    "recid": 33,
+    "Name": "Общее",
+    "Cost": 2000,
+    "children": [
+      {
+        "Code": "010.1",
+        "recid": 34,
+        "Name": "Песок",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "20.02.2017"
+      },
+      {
+        "Code": "010.2",
+        "recid": 35,
+        "Name": "Уголки арочные",
+        "Cost": 1000,
+        "Unit": "штук",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "DeliveryDate": "01.03.2017"
+      }
+    ]
+  }
+]

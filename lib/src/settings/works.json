@@ -1,0 +1,932 @@
+[
+  {
+    "Code": "",
+    "recid": 2,
+    "Name": "Группа работ 1",
+    "Cost": 2800,
+    "children": [
+      {
+        "Code": "071",
+        "recid": 3,
+        "Name": "[071] Группа работ 1",
+        "Cost": 0,
+        "children": []
+      },
+      {
+        "Code": "001",
+        "recid": 4,
+        "Name": "[001] Геологическое исследование участка",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "002",
+        "recid": 5,
+        "Name": "[002] Архитектурное проектирование",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "003",
+        "recid": 6,
+        "Name": "[003] Строительство фундамента",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 7,
+    "Name": "Строительство коробки",
+    "Cost": 4100,
+    "children": [
+      {
+        "Code": "212",
+        "recid": 8,
+        "Name": "[212] Строительство стен",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "252",
+        "recid": 9,
+        "Name": "[252] Строительство внутренних перекрытий",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "342",
+        "recid": 10,
+        "Name": "[342] Строительство внешних перекрытий",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "544",
+        "recid": 11,
+        "Name": "[544] Строительство крыши",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 12,
+    "Name": "Внутренние работы",
+    "Cost": 3800,
+    "children": [
+      {
+        "Code": "",
+        "recid": 13,
+        "Name": "Инженерные коммуникации в доме",
+        "Cost": 2000,
+        "children": [
+          {
+            "Code": "532",
+            "recid": 14,
+            "Name": "[532] Подключение электроснабжения",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "354",
+            "recid": 15,
+            "Name": "[532] Подключение газоснабжение",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "562",
+            "recid": 16,
+            "Name": "[532] Подключение отопления",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "632",
+            "recid": 17,
+            "Name": "[532] Подключение кондиционирования",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          }
+        ]
+      },
+      {
+        "Code": "634",
+        "recid": 18,
+        "Name": "[634] Утепление и отделка фасадов",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "643",
+        "recid": 19,
+        "Name": "[643] Утепление чердачного перекрытия",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 20,
+    "Name": "Отделка",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "632",
+        "recid": 21,
+        "Name": "[632] Внутренняя отделка",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "766",
+        "recid": 22,
+        "Name": "[766] Внешняя отделка",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 23,
+    "Name": "[643] Ландшафтные работы",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "634",
+        "recid": 24,
+        "Name": "[634] Озеленение территории",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "243",
+        "recid": 25,
+        "Name": "[243] Благоустройство",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 26,
+    "Name": "Другое",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "563",
+        "recid": 27,
+        "Name": "[563] Установка освещения участка и проезда к участку",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "532",
+        "recid": 28,
+        "Name": "[532] Настрйока системы видеонаблюдения",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 30,
+    "Name": "Группа работ 1",
+    "Cost": 2800,
+    "children": [
+      {
+        "Code": "071",
+        "recid": 31,
+        "Name": "[071] Группа работ 1",
+        "Cost": 0,
+        "children": []
+      },
+      {
+        "Code": "001",
+        "recid": 32,
+        "Name": "[001] Геологическое исследование участка",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "002",
+        "recid": 33,
+        "Name": "[002] Архитектурное проектирование",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "003",
+        "recid": 34,
+        "Name": "[003] Строительство фундамента",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 35,
+    "Name": "Строительство коробки",
+    "Cost": 4100,
+    "children": [
+      {
+        "Code": "212",
+        "recid": 36,
+        "Name": "[212] Строительство стен",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "252",
+        "recid": 37,
+        "Name": "[252] Строительство внутренних перекрытий",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "342",
+        "recid": 38,
+        "Name": "[342] Строительство внешних перекрытий",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "544",
+        "recid": 39,
+        "Name": "[544] Строительство крыши",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 40,
+    "Name": "Внутренние работы",
+    "Cost": 3800,
+    "children": [
+      {
+        "Code": "",
+        "recid": 41,
+        "Name": "Инженерные коммуникации в доме",
+        "Cost": 2000,
+        "children": [
+          {
+            "Code": "532",
+            "recid": 42,
+            "Name": "[532] Подключение электроснабжения",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "354",
+            "recid": 43,
+            "Name": "[532] Подключение газоснабжение",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "562",
+            "recid": 44,
+            "Name": "[532] Подключение отопления",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "632",
+            "recid": 45,
+            "Name": "[532] Подключение кондиционирования",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          }
+        ]
+      },
+      {
+        "Code": "634",
+        "recid": 46,
+        "Name": "[634] Утепление и отделка фасадов",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "643",
+        "recid": 47,
+        "Name": "[643] Утепление чердачного перекрытия",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 48,
+    "Name": "Отделка",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "632",
+        "recid": 49,
+        "Name": "[632] Внутренняя отделка",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "766",
+        "recid": 50,
+        "Name": "[766] Внешняя отделка",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 51,
+    "Name": "[643] Ландшафтные работы",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "634",
+        "recid": 52,
+        "Name": "[634] Озеленение территории",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "243",
+        "recid": 53,
+        "Name": "[243] Благоустройство",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 54,
+    "Name": "Другое",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "563",
+        "recid": 55,
+        "Name": "[563] Установка освещения участка и проезда к участку",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "532",
+        "recid": 56,
+        "Name": "[532] Настрйока системы видеонаблюдения",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 58,
+    "Name": "Группа работ 1",
+    "Cost": 2800,
+    "children": [
+      {
+        "Code": "071",
+        "recid": 59,
+        "Name": "[071] Группа работ 1",
+        "Cost": 0,
+        "children": []
+      },
+      {
+        "Code": "001",
+        "recid": 60,
+        "Name": "[001] Геологическое исследование участка",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "002",
+        "recid": 61,
+        "Name": "[002] Архитектурное проектирование",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "003",
+        "recid": 62,
+        "Name": "[003] Строительство фундамента",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 63,
+    "Name": "Строительство коробки",
+    "Cost": 4100,
+    "children": [
+      {
+        "Code": "212",
+        "recid": 64,
+        "Name": "[212] Строительство стен",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "252",
+        "recid": 65,
+        "Name": "[252] Строительство внутренних перекрытий",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "342",
+        "recid": 66,
+        "Name": "[342] Строительство внешних перекрытий",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "544",
+        "recid": 67,
+        "Name": "[544] Строительство крыши",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 68,
+    "Name": "Внутренние работы",
+    "Cost": 3800,
+    "children": [
+      {
+        "Code": "",
+        "recid": 69,
+        "Name": "Инженерные коммуникации в доме",
+        "Cost": 2000,
+        "children": [
+          {
+            "Code": "532",
+            "recid": 70,
+            "Name": "[532] Подключение электроснабжения",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "354",
+            "recid": 71,
+            "Name": "[532] Подключение газоснабжение",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "562",
+            "recid": 72,
+            "Name": "[532] Подключение отопления",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          },
+          {
+            "Code": "632",
+            "recid": 73,
+            "Name": "[532] Подключение кондиционирования",
+            "Cost": 500,
+            "Unit": "часы",
+            "Amount": 16,
+            "Currency": "RUR",
+            "ObjectConstruction": "Объект",
+            "BeginDate": "03.01.2017",
+            "EndDate": "09.01.2017",
+            "ContractorName": "ООО Стройиндустрия"
+          }
+        ]
+      },
+      {
+        "Code": "634",
+        "recid": 74,
+        "Name": "[634] Утепление и отделка фасадов",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "643",
+        "recid": 75,
+        "Name": "[643] Утепление чердачного перекрытия",
+        "Cost": 1300,
+        "Unit": "часы",
+        "Amount": 40,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "09.01.2017",
+        "EndDate": "20.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 76,
+    "Name": "Отделка",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "632",
+        "recid": 77,
+        "Name": "[632] Внутренняя отделка",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "766",
+        "recid": 78,
+        "Name": "[766] Внешняя отделка",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 79,
+    "Name": "[643] Ландшафтные работы",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "634",
+        "recid": 80,
+        "Name": "[634] Озеленение территории",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "243",
+        "recid": 81,
+        "Name": "[243] Благоустройство",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  },
+  {
+    "Code": "",
+    "recid": 82,
+    "Name": "Другое",
+    "Cost": 1500,
+    "children": [
+      {
+        "Code": "563",
+        "recid": 83,
+        "Name": "[563] Установка освещения участка и проезда к участку",
+        "Cost": 1000,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "01.01.2017",
+        "EndDate": "03.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      },
+      {
+        "Code": "532",
+        "recid": 84,
+        "Name": "[532] Настрйока системы видеонаблюдения",
+        "Cost": 500,
+        "Unit": "часы",
+        "Amount": 16,
+        "Currency": "RUR",
+        "ObjectConstruction": "Объект",
+        "BeginDate": "03.01.2017",
+        "EndDate": "09.01.2017",
+        "ContractorName": "ООО Стройиндустрия"
+      }
+    ]
+  }
+]

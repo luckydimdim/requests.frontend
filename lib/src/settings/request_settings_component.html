@@ -1,0 +1,36 @@
+<div class="animated fadeIn">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<i class="fa fa-cog"></i>Выбор работ и материалов
+						<ul class="nav nav-tabs pull-right" role="tablist">
+							<li class="nav-item">
+								<a tab="" class="nav-link active" data-toggle="tab" href="#works"
+								   role="tab" aria-expanded="false">Работы</a>
+							</li>
+							<li class="nav-item">
+								<a tab="" class="nav-link" data-toggle="tab"
+								   href="#materials" role="tab"
+								   aria-expanded="true">Материалы</a>
+							</li>
+						</ul>
+					</div>
+					<div class="card-block p-0">
+						<div class="tab-content">
+							<div class="tab-pane active" id="works" aria-expanded="false">
+								<div id="worksGrid"></div>
+							</div>
+							<div class="tab-pane fade" id="materials"
+							     aria-expanded="true">
+								<div id="materialsGrid"></div>
+							</div>
+						</div>
+
+            <a [routerLink]="['RequestDocuments']"><button type="button" class="btn btn-success ml-1 mb-2"><i class="icon-magic-wand"></i>&nbsp; Сформировать документацию</button></a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

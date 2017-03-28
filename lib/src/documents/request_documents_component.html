@@ -1,0 +1,210 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-files-o"></i> Первичная документация
+        </div>
+
+        <div class="row pl-1 pr-1 d-table-row">
+          <div class="col-lg-3 pt-1 d-100vh-va-top float-xl-none" style="border-right: 1px solid #d1d4d7;">
+            <div sticky>
+              <div>
+                <div class="font-weight-bold">
+                  <span class="text-uppercase mb-q">Работы</span>
+                </div>
+                <ul class="leaders font-xs mb-0">
+                  <li><span>Выбрано работ</span> <span>576</span></li>
+                  <li><span>На сумму</span><span>$43 000</span></li>
+                </ul>
+                <a [routerLink]="['RequestSettings']" class="font-xs">Изменить</a>
+
+                <div class="font-weight-bold mt-2">
+                  <span class="text-uppercase mb-q">Материалы</span>
+                </div>
+                <ul class="leaders font-xs mb-0">
+                  <li><span>Выбрано материалов</span> <span>273</span></li>
+                  <li><span>На сумму</span><span>$2 000</span></li>
+                </ul>
+                <div>
+                  <a [routerLink]="['RequestSettings']" class="font-xs">Изменить</a>
+                </div>
+              </div>
+              <div class="pb-2">
+                <div class="font-weight-bold mt-2">
+                  <span class="text-uppercase mb-q">Итого</span>
+                </div>
+                <ul class="leaders font-xs mb-0">
+                  <li><span>Общая стоимость</span> <span>30 000 руб.</span></li>
+                  <li><span>Общая стоимость с НДС</span>
+                    <span>35 000 руб.</span></li>
+                  <li><span>Зачет аванса</span> <span>1 000 руб.</span></li>
+                  <li><span>Удержано резерва</span> <span>0 руб.</span></li>
+                  <li><span class="font-weight-bold">Итого к оплате</span> <span
+                    class="font-weight-bold">34 000 руб.</span></li>
+                </ul>
+
+                <div class="mt-3">
+                  <button type="button" class="btn btn-outline-warning btn-block"><i class="fa fa-save"></i>&nbsp;
+                    Сохранить
+                  </button>
+                  <button type="button" class="btn btn-success btn-block mt-1" btn-aprove><i class="icon-rocket"></i>&nbsp;
+                    Отправить на согласование
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--./col-->
+          <div class="col-lg-9 pt-1 d-100vh-va-top float-xl-none">
+            <div class="row">
+              <div class="col-xl-4 col-lg-6 pt-1">
+                <h5 class="text-muted">
+                  Акты КС-2
+                </h5>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-cubes bg-info p-1 font-2xl mr-1 float-xs-left"></i>
+                    <i class="icon-check text-primary float-xs-right font-2xl"></i>
+                    <a class="h5 text-primary mb-0 mt-h"
+                       [routerLink]="['RequestCc2', {'objectName': 'sea-port', 'contractorName': 'some-company'}]">Морской
+                      порт</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Подрядчик раз два три
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-cubes bg-info p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-primary mb-0 mt-h"
+                       [routerLink]="['RequestCc2', {'objectName': 'sea-port', 'contractorName': 'some-company'}]">Морской
+                      порт</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Другой подрядчик
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-cubes bg-info p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-primary mb-0 mt-h"
+                       [routerLink]="['RequestCc2', {'objectName': 'sea-port', 'contractorName': 'some-company'}]">Резервуары
+                      хранения конденсата</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Подрядчик раз два три
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--./col-->
+              <div class="col-xl-4 col-lg-6 pt-1">
+                <h5 class="text-muted">
+                  Справки КС-3
+                </h5>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-money bg-warning p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-warning mb-0 mt-h"
+                       [routerLink]="['RequestCc3', {'objectName': 'sea-port'}]">Морской
+                      порт</a>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-money bg-warning p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-warning mb-0 mt-h"
+                       [routerLink]="['RequestCc3', {'objectName': 'sea-port'}]">Резервуары
+                      хранения конденсата</a>
+                  </div>
+                </div>
+              </div>
+              <!--./col-->
+              <div class="col-xl-4 col-lg-6 pt-1">
+                <h5 class="text-muted">
+                  Табели учета рабочего времени
+                </h5>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
+                    <i class="icon-check text-success float-xs-right font-2xl"></i>
+                    <a class="h5 text-success mb-0 mt-h"
+                       [routerLink]="['RequestTs']">Muhammad Ichsan</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Резервуары хранения конденсата
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
+                    <i class="icon-check text-success float-xs-right font-2xl"></i>
+                    <a class="h5 text-success mb-0 mt-h"
+                       [routerLink]="['RequestTs']">Dedi Setiawan</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Резервуары хранения конденсата
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-success mb-0 mt-h"
+                       [routerLink]="['RequestTs']">Muhammad Ichsan</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Резервуары хранения конденсата
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-success mb-0 mt-h"
+                       [routerLink]="['RequestTs']">Dedi Setiawan</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Резервуары хранения конденсата
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-success mb-0 mt-h"
+                       [routerLink]="['RequestTs']">Muhammad Ichsan</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Резервуары хранения конденсата
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-block p-1 clearfix">
+                    <i
+                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
+                    <a class="h5 text-success mb-0 mt-h"
+                       [routerLink]="['RequestTs']">Muhammad Ichsan</a>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">
+                      Резервуары хранения конденсата
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--./col-->
+            </div>
+            <!--./row-->
+          </div>
+        </div>
+        <!--./row-->
+      </div>
+    </div>
+  </div>
+</div>
