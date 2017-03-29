@@ -1,1 +1,1 @@
-export 'src/service/in_memory_data_service.dart';
+export 'src/services/in_memory_data_service.dart';

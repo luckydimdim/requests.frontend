@@ -46,8 +46,9 @@ class RequestsService {
     Response response = null;
 
     try {
-      response = await _http
-          .get(_backendUrl, headers: {'Content-Type': 'application/json'});
+      response = await _http.get(
+        _backendUrl,
+        headers: {'Content-Type': 'application/json'});
     } catch (e) {
       _logger.error('Failed to get request list: $e');
 
@@ -82,7 +83,7 @@ class RequestsService {
 
     dynamic json = JSON.decode(response.body);
 
-    return new RequestModel.fromJson(json);
+    return new RequestModel().fromJson(json);
   }
 
   /**
@@ -93,11 +94,11 @@ class RequestsService {
 
     Response response = null;
 
-    _logger.trace('Creating request ${model.toJsonString()}');
+    _logger.trace('Creating request ${model.toJson()}');
 
     try {
       response = await _http.post(_backendUrl,
-          body: model.toJsonString(),
+          body: model.toJson(),
           headers: {'Content-Type': 'application/json'});
 
       _logger.trace('Request created');
@@ -116,12 +117,12 @@ class RequestsService {
   updateContract(RequestModel model) async {
     if (!_initialized) await _init();
 
-    _logger.trace('Updating request ${model.toJsonString()}');
+    _logger.trace('Updating request ${model.toJson()}');
 
     try {
       await _http.put(_backendUrl,
           headers: {'Content-Type': 'application/json'},
-          body: model.toJsonString());
+          body: model.toJson());
       _logger.trace('Request ${model.id} successfuly updated');
     } catch (e) {
       _logger.error('Failed to update request: $e');

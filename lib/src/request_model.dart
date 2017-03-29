@@ -1,29 +1,17 @@
+import 'package:converters/json_converter.dart';
+import 'package:converters/map_converter.dart';
+import 'package:converters/reflector.dart';
+
+@reflectable
 /**
  * Модель заявки на проверку
  */
-class RequestModel {
+class RequestModel extends Object with JsonConverter, MapConverter {
   String id;
   String startDate;
   String updateDate;
   String contractNumber;
   String contractorName;
-  String amount;
+  num amount;
   String status;
-
-  RequestModel();
-
-  // TODO: реализовать
-  factory RequestModel.fromJson(String json) {
-    return new RequestModel();
-  }
-
-  // TODO: реализовать
-  String toJsonString() {
-    return '';
-  }
-
-  // TODO: реализовать
-  Map<String, String> toMap() {
-    return new Map<String, String>();
-  }
 }

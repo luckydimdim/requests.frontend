@@ -17,6 +17,7 @@ dependencies:
     http: ^0.11.1+9
     intl: any
     json_object: any
+    reflectable: any
     grid:
       git: http://cm-ylng-msk-04/git/grid.frontend.git
     auth_router_outlet:
@@ -33,6 +34,8 @@ dependencies:
       git: http://cm-ylng-msk-04/git/angular_utils.frontend.git
     aside:
       git: http://cm-ylng-msk-04/git/aside.frontend.git
+    converters:
+      git: http://cm-ylng-msk-04/git/converters.frontend.git
 
 dev_dependencies:
     test: ^0.12.18                        # A library for writing dart unit tests. https://pub.dartlang.org/packages/test
@@ -48,9 +51,16 @@ transformers:
         platform_pipes:
           - package:angular2/common.dart#COMMON_PIPES
         entry_points: web/main.dart
+        resolved_identifiers:
+            BrowserClient: 'package:http/browser_client.dart'
+            Client: 'package:http/http.dart'
     - dart_to_js_script_rewriter
     - $dart2js:
         commandLineOptions:
             - --trust-type-annotations
             - --trust-primitives
             - --show-package-warnings # Show warnings and hints generated from packages.
+    - reflectable:
+         entry_points:
+           - web/main.dart # The path to your main file
+         formatted: true # Optional.

@@ -26,8 +26,7 @@ bool get isDebug =>
 
 @Component(selector: 'app', providers: const [
   ROUTER_PROVIDERS,
-  const Provider(LocationStrategy, useClass: HashLocationStrategy)])
-@View(
+  const Provider(LocationStrategy, useClass: HashLocationStrategy)],
   template: '<master-layout><requests></requests></master-layout>',
   directives: const [
     MasterLayoutComponent,

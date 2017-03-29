@@ -7,16 +7,19 @@ import 'package:grid/grid.dart';
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
-import '../service/requests_service.dart';
+import '../services/requests_service.dart';
 import '../request_model.dart';
+import '../pipes/cm_format_money_pipe.dart';
 
 @Component(
   selector: 'request-list',
   templateUrl: 'request_list_component.html',
+  providers: const [RequestsService],
   directives: const [
     GridComponent,
     GridTemplateDirective,
-    ColumnComponent])
+    ColumnComponent],
+  pipes: const [CmFormatMoneyPipe])
 class RequestListComponent implements OnInit, AfterViewInit {
   static const DisplayName = const { 'displayName': 'Список заявок на проверку' };
   final Router _router;
@@ -24,6 +27,9 @@ class RequestListComponent implements OnInit, AfterViewInit {
   final RequestsService _requestsService;
 
   var requestsDataSource = new DataSource();
+
+  @ViewChild(GridComponent)
+  GridComponent grid;
 
   RequestListComponent(this._router, this._asideService, this._requestsService);
 
@@ -33,15 +39,24 @@ class RequestListComponent implements OnInit, AfterViewInit {
   }
 
   Future loadRequests() async {
-    List<RequestModel> requests = await _requestsService.getRequests();
+    List<dynamic> requests = await _requestsService.getRequests();
 
-    var result = new List<dynamic>();
+    var result = new List<RequestModel>();
 
-    for (RequestModel request in requests) {
-      result.add(request.toMap());
+    for (dynamic request in requests) {
+      RequestModel model = new RequestModel().fromJson(request);
+      result.add(model);
+
+      //model.amount = formatter.format(int.parse(model.amount, onError:(_) => 0));
+      //model.amount = formatter.format(int.parse(model.amount, onError:(_) => 0));
     }
 
-    requestsDataSource = new DataSource(data: result)
+    var listMap = new List<Map<String, String>>();
+    for (RequestModel request in result) {
+      listMap.add(request.toMap());
+    }
+
+    requestsDataSource = new DataSource(data: listMap)
       ..primaryField = 'id';
 
     return null;
