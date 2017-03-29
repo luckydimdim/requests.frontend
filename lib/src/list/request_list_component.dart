@@ -7,6 +7,9 @@ import 'package:grid/grid.dart';
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
+import '../service/requests_service.dart';
+import '../request_model.dart';
+
 @Component(
   selector: 'request-list',
   templateUrl: 'request_list_component.html',
@@ -20,24 +23,26 @@ class RequestListComponent implements OnInit, AfterViewInit {
   final AsideService _asideService;
   final RequestsService _requestsService;
 
+  var requestsDataSource = new DataSource(new List());
+
   RequestListComponent(this._router, this._asideService, this._requestsService);
 
   @override
   Future ngOnInit() async {
-    await loadCallOffOrders();
+    await loadRequests();
   }
 
-  Future loadCallOffOrders() async {
-    List<RequestModel> requests =
-    await _callOffService.getCallOffOrders(contractId);
+  Future loadRequests() async {
+    List<RequestModel> requests = await _requestsService.getRequests();
 
     var result = new List<dynamic>();
 
-    for (CallOffOrder order in orders) {
-      result.add(order.toMap());
+    for (RequestModel request in requests) {
+      result.add(request.toMap());
     }
 
-    worksDataSource = new DataSource(result)..primaryField = 'id';
+    requestsDataSource = new DataSource(result)
+      ..primaryField = 'id';
 
     return null;
   }

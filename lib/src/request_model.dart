@@ -21,4 +21,9 @@ class RequestModel {
   String toJsonString() {
     return '';
   }
+
+  // TODO: реализовать
+  Map<String, String> toMap() {
+    return new Map<String, String>();
+  }
 }
