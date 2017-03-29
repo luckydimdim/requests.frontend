@@ -19,8 +19,6 @@ dependencies:
     json_object: any
     grid:
       git: http://cm-ylng-msk-04/git/grid.frontend.git
-    resources_loader:
-      git: http://cm-ylng-msk-04/git/resources_loader.frontend.git
     auth_router_outlet:
       git: http://cm-ylng-msk-04/git/auth_router_outlet.frontend.git
     daterangepicker:

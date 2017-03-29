@@ -16,12 +16,6 @@ import 'package:alert/alert_service.dart';
 import 'package:aside/aside_service.dart';
 import 'package:angular_utils/cm_router_link.dart';
 
-import 'package:requests/request_creator_component.dart';
-import 'package:requests/request_cc2_component.dart';
-import 'package:requests/request_cc3_component.dart';
-import 'package:requests/request_documents_component.dart';
-import 'package:requests/request_ts_component.dart';
-import 'package:resources_loader/resources_loader.dart';
 import 'package:master_layout/master_layout_component.dart';
 
 import 'package:requests/requests_component.dart';
@@ -58,7 +52,6 @@ main() async {
   ComponentRef ref = await bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
-    const Provider(ResourcesLoaderService),
     const Provider(AlertService),
     const Provider(AsideService),
     const Provider(LoggerService),

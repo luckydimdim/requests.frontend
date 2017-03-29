@@ -1,36 +1,393 @@
 <div class="animated fadeIn">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header">
-						<i class="fa fa-cog"></i>Выбор работ и материалов
-						<ul class="nav nav-tabs pull-right" role="tablist">
-							<li class="nav-item">
-								<a tab="" class="nav-link active" data-toggle="tab" href="#works"
-								   role="tab" aria-expanded="false">Работы</a>
-							</li>
-							<li class="nav-item">
-								<a tab="" class="nav-link" data-toggle="tab"
-								   href="#materials" role="tab"
-								   aria-expanded="true">Материалы</a>
-							</li>
-						</ul>
-					</div>
-					<div class="card-block p-0">
-						<div class="tab-content">
-							<div class="tab-pane active" id="works" aria-expanded="false">
-								<div id="worksGrid"></div>
-							</div>
-							<div class="tab-pane fade" id="materials"
-							     aria-expanded="true">
-								<div id="materialsGrid"></div>
-							</div>
-						</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-cog"></i>Формирование заявки на проверку
+        </div>
+        <div class="card-block">
+          <h4>Договор 644/15-ЯСПГ</h4>
+          <ul class="leaders mt-1">
+            <li><span>Дата заключения</span> <span>01.01.2016</span></li>
+            <li><span>Дата завершения</span><span>01.12.2016</span></li>
+            <li><span>Вид договора</span><span>СМР</span></li>
+            <li><span>Подрядчик</span><span>ОАО «Название компании»</span></li>
+            <li><span>НДС</span><span>включено</span></li>
+            <li><span>Валюта</span><span>рубли</span></li>
+            <li><span class="font-weight-bold">Стоимость</span><span class="font-weight-bold">5 514 104 404 <i
+              class="fa fa-rub"></i></span></li>
+          </ul>
 
-            <a [routerLink]="['RequestDocuments']"><button type="button" class="btn btn-success ml-1 mb-2"><i class="icon-magic-wand"></i>&nbsp; Сформировать документацию</button></a>
+          <h4 class="mt-2">Выберите работы</h4>
+          <p>
+            <i class="icon-info"></i>&nbsp;Выберите работы по которым требуется сформировать первичные документы.
+          </p>
 
-					</div>
-				</div>
-			</div>
-		</div>
+          <table class="table table-condensed table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+              <th class="null" width="10%">
+                Номер
+              </th>
+              <th class="null" width="19%">
+                Период
+              </th>
+              <th class="null" width="50%">
+                Наименование
+              </th>
+              <th class="null" width="20%">
+                ФИО
+              </th>
+              <th width="1%">
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb (change)="chb1.checked = chb2.checked = chb3.checked = chb4.checked = chb5.checked = chb6.checked = chb.checked " />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="cursor-pointer" (click)="chb1.checked = !chb1.checked">
+              <td>
+
+                
+
+                <span>
+		 1-Т/ЯСПГ
+	</span>
+
+
+              </td>
+              <td>
+
+                
+
+                
+                <span>
+        
+					<span>23.03.2017 - 24.03.2017</span>
+
+	</span>
+
+              </td>
+              <td>
+
+                
+
+                <span>
+		 Контроль качества услуг
+	</span>
+
+
+              </td>
+              <td>
+
+                
+
+                <span>
+		 Иванов Иван
+	</span>
+
+
+              </td>
+              <td>
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb1 />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+
+            <tr class="cursor-pointer" (click)="chb2.checked = !chb2.checked">
+              <td>
+
+                
+
+                <span>
+		 26872364
+	</span>
+
+
+              </td>
+              <td>
+
+                
+
+                
+                <span>
+        
+					<span> - </span>
+
+	</span>
+
+              </td>
+              <td>
+
+                
+
+                <span>
+		 123
+	</span>
+
+
+              </td>
+              <td>
+
+                
+
+                <span>
+		 jhgsadjf
+	</span>
+
+
+              </td>
+              <td>
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb2 />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+
+            <tr class="cursor-pointer" (click)="chb3.checked = !chb3.checked">
+              <td>
+
+                
+
+                <span>
+		 5656
+	</span>
+
+
+              </td>
+              <td>
+
+                
+
+                
+                <span>
+        
+					<span>12.03.2017 - 07.04.2017</span>
+
+	</span>
+
+              </td>
+              <td>
+
+                
+
+                <span>
+
+	</span>
+
+
+              </td>
+              <td>
+
+                
+
+                <span>
+
+	</span>
+
+
+              </td>
+              <td>
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb3 />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr class="cursor-pointer" (click)="chb4.checked = !chb4.checked">
+              <td>
+
+
+
+                <span>
+		 1-Т/ЯСПГ
+	</span>
+
+
+              </td>
+              <td>
+
+
+
+
+                <span>
+
+					<span>23.03.2017 - 24.03.2017</span>
+
+	</span>
+
+              </td>
+              <td>
+
+
+
+                <span>
+		 Контроль качества услуг
+	</span>
+
+
+              </td>
+              <td>
+
+
+
+                <span>
+		 Иванов Иван
+	</span>
+
+
+              </td>
+              <td>
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb4 />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+
+            <tr class="cursor-pointer" (click)="chb5.checked = !chb5.checked">
+              <td>
+
+
+
+                <span>
+		 26872364
+	</span>
+
+
+              </td>
+              <td>
+
+
+
+
+                <span>
+
+					<span> - </span>
+
+	</span>
+
+              </td>
+              <td>
+
+
+
+                <span>
+		 123
+	</span>
+
+
+              </td>
+              <td>
+
+
+
+                <span>
+		 jhgsadjf
+	</span>
+
+
+              </td>
+              <td>
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb5 />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+
+            <tr class="cursor-pointer" (click)="chb6.checked = !chb6.checked">
+              <td>
+
+
+
+                <span>
+		 5656
+	</span>
+
+
+              </td>
+              <td>
+
+
+
+
+                <span>
+
+					<span>12.03.2017 - 07.04.2017</span>
+
+	</span>
+
+              </td>
+              <td>
+
+
+
+                <span>
+
+	</span>
+
+
+              </td>
+              <td>
+
+
+
+                <span>
+
+	</span>
+
+
+              </td>
+              <td>
+                <label class="switch switch-icon switch-primary switch-sm">
+                  <input type="checkbox" class="switch-input" #chb6 />
+                  <span class="switch-label" data-on="" data-off=""></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </td>
+            </tr>
+
+
+
+
+            </tbody>
+          </table>
+
+        </div>
+        <!-- /card-block -->
+
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-magic"></i> Сформировать заявку</button>
+        </div>
+        <!-- /card-footer -->
+
+      </div>
+    </div>
+  </div>
 </div>
