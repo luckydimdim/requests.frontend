@@ -23,7 +23,7 @@ class RequestListComponent implements OnInit, AfterViewInit {
   final AsideService _asideService;
   final RequestsService _requestsService;
 
-  var requestsDataSource = new DataSource(new List());
+  var requestsDataSource = new DataSource();
 
   RequestListComponent(this._router, this._asideService, this._requestsService);
 
@@ -41,7 +41,7 @@ class RequestListComponent implements OnInit, AfterViewInit {
       result.add(request.toMap());
     }
 
-    requestsDataSource = new DataSource(result)
+    requestsDataSource = new DataSource(data: result)
       ..primaryField = 'id';
 
     return null;
