@@ -4,10 +4,20 @@
       <div class="card">
         <div class="card-header">
           Список заявок на проверку
-          <a href="#/master/request" class="btn btn-sm btn-info float-xs-right"> Создать
-            заявку <i class="fa fa-plus-circle"></i></a>
+          <span class="btn btn-sm btn-info float-xs-right cursor-pointer" (click)="togglePane()">
+            Создать заявку
+            <i class="fa fa-plus-circle"></i></span>
         </div>
         <div class="card-block">
+          <grid #grid [dataSource]="requestsDataSource">
+            <grid-column header="Дата создания" field="startDate"></grid-column>
+            <grid-column header="Дата изменения" field="updateDate"></grid-column>
+            <grid-column header="№ договора" field="contractNumber"></grid-column>
+            <grid-column header="Подрядчик" field="contractorName"></grid-column>
+            <grid-column header="Сумма к оплате" field="amount"></grid-column>
+            <grid-column header="Статус" field="status"></grid-column>
+          </grid>
+
           <table class="table table-condensed table-striped table-hover">
             <thead>
             <tr>
