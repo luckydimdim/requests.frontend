@@ -13,9 +13,9 @@
 
           <grid #grid [dataSource]="callOffsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
             <grid-column width="3%">
-              <template let-request="rowData" grid-template="body">
+              <template let-callOff="rowData" grid-template="body">
                 <label class="switch switch-icon switch-primary switch-sm">
-                  <input type="checkbox" class="switch-input" />
+                  <input type="checkbox" class="switch-input" (change)="toggleCallOffOrder(callOff['id'])" />
                   <span class="switch-label" data-on="" data-off=""></span>
                   <span class="switch-handle"></span>
                 </label>
@@ -34,7 +34,7 @@
         <!-- /card-block -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-magic"></i> Сформировать заявку</button>
+          <button type="submit" class="btn btn-sm btn-primary" (click)="createRequest()"><i class="fa fa-magic"></i> Сформировать заявку</button>
         </div>
         <!-- /card-footer -->
 

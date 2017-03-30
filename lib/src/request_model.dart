@@ -7,13 +7,58 @@ import 'package:converters/reflector.dart';
  * Модель заявки на проверку
  */
 class RequestModel extends Object with JsonConverter, MapConverter {
+  /**
+   * Внутренний уникальный идентификатор
+   */
   String id;
+
+  /**
+   * Идентификатор контракта, к которому принадлежит данная заявка
+   */
+  String contractId;
+
+  /**
+   * Дата создания
+   */
   String startDate;
+
+  /**
+   * Дата последнего изменения
+   */
   String updateDate;
+
+  /**
+   * Номер договора
+   */
   String contractNumber;
+
+  /**
+   * Наименование подрядчика
+   */
   String contractorName;
+
+  /**
+   * Название валюты
+   */
   String currencyName;
+
+  /**
+   * Сумма к оплате
+   */
   num amount;
+
+  /**
+   * Имя статуса для показа
+   */
   String statusName;
+
+  /**
+   * Системное имя статуса
+   */
   String statusSysName;
+
+  /**
+   * Идентификаторы выбранных (для формирования первички) работ
+   */
+  List<String> workIds = new List<String>();
 }

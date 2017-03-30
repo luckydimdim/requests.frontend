@@ -7,10 +7,14 @@ import 'package:grid/grid.dart';
 import 'package:call_off_order/call_off_service.dart';
 import 'package:call_off_order/call_off_order.dart';
 
+import '../request_model.dart';
+import '../services/requests_service.dart';
+
 
 @Component(
     selector: 'request-creator',
     templateUrl: 'request_creator_component.html',
+    providers: const [RequestsService],
     directives: const [
       RouterLink,
       GridComponent,
@@ -21,13 +25,16 @@ class RequestCreatorComponent implements OnInit {
 
   final RouteParams _routeParams;
   final CallOffService _callOffService;
+  final RequestsService _requestsService;
   var callOffsDataSource = new DataSource();
   String contractId = '';
+  List<CallOffOrder> orders = new List<CallOffOrder>();
+  List<CallOffOrder> selectedCallOffOrders = new List<CallOffOrder>();
 
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestCreatorComponent(this._routeParams, this._callOffService);
+  RequestCreatorComponent(this._routeParams, this._callOffService, this._requestsService);
 
   @override
   ngOnInit() async {
@@ -37,7 +44,7 @@ class RequestCreatorComponent implements OnInit {
   }
 
   Future loadCallOffs() async {
-    List<CallOffOrder> orders = await _callOffService.getCallOffOrders(contractId);
+    orders = await _callOffService.getCallOffOrders(contractId);
 
     var result = new List<dynamic>();
 
@@ -49,5 +56,36 @@ class RequestCreatorComponent implements OnInit {
       ..primaryField = 'id';
 
     return null;
+  }
+
+  /**
+   * Добавляет/удаляет работу из коллекции,
+   * которая будет отправлена на web-сервис
+   */
+  void toggleCallOffOrder(String id) {
+    CallOffOrder order = selectedCallOffOrders.firstWhere(
+        (order) => order.id == id, orElse: () => null);
+
+    if (order == null)
+      selectedCallOffOrders.add(orders.firstWhere((order) => order.id == id));
+    else
+      selectedCallOffOrders.removeWhere((order) => order.id == id);
+  }
+
+  /**
+   * Созданиие заявки: отправка данных на web-Сервис
+   */
+  createRequest() async {
+    var ids = new List<String>();
+
+    for (CallOffOrder order in selectedCallOffOrders) {
+      ids.add(order.id);
+    }
+
+    var model = new RequestModel()
+      ..contractId = contractId
+      ..workIds = ids;
+
+    await _requestsService.createRequest(model);
   }
 }
