@@ -46,9 +46,6 @@ class RequestListComponent implements OnInit, AfterViewInit {
     for (dynamic request in requests) {
       RequestModel model = new RequestModel().fromJson(request);
       result.add(model);
-
-      //model.amount = formatter.format(int.parse(model.amount, onError:(_) => 0));
-      //model.amount = formatter.format(int.parse(model.amount, onError:(_) => 0));
     }
 
     var listMap = new List<Map<String, String>>();

@@ -13,6 +13,9 @@ class InMemoryDataService extends MockClient {
   static final _initialContracts = new List<Object>();
   static final List<Object> _contractsDb = _initialContracts;
 
+  static final _initialCallOffs = new List<Object>();
+  static final List<Object> _callOffsDb = _initialCallOffs;
+
   InMemoryDataService() : super(_handler) {
     _initialRequests.add({
       'id': '1',
@@ -193,6 +196,260 @@ class InMemoryDataService extends MockClient {
       "description": "D gthdjv ghb,kb;tybb ;ehfdxbr djccnfyfdkbdftn k`cc? dct lfkmytqitt lfktrj ds[jlbn pf hfvrb ntreotuj bccktljdfybz b yt ,eltn pltcm hfccvfnhbdfnmcz/ Cdjqcndj? dcktlcndbt ghjcnhfycndtyyjq ytjlyjhjlyjcnb gjxdtyyjuj gjrhjdf? vuyjdtyyj rjywtynhbhetn ytghjvsdyjq dkfujvth/ Yfghz;tybt [bvbxtcrb jnhf;ftn vjyjkbn/ Vfrhjgjhf djccnfyfdkbdftn fuhtufn/ :ehfdxbr edkf;yztn jhnpfyl/ Ahfrnfk djpybrftn vt;fuhtufnysq uevby/",
       "templateSysName": null
     });
+
+    _initialCallOffs.add({
+      "id": "26270cfa2422b2c4ebf158285e05f973",
+      "contractId": "26270cfa2422b2c4ebf158285e050f11",
+      "number": "123/ZVFKCGU",
+      "assignee": null,
+      "createdAt": "0001-01-01T00:00:00.0000000+03:00",
+      "updatedAt": "2017-03-20T15:12:25.6898197+03:00",
+      "startDate": null,
+      "finishDate": null,
+      "name": "Vtldtl",
+      "position": null,
+      "location": null,
+      "templateSysName": "default",
+      "templateData": {},
+      "rates": [
+        {
+          "id": 1,
+          "name": "d",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": null,
+          "unitName": null
+        },
+        {
+          "id": 2,
+          "name": "asdfasdf",
+          "isRate": true,
+          "parentId": null,
+          "amount": 1000.0,
+          "currency": "RUR",
+          "unitName": "fhfgh."
+        }
+      ]
+    });
+    _initialCallOffs.add({
+      "id": "26270cfa2422b2c4ebf158285e060198",
+      "contractId": "26270cfa2422b2c4ebf158285e050f11",
+      "number": "123/sd22hgf",
+      "assignee": null,
+      "createdAt": "0001-01-01T00:00:00.0000000+03:00",
+      "updatedAt": "2017-03-24T16:05:20.0844016+03:00",
+      "startDate": null,
+      "finishDate": null,
+      "name": "7",
+      "position": null,
+      "location": null,
+      "templateSysName": "default",
+      "templateData": {},
+      "rates": [
+        {
+          "id": 1,
+          "name": "1321212312313",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": null,
+          "unitName": null
+        },
+        {
+          "id": 3,
+          "name": "1",
+          "isRate": true,
+          "parentId": 1,
+          "amount": 0.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 5,
+          "name": "3",
+          "isRate": true,
+          "parentId": 3,
+          "amount": 0.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 4,
+          "name": "2",
+          "isRate": true,
+          "parentId": 3,
+          "amount": 0.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 2,
+          "name": "23",
+          "isRate": true,
+          "parentId": null,
+          "amount": 1000.0,
+          "currency": "RUR",
+          "unitName": "dghdfgh."
+        },
+        {
+          "id": 6,
+          "name": "121212",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        }
+      ]
+    });
+    _initialCallOffs.add({
+      "id": "26270cfa2422b2c4ebf158285e062c64",
+      "contractId": "26270cfa2422b2c4ebf158285e050f11",
+      "number": "dfghdfgh",
+      "assignee": null,
+      "createdAt": "0001-01-01T00:00:00.0000000+03:00",
+      "updatedAt": "2017-03-20T13:48:33.3246930+03:00",
+      "startDate": null,
+      "finishDate": null,
+      "name": "dfhgdfgh",
+      "position": null,
+      "location": null,
+      "templateSysName": "default",
+      "templateData": {},
+      "rates": []
+    });
+    _initialCallOffs.add({
+      "id": "26270cfa2422b2c4ebf158285e06440e",
+      "contractId": "26270cfa2422b2c4ebf158285e01c610",
+      "number": "1-V/ZCGU",
+      "assignee": "Gegrby Dfcbkbq",
+      "createdAt": "0001-01-01T00:00:00.0000000+03:00",
+      "updatedAt": "2017-03-23T14:19:10.5603560+03:00",
+      "startDate": "01.03.2017",
+      "finishDate": "01.03.2017",
+      "name": "Gjvsnm gjks",
+      "position": "Ldjhybr",
+      "location": "Thtdfy Gkfpf",
+      "templateSysName": "default",
+      "templateData": {},
+      "rates": [
+        {
+          "id": 1,
+          "name": "Uheggf 1",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": null,
+          "unitName": null
+        },
+        {
+          "id": 3,
+          "name": "Cnfdrf gjl uheggjq 1",
+          "isRate": true,
+          "parentId": 1,
+          "amount": 1.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 2,
+          "name": "Cnfdrf 1 tp uheggs",
+          "isRate": true,
+          "parentId": null,
+          "amount": 1000.0,
+          "currency": "RUR",
+          "unitName": "ly."
+        },
+        {
+          "id": 4,
+          "name": "Uheggf 2",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 5,
+          "name": "Cnfdrf 1 gjl uheggjq 2",
+          "isRate": true,
+          "parentId": 4,
+          "amount": 2.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 6,
+          "name": "Cnfdrf 2 gjl uheggjq 2",
+          "isRate": true,
+          "parentId": 5,
+          "amount": 3.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        },
+        {
+          "id": 7,
+          "name": "Cnfdrf 2 tp uheggs",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": "USD",
+          "unitName": "ltym"
+        }
+      ]
+    });
+    _initialCallOffs.add({
+      "id": "26270cfa2422b2c4ebf158285e065879",
+      "contractId": "26270cfa2422b2c4ebf158285e050f11",
+      "number": "1",
+      "assignee": "sd",
+      "createdAt": "0001-01-01T00:00:00.0000000+03:00",
+      "updatedAt": "2017-03-21T15:57:44.9683623+03:00",
+      "startDate": null,
+      "finishDate": null,
+      "name": "DF",
+      "position": "ASFD",
+      "location": "ASFD",
+      "templateSysName": "default",
+      "templateData": {},
+      "rates": []
+    });
+    _initialCallOffs.add({
+      "id": "26270cfa2422b2c4ebf158285e075cd5",
+      "contractId": "26270cfa2422b2c4ebf158285e01c610",
+      "number": "1-U/ZCGU",
+      "assignee": "Bdfyjd Bdfy1",
+      "createdAt": "0001-01-01T00:00:00.0000000+03:00",
+      "updatedAt": "2017-03-29T16:56:53.3321037+03:00",
+      "startDate": "30.03.2017",
+      "finishDate": "31.03.2017",
+      "name": "Rjynhjkm vjqrb gjkjd",
+      "position": "Utylbh",
+      "location": "Fh,fn",
+      "templateSysName": "default",
+      "templateData": {},
+      "rates": [
+        {
+          "id": 1,
+          "name": "Eckeuf",
+          "isRate": false,
+          "parentId": null,
+          "amount": 0.0,
+          "currency": null,
+          "unitName": null
+        },
+        {
+          "id": 2,
+          "name": "Ds[jlyst",
+          "isRate": true,
+          "parentId": null,
+          "amount": 1000.0,
+          "currency": "RUR",
+          "unitName": "ly."
+        }
+      ]
+    });
   }
 
   static Future<Response> _handler(Request request) async {
@@ -210,6 +467,9 @@ class InMemoryDataService extends MockClient {
               break;
             case 'contracts':
               data = _contractsDb;
+              break;
+            case 'call-off-orders':
+              data = _callOffsDb;
               break;
           }
         }

@@ -23,6 +23,8 @@ import 'package:requests/requests_component.dart';
 import 'package:contracts/contracts_service.dart';
 import 'package:contracts/contract_general_service.dart';
 
+import 'package:call_off_order/call_off_service.dart';
+
 bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
@@ -60,6 +62,7 @@ main() async {
     const Provider(ConfigService),
     const Provider(ContractsService),
     const Provider(ContractGeneralService),
+    const Provider(CallOffService),
     provide(Client, useClass: InMemoryDataService)
     // Using a real back end?
     // Import browser_client.dart and change the above to:
