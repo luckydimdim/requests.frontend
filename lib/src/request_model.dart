@@ -12,6 +12,8 @@ class RequestModel extends Object with JsonConverter, MapConverter {
   String updateDate;
   String contractNumber;
   String contractorName;
+  String currencyName;
   num amount;
-  String status;
+  String statusName;
+  String statusSysName;
 }

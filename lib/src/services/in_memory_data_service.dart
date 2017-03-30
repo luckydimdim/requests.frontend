@@ -19,7 +19,8 @@ class InMemoryDataService extends MockClient {
       'contractorName': 'Podryadchik',
       'amount': 300000000,
       'currencyName': 'rub',
-      'status': 'approved'
+      'statusName': 'odobrena',
+      'statusSysName': 'approved'
     });
     _initialRequests.add({
       'id': '2',
@@ -29,7 +30,8 @@ class InMemoryDataService extends MockClient {
       'contractorName': 'Podryadchik',
       'amount': 300000000,
       'currencyName': 'rub',
-      'status': 'approved'
+      'statusName': 'odobrena',
+      'statusSysName': 'approved'
     });
     _initialRequests.add({
       'id': '3',
@@ -39,7 +41,8 @@ class InMemoryDataService extends MockClient {
       'contractorName': 'Podryadchik',
       'amount': 300000000,
       'currencyName': 'rub',
-      'status': 'approved'
+      'statusName': 'odobrena',
+      'statusSysName': 'approved'
     });
     _initialRequests.add({
       'id': '4',
@@ -49,7 +52,8 @@ class InMemoryDataService extends MockClient {
       'contractorName': 'Podryadchik',
       'amount': 300000000,
       'currencyName': 'rub',
-      'status': 'approved'
+      'statusName': 'deny',
+      'statusSysName': 'deny'
     });
     _initialRequests.add({
       'id': '5',
@@ -59,7 +63,8 @@ class InMemoryDataService extends MockClient {
       'contractorName': 'Podryadchik',
       'amount': 300000000,
       'currencyName': 'rub',
-      'status': 'approved'
+      'statusName': 'new',
+      'statusSysName': 'new'
     });
     _initialRequests.add({
       'id': '6',
@@ -69,7 +74,8 @@ class InMemoryDataService extends MockClient {
       'contractorName': 'Podryadchik',
       'amount': 300000000,
       'currencyName': 'rub',
-      'status': 'approved'
+      'statusName': 'errors',
+      'statusSysName': 'error'
     });
   }
 

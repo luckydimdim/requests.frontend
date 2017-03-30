@@ -73,4 +73,16 @@ class RequestListComponent implements OnInit, AfterViewInit {
   togglePane() {
     _asideService.togglePane();
   }
+
+  /**
+   * Подставляет нужный css класс в столбце со статусами
+   */
+  Map<String, bool> resolveStatusStyleClass(String statusSysName) {
+    return new Map<String, bool>()..addAll({
+      'tag-warning': statusSysName == 'error',
+      'tag-success': statusSysName == 'approved',
+      'tag-danger': statusSysName == 'deny',
+      'tag-primary': statusSysName == 'new'
+    });
+  }
 }
