@@ -65,6 +65,7 @@ class RequestListComponent implements OnInit, AfterViewInit {
   @override
   ngAfterViewInit() {
     _asideService.addPane(PaneType.ContractSearch);
+
   }
 
   /**

@@ -20,7 +20,7 @@ import 'list/request_list_component.dart';
       useAsDefault: true,
       data: RequestListComponent.DisplayName),
   const Route(
-      path: '/creator/',
+      path: '/creator/:id/',
       component: RequestCreatorComponent,
       name: 'RequestCreator',
       data: RequestCreatorComponent.DisplayName),
