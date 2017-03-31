@@ -29,6 +29,7 @@ class RequestCreateComponent implements OnInit, AfterViewInit {
   final CallOffService _callOffService;
   final RequestsService _requestsService;
   final AsideService _asideService;
+  final Router _router;
 
   var callOffsDataSource = new DataSource();
   String contractId = '';
@@ -38,7 +39,7 @@ class RequestCreateComponent implements OnInit, AfterViewInit {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestCreateComponent(this._routeParams, this._callOffService, this._requestsService, this._asideService);
+  RequestCreateComponent(this._router, this._routeParams, this._callOffService, this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {
@@ -95,6 +96,10 @@ class RequestCreateComponent implements OnInit, AfterViewInit {
       ..contractId = contractId
       ..workIds = ids;
 
-    await _requestsService.createRequest(model);
+    // FIX IT: раскоментить после прикручивания настоящего web-сервиса
+    // await _requestsService.createRequest(model);
+
+    // TODO: брать id из ответа web-сервиса
+    _router.navigate(['RequestView', { 'id': '1111111111' }]);
   }
 }

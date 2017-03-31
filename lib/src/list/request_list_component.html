@@ -26,7 +26,7 @@
             </grid-column>
             <grid-column header="Статус" field="status" styleClass="text-md-center">
               <template let-request="rowData" grid-template="body">
-                <span class="tag" [ngClass]="resolveStatusStyleClass(request['statusSysName'])">{{request['statusName']}}</span>
+                <div class="text-md-center"><span class="tag" [ngClass]="resolveStatusStyleClass(request['statusSysName'])">{{request['statusName']}}</span></div>
               </template>
             </grid-column>
           </grid>
