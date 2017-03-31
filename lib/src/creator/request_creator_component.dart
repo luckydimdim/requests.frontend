@@ -7,6 +7,9 @@ import 'package:grid/grid.dart';
 import 'package:call_off_order/call_off_service.dart';
 import 'package:call_off_order/call_off_order.dart';
 
+import 'package:aside/aside_service.dart';
+import 'package:aside/pane_types.dart';
+
 import '../request_model.dart';
 import '../services/requests_service.dart';
 
@@ -20,12 +23,14 @@ import '../services/requests_service.dart';
       GridComponent,
       GridTemplateDirective,
       ColumnComponent])
-class RequestCreatorComponent implements OnInit {
+class RequestCreatorComponent implements OnInit, AfterViewInit {
   static const DisplayName = const { 'displayName': 'Формирование заявки на проверку' };
 
   final RouteParams _routeParams;
   final CallOffService _callOffService;
   final RequestsService _requestsService;
+  final AsideService _asideService;
+
   var callOffsDataSource = new DataSource();
   String contractId = '';
   List<CallOffOrder> orders = new List<CallOffOrder>();
@@ -34,13 +39,18 @@ class RequestCreatorComponent implements OnInit {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestCreatorComponent(this._routeParams, this._callOffService, this._requestsService);
+  RequestCreatorComponent(this._routeParams, this._callOffService, this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {
     contractId = _routeParams.get('id');
 
     await loadCallOffs();
+  }
+
+  @override
+  ngAfterViewInit() {
+    _asideService.addPane(PaneType.ContractSearch);
   }
 
   Future loadCallOffs() async {

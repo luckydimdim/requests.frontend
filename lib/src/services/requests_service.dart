@@ -16,38 +16,22 @@ class RequestsService {
   final Client _http;
   final ConfigService _config;
   LoggerService _logger;
-  String _backendUrl = null;
-  bool _initialized = false;
 
   RequestsService(this._http, this._config) {
     _logger = new LoggerService(_config);
-  }
-
-  _init() async {
-    String backendScheme = await _config.Get<String>('backend_scheme');
-    String backendBaseUrl = await _config.Get<String>('backend_base_url');
-    String backendPort = await _config.Get<String>('backend_port');
-    String backendRequests = await _config.Get<String>('backend_requests');
-
-    _backendUrl =
-        '$backendScheme://$backendBaseUrl:$backendPort/$backendRequests';
-
-    _initialized = true;
   }
 
   /**
    * Получение списка заявок на проверку
    */
   Future<List<RequestModel>> getRequests() async {
-    if (!_initialized) await _init();
-
-    _logger.trace('Getting requests. Url: $_backendUrl');
+    _logger.trace('Getting requests. Url: ${ _config.helper.requestsUrl }');
 
     Response response = null;
 
     try {
       response = await _http.get(
-        _backendUrl,
+        _config.helper.requestsUrl,
         headers: {'Content-Type': 'application/json'});
     } catch (e) {
       _logger.error('Failed to get request list: $e');
@@ -64,14 +48,12 @@ class RequestsService {
    * Получение одной заявки по ее id
    */
   Future<RequestModel> getRequest(String id) async {
-    if (!_initialized) await _init();
-
     Response response = null;
 
-    _logger.trace('Getting request. Url: $_backendUrl/$id');
+    _logger.trace('Getting request. Url: ${ _config.helper.requestsUrl }/$id');
 
     try {
-      response = await _http.get('$_backendUrl/$id',
+      response = await _http.get('${ _config.helper.requestsUrl }/$id',
           headers: {'Content-Type': 'application/json'});
     } catch (e) {
       _logger.error('Failed to get request: $e');
@@ -90,14 +72,12 @@ class RequestsService {
    * Создание новой заявки
    */
   Future<String> createRequest(RequestModel model) async {
-    if (!_initialized) await _init();
-
     Response response = null;
 
     _logger.trace('Creating request ${model.toJson()}');
 
     try {
-      response = await _http.post(_backendUrl,
+      response = await _http.post(_config.helper.requestsUrl,
           body: model.toJson(),
           headers: {'Content-Type': 'application/json'});
 
@@ -115,12 +95,10 @@ class RequestsService {
    * Изменение данных заявки на проверку
    */
   updateContract(RequestModel model) async {
-    if (!_initialized) await _init();
-
     _logger.trace('Updating request ${model.toJson()}');
 
     try {
-      await _http.put(_backendUrl,
+      await _http.put(_config.helper.requestsUrl,
           headers: {'Content-Type': 'application/json'},
           body: model.toJson());
       _logger.trace('Request ${model.id} successfuly updated');
@@ -135,12 +113,10 @@ class RequestsService {
    * Удаление заявки на проверку
    */
   deleteRequest(String id) async {
-    if (!_initialized) await _init();
-
-    _logger.trace('Removing request. Url: $_backendUrl/$id');
+    _logger.trace('Removing request. Url: ${ _config.helper.requestsUrl }/$id');
 
     try {
-      await _http.delete('$_backendUrl/$id',
+      await _http.delete('${ _config.helper.requestsUrl }/$id',
           headers: {'Content-Type': 'application/json'});
       _logger.trace('Request $id removed');
     } catch (e) {
