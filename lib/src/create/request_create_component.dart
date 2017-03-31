@@ -13,17 +13,16 @@ import 'package:aside/pane_types.dart';
 import '../request_model.dart';
 import '../services/requests_service.dart';
 
-
 @Component(
-    selector: 'request-creator',
-    templateUrl: 'request_creator_component.html',
+    selector: 'request-create',
+    templateUrl: 'request_create_component.html',
     providers: const [RequestsService],
     directives: const [
       RouterLink,
       GridComponent,
       GridTemplateDirective,
       ColumnComponent])
-class RequestCreatorComponent implements OnInit, AfterViewInit {
+class RequestCreateComponent implements OnInit, AfterViewInit {
   static const DisplayName = const { 'displayName': 'Формирование заявки на проверку' };
 
   final RouteParams _routeParams;
@@ -39,7 +38,7 @@ class RequestCreatorComponent implements OnInit, AfterViewInit {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestCreatorComponent(this._routeParams, this._callOffService, this._requestsService, this._asideService);
+  RequestCreateComponent(this._routeParams, this._callOffService, this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {

@@ -1,7 +1,7 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
-import 'creator/request_creator_component.dart';
+import 'create/request_create_component.dart';
 import 'cc2/request_cc2_component.dart';
 import 'cc3/request_cc3_component.dart';
 import 'ts/request_ts_component.dart';
@@ -20,10 +20,10 @@ import 'list/request_list_component.dart';
       useAsDefault: true,
       data: RequestListComponent.DisplayName),
   const Route(
-      path: '/creator/:id/',
-      component: RequestCreatorComponent,
-      name: 'RequestCreator',
-      data: RequestCreatorComponent.DisplayName),
+      path: '/create/:id/',
+      component: RequestCreateComponent,
+      name: 'RequestCreate',
+      data: RequestCreateComponent.DisplayName),
   const Route(
     path: '/cc2/',
     component: RequestCc2Component,
