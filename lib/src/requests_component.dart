@@ -5,7 +5,7 @@ import 'create/request_create_component.dart';
 import 'cc2/request_cc2_component.dart';
 import 'cc3/request_cc3_component.dart';
 import 'ts/request_ts_component.dart';
-import 'documents/request_documents_component.dart';
+import 'view/request_view_component.dart';
 import 'list/request_list_component.dart';
 
 @Component(
@@ -25,6 +25,11 @@ import 'list/request_list_component.dart';
       name: 'RequestCreate',
       data: RequestCreateComponent.DisplayName),
   const Route(
+    path: '/view/:id/',
+    component: RequestViewComponent,
+    name: 'RequestView',
+    data: RequestViewComponent.DisplayName),
+  const Route(
     path: '/cc2/',
     component: RequestCc2Component,
     name: 'Cc2',
@@ -38,10 +43,5 @@ import 'list/request_list_component.dart';
     path: '/ts/',
     component: RequestTsComponent,
     name: 'Ts',
-    data: RequestTsComponent.DisplayName),
-  const Route(
-    path: '/documents/',
-    component: RequestDocumentsComponent,
-    name: 'Documents',
-    data: RequestDocumentsComponent.DisplayName)])
+    data: RequestTsComponent.DisplayName)])
 class RequestsComponent {}

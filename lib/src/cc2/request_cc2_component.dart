@@ -36,7 +36,7 @@ class RequestCc2Component implements AfterViewInit, OnInit {
             <li class="breadcrumb-item"><a href="#/master/dashboard">Главная</a></li>
             <li class="breadcrumb-item"><a href="#/master/requestList">Список заявок</a></li>
             <li class="breadcrumb-item"><a href="#/master/request">Создание заявки</a></li>
-            <li class="breadcrumb-item"><a href="#/master/request/documents">Первичная документация</a></li>
+            <li class="breadcrumb-item"><a href="#/master/request/view">Первичная документация</a></li>
             <li class="breadcrumb-item active">Акт КС-2 по объекту &laquo;Морской порт&raquo; подрядчика &laquo;Подрядчик раз два три&raquo;</li>
     ''';
   }

@@ -2,23 +2,19 @@ import 'dart:html';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
+import 'package:angular_utils/directives.dart';
+
 @Component(
-    selector: 'documents',
-    templateUrl: 'request_documents_component.html',
-    directives: const [RouterLink])
-class RequestDocumentsComponent implements OnInit, AfterViewInit {
+    selector: 'view',
+    templateUrl: 'request_view_component.html',
+    directives: const [CmRouterLink])
+class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const { 'displayName': 'Документация' };
-  static const String route_name = 'Documents';
-  static const String route_path = 'documents';
-  static const Route route = const Route(
-      path: RequestDocumentsComponent.route_path,
-      component: RequestDocumentsComponent,
-      name: RequestDocumentsComponent.route_name);
 
   final Router _router;
   final RouteParams _routeParams;
 
-  RequestDocumentsComponent(this._router, this._routeParams) {}
+  RequestViewComponent(this._router, this._routeParams) {}
 
   @override
   void ngOnInit() {
