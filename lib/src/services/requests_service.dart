@@ -6,7 +6,9 @@ import 'package:angular2/core.dart';
 import 'package:config/config_service.dart';
 import 'package:logger/logger_service.dart';
 
-import '../request_model.dart';
+import '../view/detailed_request_model.dart';
+import '../create/write_request_model.dart';
+import '../list/request_model.dart';
 
 /**
  * Работа с web-сервисом. Раздел "Заявки на проверку"
@@ -41,13 +43,22 @@ class RequestsService {
 
     _logger.trace('Requests requested: $response.');
 
-    return JSON.decode(response.body);
+    dynamic json = JSON.decode(response.body);
+
+    var result = new List<RequestModel>();
+
+    for (dynamic request in json) {
+      RequestModel model = new RequestModel().fromJson(request);
+      result.add(model);
+    }
+
+    return result;
   }
 
   /**
    * Получение одной заявки по ее id
    */
-  Future<RequestModel> getRequest(String id) async {
+  Future<DetailedRequestModel> getRequest(String id) async {
     Response response = null;
 
     _logger.trace('Getting request. Url: ${ _config.helper.requestsUrl }/$id');
@@ -65,13 +76,13 @@ class RequestsService {
 
     dynamic json = JSON.decode(response.body);
 
-    return new RequestModel().fromJson(json);
+    return new DetailedRequestModel().fromJson(json);
   }
 
   /**
    * Создание новой заявки
    */
-  Future<String> createRequest(RequestModel model) async {
+  Future<WriteRequestModel> createRequest(WriteRequestModel model) async {
     Response response = null;
 
     _logger.trace('Creating request ${model.toJson()}');
@@ -88,14 +99,16 @@ class RequestsService {
       throw new Exception('Failed to create request. Cause: $e');
     }
 
-    return response.body;
+    dynamic json = JSON.decode(response.body);
+
+    return new WriteRequestModel().fromJson(json);
   }
 
   /**
    * Изменение данных заявки на проверку
    */
-  updateContract(RequestModel model) async {
-    _logger.trace('Updating request ${model.toJson()}');
+  updateContract(WriteRequestModel model) async {
+    _logger.trace('Updating request ${ model.toJson() }');
 
     try {
       await _http.put(_config.helper.requestsUrl,

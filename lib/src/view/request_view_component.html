@@ -7,7 +7,7 @@
         </div>
 
         <div class="row pl-1 pr-1 d-table-row">
-          <div class="col-lg-3 pt-1 d-100vh-va-top float-xl-none" style="border-right: 1px solid #d1d4d7;">
+          <div class="col-lg-3 pt-1 d-100vh-va-top float-xl-none" style="border-right: 1px solid #d1d4d7;" sticky-top>
             <div sticky>
               <div>
                 <div class="font-weight-bold">
@@ -17,7 +17,7 @@
                   <li><span>Выбрано работ</span> <span>576</span></li>
                   <li><span>На сумму</span><span>$43 000</span></li>
                 </ul>
-                <a [cmRouterLink]="['RequestSettings']" class="font-xs">Изменить</a>
+                <a [cmRouterLink]="['RequestCreate', { 'id': contractId }]" class="font-xs">Изменить</a>
 
                 <div class="font-weight-bold mt-2">
                   <span class="text-uppercase mb-q">Материалы</span>
@@ -27,7 +27,7 @@
                   <li><span>На сумму</span><span>$2 000</span></li>
                 </ul>
                 <div>
-                  <a [cmRouterLink]="['RequestSettings']" class="font-xs">Изменить</a>
+                  <a [cmRouterLink]="['RequestCreate', { 'id': contractId }]" class="font-xs">Изменить</a>
                 </div>
               </div>
               <div class="pb-2">
@@ -45,10 +45,10 @@
                 </ul>
 
                 <div class="mt-3">
-                  <button type="button" class="btn btn-outline-warning btn-block"><i class="fa fa-save"></i>&nbsp;
+                  <button type="button" class="btn btn-outline-warning btn-block" (onclick)="save()"><i class="fa fa-save"></i>&nbsp;
                     Сохранить
                   </button>
-                  <button type="button" class="btn btn-success btn-block mt-1" btn-aprove><i class="icon-rocket"></i>&nbsp;
+                  <button type="button" class="btn btn-success btn-block mt-1" (onclick)="send()"><i class="icon-rocket"></i>&nbsp;
                     Отправить на согласование
                   </button>
                 </div>
@@ -57,150 +57,29 @@
           </div>
           <!--./col-->
           <div class="col-lg-9 pt-1 d-100vh-va-top float-xl-none">
-            <div class="row">
-              <div class="col-xl-4 col-lg-6 pt-1">
-                <h5 class="text-muted">
-                  Акты КС-2
-                </h5>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-cubes bg-info p-1 font-2xl mr-1 float-xs-left"></i>
-                    <i class="icon-check text-primary float-xs-right font-2xl"></i>
-                    <a class="h5 text-primary mb-0 mt-h"
-                       [cmRouterLink]="['RequestCc2', {'objectName': 'sea-port', 'contractorName': 'some-company'}]">Морской
-                      порт</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Подрядчик раз два три
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-cubes bg-info p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-primary mb-0 mt-h"
-                       [cmRouterLink]="['RequestCc2', {'objectName': 'sea-port', 'contractorName': 'some-company'}]">Морской
-                      порт</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Другой подрядчик
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-cubes bg-info p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-primary mb-0 mt-h"
-                       [cmRouterLink]="['RequestCc2', {'objectName': 'sea-port', 'contractorName': 'some-company'}]">Резервуары
-                      хранения конденсата</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Подрядчик раз два три
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--./col-->
-              <div class="col-xl-4 col-lg-6 pt-1">
-                <h5 class="text-muted">
-                  Справки КС-3
-                </h5>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-money bg-warning p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-warning mb-0 mt-h"
-                       [cmRouterLink]="['RequestCc3', {'objectName': 'sea-port'}]">Морской
-                      порт</a>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-money bg-warning p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-warning mb-0 mt-h"
-                       [cmRouterLink]="['RequestCc3', {'objectName': 'sea-port'}]">Резервуары
-                      хранения конденсата</a>
-                  </div>
-                </div>
-              </div>
-              <!--./col-->
-              <div class="col-xl-4 col-lg-6 pt-1">
-                <h5 class="text-muted">
-                  Табели учета рабочего времени
-                </h5>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
-                    <i class="icon-check text-success float-xs-right font-2xl"></i>
-                    <a class="h5 text-success mb-0 mt-h"
-                       [cmRouterLink]="['RequestTs']">Muhammad Ichsan</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Резервуары хранения конденсата
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
-                    <i class="icon-check text-success float-xs-right font-2xl"></i>
-                    <a class="h5 text-success mb-0 mt-h"
-                       [cmRouterLink]="['RequestTs']">Dedi Setiawan</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Резервуары хранения конденсата
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-success mb-0 mt-h"
-                       [cmRouterLink]="['RequestTs']">Muhammad Ichsan</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Резервуары хранения конденсата
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-success mb-0 mt-h"
-                       [cmRouterLink]="['RequestTs']">Dedi Setiawan</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Резервуары хранения конденсата
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-success mb-0 mt-h"
-                       [cmRouterLink]="['RequestTs']">Muhammad Ichsan</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Резервуары хранения конденсата
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block p-1 clearfix">
-                    <i
-                      class="fa fa-clock-o bg-success p-1 font-2xl mr-1 float-xs-left"></i>
-                    <a class="h5 text-success mb-0 mt-h"
-                       [cmRouterLink]="['RequestTs']">Muhammad Ichsan</a>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs">
-                      Резервуары хранения конденсата
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--./col-->
-            </div>
-            <!--./row-->
+
+            <grid #grid [dataSource]="worksDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
+              <grid-column width="3%">
+                <template let-request="rowData" grid-template="body">
+                  <div class="text-md-center"><button class="btn btn-tiny"><i class="icon-magnifier"></i></button></div>
+                </template>
+              </grid-column>
+              <grid-column header="Дата создания" field="startDate" styleClass="text-md-center"></grid-column>
+              <grid-column header="Дата изменения" field="updateDate" styleClass="text-md-center"></grid-column>
+              <grid-column header="№ договора" field="contractNumber" styleClass="text-md-center"></grid-column>
+              <grid-column header="Подрядчик" field="contractorName" styleClass="text-md-center"></grid-column>
+              <grid-column header="Сумма к оплате" field="amount" width="11%" styleClass="text-md-center">
+                <template let-request="rowData" grid-template="body">
+                  <div class="text-md-right text-nowrap"><i class="fa fa-{{request['currencyName']}}"></i> {{ request['amount'] | cmFormatMoney }}</div>
+                </template>
+              </grid-column>
+              <grid-column header="Статус" field="status" styleClass="text-md-center">
+                <template let-request="rowData" grid-template="body">
+                  <div class="text-md-center"><span class="tag" [ngClass]="resolveStatusStyleClass(request['statusSysName'])">{{request['statusName']}}</span></div>
+                </template>
+              </grid-column>
+            </grid>
+
           </div>
         </div>
         <!--./row-->

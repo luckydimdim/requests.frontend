@@ -20,12 +20,12 @@ import 'list/request_list_component.dart';
       useAsDefault: true,
       data: RequestListComponent.DisplayName),
   const Route(
-      path: '/create/:id/',
+      path: '/create/:contractId/',
       component: RequestCreateComponent,
       name: 'RequestCreate',
       data: RequestCreateComponent.DisplayName),
   const Route(
-    path: '/view/:id/',
+    path: '/view/:contractId/:requestId',
     component: RequestViewComponent,
     name: 'RequestView',
     data: RequestViewComponent.DisplayName),

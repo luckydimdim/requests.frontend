@@ -1,49 +1,70 @@
 import 'dart:html';
+import 'dart:async';
+
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
 import 'package:angular_utils/directives.dart';
+import 'package:grid/grid.dart';
+
+import '../services/requests_service.dart';
+import 'detailed_request_model.dart';
+import 'primary_document.dart';
 
 @Component(
-    selector: 'view',
-    templateUrl: 'request_view_component.html',
-    directives: const [CmRouterLink])
+  selector: 'view',
+  templateUrl: 'request_view_component.html',
+  directives: const [
+    CmRouterLink,
+    GridComponent,
+    GridTemplateDirective,
+    ColumnComponent])
 class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const { 'displayName': 'Документация' };
 
   final Router _router;
   final RouteParams _routeParams;
 
-  RequestViewComponent(this._router, this._routeParams) {}
+  var worksDataSource = new DataSource();
+  final RequestsService _requestsService;
+
+  String contractId = '';
+  String requestId = '';
+
+  @ViewChild(GridComponent)
+  GridComponent grid;
+
+  RequestViewComponent(this._router, this._routeParams, this._requestsService);
 
   @override
-  void ngOnInit() {
-    breadcrumbInit();
+  ngOnInit() async {
+    contractId = _routeParams.get('contractId');
+    requestId = _routeParams.get('requestId');
+
+    await _loadRequest();
   }
 
-  void breadcrumbInit(){
-    var  breadcrumbContent = querySelector('#breadcrumbContent') as HtmlElement;
+  /**
+   * Загрузака из web-сервиса данных по заявке на проверку
+   */
+  Future _loadRequest() async {
+    DetailedRequestModel model = await _requestsService.getRequest(requestId);
 
-    if (breadcrumbContent == null)
-      return;
+    List<Map<String, String>> documentMaps = new List<Map<String, String>>();
 
-    breadcrumbContent.innerHtml = '''
-            <li class="breadcrumb-item"><a href="#/master/dashboard">Главная</a></li>
-            <li class="breadcrumb-item"><a href="#/master/requestList">Список заявок</a></li>
-            <li class="breadcrumb-item"><a href="#/master/request">Создание заявки</a></li>            
-            <li class="breadcrumb-item active">Первичная документация</li>
-    ''';
+    for (PrimaryDocument document in model.documents) {
+      documentMaps.add(document.toMap());
+    }
+
+    worksDataSource = new DataSource(data: documentMaps)
+      ..primaryField = 'id';
+
+    return null;
   }
 
   @override
   void ngAfterViewInit() {
-    // FIXME: скрол не работает
     window.scrollTo(0, 0);
-
-    var button = querySelector('[btn-aprove]') as ButtonElement;
-    button.onClick.listen((MouseEvent e) {
-      _router.navigate(['RequestList']);
-    });
 
     sticky();
   }
@@ -52,33 +73,96 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Фиксация боковой панели
    */
   void sticky() {
-    var width = querySelector('[sticky]').getComputedStyle().width;
+    var pane = querySelector('[sticky]');
+    if (pane == null) return;
+
+    var width = pane.getComputedStyle().width;
 
     // При ресайзе окна ширина панели
     // подстраивается под ширину родительского элемента
     window.onResize.listen((Event e) {
-      width = querySelector('[sticky]').parent.clientWidth;
+      var stickyElement = querySelector('[sticky]');
 
-      var paddingLeft = querySelector('[sticky]').parent.getComputedStyle().paddingLeft.replaceAll('px', '');
-      var paddingRight = querySelector('[sticky]').parent.getComputedStyle().paddingRight.replaceAll('px', '');
+      if (stickyElement == null) return;
+
+      width = stickyElement.parent.clientWidth;
+
+      var paddingLeft = stickyElement.parent
+        .getComputedStyle()
+        .paddingLeft
+        .replaceAll('px', '');
+      var paddingRight = stickyElement.parent
+        .getComputedStyle()
+        .paddingRight
+        .replaceAll('px', '');
 
       var pl = int.parse(paddingLeft);
       var pr = int.parse(paddingRight);
 
       width = width - pl - pr;
 
-      querySelector('[sticky]').style.width = width.toString() + 'px';
+      stickyElement.style.width = width.toString() + 'px';
     });
+
+    bool topWasSet = false;
 
     // При прокрутке окна устанавливается position: fixed
     window.onScroll.listen((Event e) {
-      var div = querySelector('[sticky]') as DivElement;
-      if (window.pageYOffset > 0) {
-        div.style.position = 'fixed';
-        div.style.width = width;
+      if (window.pageXOffset > 0) return;
+
+      // Флаг включенности "режима прилипания"
+      bool enabled = false;
+
+      // Высота шапки
+      const headerHeight = 55;
+
+      // Отступ родительского элемента
+      const navTopPadding = 15;
+
+      // Контейнер, содержимое которого прилипает
+      var sticky = querySelector('[sticky]') as HtmlElement;
+      if (sticky == null)
+        return;
+
+      // Верхняя отметка, до которой не нужно начинать прилипание
+      var stickyTop = querySelector('[sticky-top]') as HtmlElement;
+      if (stickyTop != null) {
+        enabled = stickyTop.getBoundingClientRect().top - headerHeight <= 0;
       } else {
-        div.style.position = 'relative';
+        enabled = window.pageYOffset > 0;
+      }
+
+      if (enabled) {
+        if (!topWasSet) {
+          // FIXME: при скроле колесом криво считается отступ сверху
+          sticky.style.top = '${stickyTop.getBoundingClientRect().top + navTopPadding}px';
+          topWasSet = true;
+        }
+
+        sticky.style.position = 'fixed';
+        sticky.style.width = width.toString();
+      } else {
+        if (topWasSet) {
+          sticky.style.top = '0';
+          topWasSet = false;
+        }
+
+        sticky.style.position = 'relative';
       }
     });
+  }
+
+  /**
+   * Обработка нажатия на кнопку "Сохранить"
+   */
+  void save() {
+    throw new Exception('Not implemented yet!');
+  }
+
+  /**
+   * Обработка нажатия на кнопку "Отправить на согласование"
+   */
+  void send() {
+    throw new Exception('Not implemented yet!');
   }
 }

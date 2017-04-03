@@ -10,7 +10,7 @@ import 'package:call_off_order/call_off_order.dart';
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
-import '../request_model.dart';
+import '../create/write_request_model.dart';
 import '../services/requests_service.dart';
 
 @Component(
@@ -22,7 +22,7 @@ import '../services/requests_service.dart';
       GridComponent,
       GridTemplateDirective,
       ColumnComponent])
-class RequestCreateComponent implements OnInit, AfterViewInit {
+class RequestCreateComponent implements OnInit, AfterViewInit, OnDestroy {
   static const DisplayName = const { 'displayName': 'Формирование заявки на проверку' };
 
   final RouteParams _routeParams;
@@ -50,9 +50,14 @@ class RequestCreateComponent implements OnInit, AfterViewInit {
 
   @override
   ngAfterViewInit() {
+    // TODO: тут нужно передавать в панель contractId чтобы панель устанавливала
+    // нужный договор в состоянии "выбранности"
     _asideService.addPane(PaneType.ContractSearch);
   }
 
+  /**
+   * Загрузка из web-сервиса списка работ
+   */
   Future loadCallOffs() async {
     orders = await _callOffService.getCallOffOrders(contractId);
 
@@ -92,7 +97,7 @@ class RequestCreateComponent implements OnInit, AfterViewInit {
       ids.add(order.id);
     }
 
-    var model = new RequestModel()
+    var model = new WriteRequestModel()
       ..contractId = contractId
       ..workIds = ids;
 
@@ -100,6 +105,13 @@ class RequestCreateComponent implements OnInit, AfterViewInit {
     // await _requestsService.createRequest(model);
 
     // TODO: брать id из ответа web-сервиса
-    _router.navigate(['RequestView', { 'id': '1111111111' }]);
+    _router.navigate(['RequestView', { 'contractId': contractId, 'requestId': '222222222' }]);
+  }
+
+  @override
+  ngOnDestroy() {
+    // Удаляется компонент поиска договора из боковой панели
+    // перед уходом со страницы с данным компонентом
+    _asideService.removePane(PaneType.ContractSearch);
   }
 }

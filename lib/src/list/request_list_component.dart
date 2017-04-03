@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:angular2/core.dart';
-import 'package:angular2/router.dart';
 
 import 'package:grid/grid.dart';
 
@@ -8,7 +7,7 @@ import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
 import '../services/requests_service.dart';
-import '../request_model.dart';
+import 'package:requests/src/list/request_model.dart';
 import '../pipes/cm_format_money_pipe.dart';
 
 @Component(
@@ -20,9 +19,8 @@ import '../pipes/cm_format_money_pipe.dart';
     GridTemplateDirective,
     ColumnComponent],
   pipes: const [CmFormatMoneyPipe])
-class RequestListComponent implements OnInit, AfterViewInit {
+class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   static const DisplayName = const { 'displayName': 'Список заявок на проверку' };
-  final Router _router;
   final AsideService _asideService;
   final RequestsService _requestsService;
 
@@ -31,25 +29,21 @@ class RequestListComponent implements OnInit, AfterViewInit {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestListComponent(this._router, this._asideService, this._requestsService);
+  RequestListComponent(this._asideService, this._requestsService);
 
   @override
   Future ngOnInit() async {
     await loadRequests();
   }
 
+  /**
+   * Получение списка заявок на проверку
+   */
   Future loadRequests() async {
-    List<dynamic> requests = await _requestsService.getRequests();
-
-    var result = new List<RequestModel>();
-
-    for (dynamic request in requests) {
-      RequestModel model = new RequestModel().fromJson(request);
-      result.add(model);
-    }
+    List<RequestModel> requests = await _requestsService.getRequests();
 
     var listMap = new List<Map<String, String>>();
-    for (RequestModel request in result) {
+    for (RequestModel request in requests) {
       listMap.add(request.toMap());
     }
 
@@ -61,6 +55,7 @@ class RequestListComponent implements OnInit, AfterViewInit {
 
   @override
   ngAfterViewInit() {
+    // Добавление в боковую панель компонента выбора договора
     _asideService.addPane(PaneType.ContractSearch);
   }
 
@@ -81,5 +76,12 @@ class RequestListComponent implements OnInit, AfterViewInit {
       'tag-danger': statusSysName == 'deny',
       'tag-primary': statusSysName == 'new'
     });
+  }
+
+  @override
+  ngOnDestroy() {
+    // Удаляется компонент поиска договора из боковой панели
+    // перед уходом со страницы с данным компонентом
+    _asideService.removePane(PaneType.ContractSearch);
   }
 }
