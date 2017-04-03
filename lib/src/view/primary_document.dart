@@ -7,6 +7,9 @@ import 'primary_document_type.dart';
  * Первичный документ
  */
 abstract class PrimaryDocument extends Object with JsonConverter, MapConverter {
+  /**
+   * Уникальный внутренний идентификатор
+   */
   String id = '';
 
   /**
