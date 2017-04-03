@@ -9,6 +9,7 @@ import 'package:logger/logger_service.dart';
 import '../view/detailed_request_model.dart';
 import '../create/write_request_model.dart';
 import '../list/request_model.dart';
+import '../view/request_status.dart';
 
 /**
  * Работа с web-сервисом. Раздел "Заявки на проверку"
@@ -107,7 +108,7 @@ class RequestsService {
   /**
    * Изменение данных заявки на проверку
    */
-  updateContract(WriteRequestModel model) async {
+  updateRequest(WriteRequestModel model) async {
     _logger.trace('Updating request ${ model.toJson() }');
 
     try {
@@ -136,6 +137,23 @@ class RequestsService {
       _logger.error('Failed to remove request: $e');
 
       throw new Exception('Failed to remove request. Cause: $e');
+    }
+  }
+
+  /**
+   * Обновление статуса заявки
+   */
+  setStatus(String id, RequestStatus status) async {
+    _logger.trace('Change request status. Url: ${ _config.helper.requestsUrl }/$id, Status: ${ status.toString() }');
+
+    try {
+      await _http.put('${ _config.helper.requestsUrl }/$id?status=${ status.toString() }',
+    headers: {'Content-Type': 'application/json'});
+    _logger.trace('Request status changed');
+    } catch (e) {
+    _logger.error('Failed to update request status: $e');
+
+    throw new Exception('Failed to update request status. Cause: $e');
     }
   }
 }

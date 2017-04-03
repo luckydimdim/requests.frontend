@@ -5,10 +5,10 @@ enum PrimaryDocumentType {
   /**
    * Нет типа
    */
-  None,
+  none,
 
   /**
    * Табель учета рабочего времени
    */
-  TimeSheet
+  timeSheet
 }

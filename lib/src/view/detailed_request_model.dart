@@ -27,6 +27,11 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
   RequestSummary summary = null;
 
   /**
+   * Статус заявки
+   */
+  String status = '';
+
+  /**
    * Перечень первичных документов
    */
   List<PrimaryDocument> documents = new List<PrimaryDocument>();

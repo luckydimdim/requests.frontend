@@ -6,7 +6,7 @@ import 'primary_document_type.dart';
  */
 class TimeSheet extends PrimaryDocument {
   @override
-  PrimaryDocumentType type = PrimaryDocumentType.TimeSheet;
+  PrimaryDocumentType type = PrimaryDocumentType.timeSheet;
 
   /**
    * ФИО

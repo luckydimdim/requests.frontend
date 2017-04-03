@@ -15,5 +15,5 @@ abstract class PrimaryDocument extends Object with JsonConverter, MapConverter {
   /**
    * Тип первичного документа
    */
-  PrimaryDocumentType type = PrimaryDocumentType.None;
+  PrimaryDocumentType type = PrimaryDocumentType.none;
 }

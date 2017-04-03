@@ -8,6 +8,7 @@ import 'package:angular_utils/directives.dart';
 import 'package:grid/grid.dart';
 
 import '../services/requests_service.dart';
+import '../view/request_status.dart';
 import 'detailed_request_model.dart';
 import 'primary_document.dart';
 
@@ -30,6 +31,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
   String contractId = '';
   String requestId = '';
+  DetailedRequestModel model = null;
 
   @ViewChild(GridComponent)
   GridComponent grid;
@@ -48,7 +50,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Загрузака из web-сервиса данных по заявке на проверку
    */
   Future _loadRequest() async {
-    DetailedRequestModel model = await _requestsService.getRequest(requestId);
+    model = await _requestsService.getRequest(requestId);
 
     List<Map<String, String>> documentMaps = new List<Map<String, String>>();
 
@@ -156,13 +158,13 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Обработка нажатия на кнопку "Сохранить"
    */
   void save() {
-    throw new Exception('Not implemented yet!');
+    _requestsService.setStatus(requestId, RequestStatus.saved);
   }
 
   /**
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
-  void send() {
-    throw new Exception('Not implemented yet!');
+  void publish() {
+    _requestsService.setStatus(requestId, RequestStatus.published);
   }
 }
