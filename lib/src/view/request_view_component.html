@@ -17,7 +17,7 @@
                   <li><span>Выбрано работ</span> <span>576</span></li>
                   <li><span>На сумму</span><span>$43 000</span></li>
                 </ul>
-                <a [cmRouterLink]="['RequestCreate', { 'id': contractId }]" class="font-xs">Изменить</a>
+                <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]" class="font-xs">Изменить</a>
 
                 <div class="font-weight-bold mt-2">
                   <span class="text-uppercase mb-q">Материалы</span>
@@ -27,7 +27,7 @@
                   <li><span>На сумму</span><span>$2 000</span></li>
                 </ul>
                 <div>
-                  <a [cmRouterLink]="['RequestCreate', { 'id': contractId }]" class="font-xs">Изменить</a>
+                  <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]" class="font-xs">Изменить</a>
                 </div>
               </div>
               <div class="pb-2">
@@ -35,13 +35,13 @@
                   <span class="text-uppercase mb-q">Итого</span>
                 </div>
                 <ul class="leaders font-xs mb-0">
-                  <li><span>Общая стоимость</span> <span>30 000 руб.</span></li>
+                  <li><span>Общая стоимость</span> <span>${model.summary.amount} ${model.summary.currencyName}</span></li>
                   <li><span>Общая стоимость с НДС</span>
-                    <span>35 000 руб.</span></li>
-                  <li><span>Зачет аванса</span> <span>1 000 руб.</span></li>
-                  <li><span>Удержано резерва</span> <span>0 руб.</span></li>
+                    <span>${model.summary.amountWithVat} ${model.summary.currencyName}</span></li>
+                  <li><span>Зачет аванса</span> <span>${model.summary.prepaidAmount} ${model.summary.currencyName}</span></li>
+                  <li><span>Удержано резерва</span> <span>${model.summary.reserveAmount} ${model.summary.currencyName}</span></li>
                   <li><span class="font-weight-bold">Итого к оплате</span> <span
-                    class="font-weight-bold">34 000 руб.</span></li>
+                    class="font-weight-bold">${model.summary.total} ${model.summary.currencyName}</span></li>
                 </ul>
 
                 <div class="mt-3">

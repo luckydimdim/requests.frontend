@@ -1,1 +1,1 @@
-export 'src/create/request_create_component.dart';
+export 'src/compose/request_compose_component.dart';

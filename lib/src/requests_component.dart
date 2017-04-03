@@ -1,7 +1,7 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
-import 'create/request_create_component.dart';
+import 'compose/request_compose_component.dart';
 import 'cc2/request_cc2_component.dart';
 import 'cc3/request_cc3_component.dart';
 import 'ts/request_ts_component.dart';
@@ -20,10 +20,15 @@ import 'list/request_list_component.dart';
       useAsDefault: true,
       data: RequestListComponent.DisplayName),
   const Route(
-      path: '/create/:contractId/',
-      component: RequestCreateComponent,
+      path: '/compose/:contractId/',
+      component: RequestComposeComponent,
       name: 'RequestCreate',
-      data: RequestCreateComponent.DisplayName),
+      data: RequestComposeComponent.DisplayName),
+  const Route(
+    path: '/modify/:contractId/:requestId',
+    component: RequestComposeComponent,
+    name: 'RequestModify',
+    data: RequestComposeComponent.DisplayName),
   const Route(
     path: '/view/:contractId/:requestId',
     component: RequestViewComponent,

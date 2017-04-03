@@ -7,7 +7,7 @@ import 'package:config/config_service.dart';
 import 'package:logger/logger_service.dart';
 
 import '../view/detailed_request_model.dart';
-import '../create/write_request_model.dart';
+import '../compose/write_request_model.dart';
 import '../list/request_model.dart';
 import '../view/request_status.dart';
 
@@ -86,7 +86,7 @@ class RequestsService {
   Future<WriteRequestModel> createRequest(WriteRequestModel model) async {
     Response response = null;
 
-    _logger.trace('Creating request ${model.toJson()}');
+    _logger.trace('Creating request ${ model.toJson() }');
 
     try {
       response = await _http.post(_config.helper.requestsUrl,
@@ -95,9 +95,9 @@ class RequestsService {
 
       _logger.trace('Request created');
     } catch (e) {
-      print('Failed to create request: $e');
+      print('Failed to compose request: $e');
 
-      throw new Exception('Failed to create request. Cause: $e');
+      throw new Exception('Failed to compose request. Cause: $e');
     }
 
     dynamic json = JSON.decode(response.body);
@@ -112,10 +112,10 @@ class RequestsService {
     _logger.trace('Updating request ${ model.toJson() }');
 
     try {
-      await _http.put(_config.helper.requestsUrl,
+      await _http.put('${ _config.helper.requestsUrl }/${ model.id }',
           headers: {'Content-Type': 'application/json'},
           body: model.toJson());
-      _logger.trace('Request ${model.id} successfuly updated');
+      _logger.trace('Request ${ model.id } successfuly updated');
     } catch (e) {
       _logger.error('Failed to update request: $e');
 
