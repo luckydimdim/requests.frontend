@@ -154,10 +154,9 @@ class RequestsService {
         'Change request status. Url: ${ _config.helper.requestsUrl }/$id, Status: ${ status.toString() }');
 
     try {
-      await _http.put(
-          '${ _config.helper.requestsUrl }/$id',
+      await _http.put('${ _config.helper.requestsUrl }/$id',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.encode({ 'status': status.toString() }));
+          body: JSON.encode({'status': status.toString()}));
       _logger.trace('Request status changed');
     } catch (e) {
       _logger.error('Failed to update request status: $e');

@@ -104,4 +104,14 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     requestsDataSource.data.removeWhere((item) => item['id'] == id);
   }
+
+  /**
+   * Переход к редактированию заявки
+   */
+  editRequest(String contractId, String requestId) {
+    _router.navigate([
+      'RequestModify',
+      {'contractId': contractId, 'requestId': requestId}
+    ]);
+  }
 }

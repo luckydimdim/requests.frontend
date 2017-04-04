@@ -8,7 +8,8 @@
         <div class="card-block">
 
           <div class="row pl-1 pr-1 d-table-row">
-            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none" style="border-right: 1px solid #d1d4d7;" sticky-top>
+            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none" style="border-right: 1px solid #d1d4d7;"
+                 sticky-top>
               <div sticky>
                 <div>
                   <div class="font-weight-bold">
@@ -16,19 +17,24 @@
                   </div>
                   <ul class="leaders font-xs mb-0">
                     <li><span>Выбрано работ</span> <span>{{model.summary.worksQuantity}}</span></li>
-                    <li><span>На сумму</span><span>{{model.summary.worksAmount}} {{model.summary.currencyName}}</span></li>
+                    <li><span>На сумму</span><span>{{model.summary.worksAmount}} {{model.summary.currencyName}}</span>
+                    </li>
                   </ul>
-                  <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]" class="font-xs">Изменить</a>
+                  <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]"
+                     class="font-xs">Изменить</a>
 
                   <div class="font-weight-bold mt-2">
                     <span class="text-uppercase mb-q">Материалы</span>
                   </div>
                   <ul class="leaders font-xs mb-0">
                     <li><span>Выбрано материалов</span> <span>{{model.summary.materialsQuantity}}</span></li>
-                    <li><span>На сумму</span><span>{{model.summary.materialsAmount}} {{model.summary.currencyName}}</span></li>
+                    <li>
+                      <span>На сумму</span><span>{{model.summary.materialsAmount}} {{model.summary.currencyName}}</span>
+                    </li>
                   </ul>
                   <div>
-                    <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]" class="font-xs">Изменить</a>
+                    <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]"
+                       class="font-xs">Изменить</a>
                   </div>
                 </div>
                 <div class="pb-2">
@@ -36,17 +42,21 @@
                     <span class="text-uppercase mb-q">Итого</span>
                   </div>
                   <ul class="leaders font-xs mb-0">
-                    <li><span>Общая стоимость</span> <span>{{model.summary.amount}} {{model.summary.currencyName}}</span></li>
+                    <li><span>Общая стоимость</span>
+                      <span>{{model.summary.amount}} {{model.summary.currencyName}}</span></li>
                     <li><span>Общая стоимость с НДС</span>
                       <span>{{model.summary.amountWithVat}} {{model.summary.currencyName}}</span></li>
-                    <li><span>Зачет аванса</span> <span>{{model.summary.prepaidAmount}} {{model.summary.currencyName}}</span></li>
-                    <li><span>Удержано резерва</span> <span>{{model.summary.reserveAmount}} {{model.summary.currencyName}}</span></li>
+                    <li><span>Зачет аванса</span>
+                      <span>{{model.summary.prepaidAmount}} {{model.summary.currencyName}}</span></li>
+                    <li><span>Удержано резерва</span> <span>{{model.summary.reserveAmount}} {{model.summary.currencyName}}</span>
+                    </li>
                     <li><span class="font-weight-bold">Итого к оплате</span> <span
                       class="font-weight-bold">{{model.summary.total}} {{model.summary.currencyName}}</span></li>
                   </ul>
 
                   <div class="mt-3">
-                    <button type="button" class="btn btn-success btn-block mt-1" (onclick)="publish()"><i class="icon-rocket"></i>&nbsp;
+                    <button type="button" class="btn btn-success btn-block mt-1" (onclick)="publish()"><i
+                      class="icon-rocket"></i>&nbsp;
                       Отправить на согласование
                     </button>
                   </div>
@@ -57,10 +67,13 @@
 
             <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none">
 
-              <grid #grid [dataSource]="worksDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
+              <grid #grid [dataSource]="worksDataSource"
+                    [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
                 <grid-column width="3%">
                   <template let-request="rowData" grid-template="body">
-                    <div class="text-md-center"><button class="btn btn-tiny"><i class="icon-magnifier"></i></button></div>
+                    <div class="text-md-center">
+                      <button class="btn btn-tiny"><i class="icon-magnifier"></i></button>
+                    </div>
                   </template>
                 </grid-column>
 
@@ -70,12 +83,16 @@
 
                 <grid-column header="Сумма" field="amount" width="11%" styleClass="text-md-center">
                   <template let-request="rowData" grid-template="body">
-                    <div class="text-md-right text-nowrap"><i class="fa fa-{{ request['currencyName'] }}"></i> {{ request['amount'] | cmFormatMoney }}</div>
+                    <div class="text-md-right text-nowrap"><i class="fa fa-{{ request['currencyName'] }}"></i> {{
+                      request['amount'] | cmFormatMoney }}
+                    </div>
                   </template>
                 </grid-column>
                 <grid-column header="Статус" styleClass="text-md-center">
                   <template let-work="rowData" grid-template="body">
-                    <div class="text-md-center"><span class="tag" [ngClass]="resolveStatusStyleClass(work['statusSysName'])">{{ work['statusName'] }}</span></div>
+                    <div class="text-md-center"><span class="tag"
+                                                      [ngClass]="resolveStatusStyleClass(work['statusSysName'])">{{ work['statusName'] }}</span>
+                    </div>
                   </template>
                 </grid-column>
               </grid>
