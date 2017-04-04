@@ -1,6 +1,8 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
+import 'package:call_off_order/call_off_service.dart';
+
 import 'compose/request_compose_component.dart';
 import 'cc2/request_cc2_component.dart';
 import 'cc3/request_cc3_component.dart';
@@ -11,7 +13,9 @@ import 'list/request_list_component.dart';
 @Component(
     selector: 'requests',
     templateUrl: 'requests_component.html',
-    directives: const [RouterLink, RouterOutlet])
+    directives: const [RouterLink, RouterOutlet],
+    providers: const [CallOffService]
+)
 @RouteConfig(const [
   const Route(
       path: '',
