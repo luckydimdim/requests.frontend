@@ -14,17 +14,22 @@ import 'primary_document.dart';
 import '../pipes/cm_format_money_pipe.dart';
 
 @Component(
-  selector: 'view',
-  templateUrl: 'request_view_component.html',
-  providers: const [RequestsService],
-  directives: const [
-    CmRouterLink,
-    GridComponent,
-    GridTemplateDirective,
-    ColumnComponent],
-  pipes: const [CmFormatMoneyPipe])
+    selector: 'view',
+    templateUrl: 'request_view_component.html',
+    providers: const [
+      RequestsService
+    ],
+    directives: const [
+      CmRouterLink,
+      GridComponent,
+      GridTemplateDirective,
+      ColumnComponent
+    ],
+    pipes: const [
+      CmFormatMoneyPipe
+    ])
 class RequestViewComponent implements OnInit, AfterViewInit {
-  static const DisplayName = const { 'displayName': 'Документация' };
+  static const DisplayName = const {'displayName': 'Документация'};
 
   final Router _router;
   final RouteParams _routeParams;
@@ -61,8 +66,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
       documentMaps.add(document.toMap());
     }
 
-    worksDataSource = new DataSource(data: documentMaps)
-      ..primaryField = 'id';
+    worksDataSource = new DataSource(data: documentMaps)..primaryField = 'id';
 
     return null;
   }
@@ -93,13 +97,13 @@ class RequestViewComponent implements OnInit, AfterViewInit {
       width = stickyElement.parent.clientWidth;
 
       var paddingLeft = stickyElement.parent
-        .getComputedStyle()
-        .paddingLeft
-        .replaceAll('px', '');
+          .getComputedStyle()
+          .paddingLeft
+          .replaceAll('px', '');
       var paddingRight = stickyElement.parent
-        .getComputedStyle()
-        .paddingRight
-        .replaceAll('px', '');
+          .getComputedStyle()
+          .paddingRight
+          .replaceAll('px', '');
 
       var pl = int.parse(paddingLeft);
       var pr = int.parse(paddingRight);
@@ -126,8 +130,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
       // Контейнер, содержимое которого прилипает
       var sticky = querySelector('[sticky]') as HtmlElement;
-      if (sticky == null)
-        return;
+      if (sticky == null) return;
 
       // Верхняя отметка, до которой не нужно начинать прилипание
       var stickyTop = querySelector('[sticky-top]') as HtmlElement;
@@ -140,7 +143,8 @@ class RequestViewComponent implements OnInit, AfterViewInit {
       if (enabled) {
         if (!topWasSet) {
           // FIXME: при скроле колесом криво считается отступ сверху
-          sticky.style.top = '${stickyTop.getBoundingClientRect().top + navTopPadding}px';
+          sticky.style.top =
+              '${stickyTop.getBoundingClientRect().top + navTopPadding}px';
           topWasSet = true;
         }
 
@@ -177,11 +181,12 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   Map<String, bool> resolveStatusStyleClass(String statusSysName) {
     String status = statusSysName.toUpperCase();
 
-    return new Map<String, bool>()..addAll({
-      'tag-warning': status == 'NOTFILLED',
-      'tag-success': status == 'APPROVED',
-      'tag-danger': status == 'DENY',
-      'tag-primary': status == 'DRAFT'
-    });
+    return new Map<String, bool>()
+      ..addAll({
+        'tag-warning': status == 'NOTFILLED',
+        'tag-success': status == 'APPROVED',
+        'tag-danger': status == 'DENY',
+        'tag-primary': status == 'DRAFT'
+      });
   }
 }

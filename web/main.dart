@@ -29,21 +29,26 @@ bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
 
-@Component(selector: 'app', providers: const [
-  ROUTER_PROVIDERS,
-  const Provider(LocationStrategy, useClass: HashLocationStrategy)],
-  template: '<master-layout><requests></requests></master-layout>',
-  directives: const [
-    MasterLayoutComponent,
-    RequestsComponent,
-    RouterOutlet,
-    CmRouterLink])
+@Component(
+    selector: 'app',
+    providers: const [
+      ROUTER_PROVIDERS,
+      const Provider(LocationStrategy, useClass: HashLocationStrategy)
+    ],
+    template: '<master-layout><requests></requests></master-layout>',
+    directives: const [
+      MasterLayoutComponent,
+      RequestsComponent,
+      RouterOutlet,
+      CmRouterLink
+    ])
 @RouteConfig(const [
-const Route(
-  path: '...',
-  component: RequestsComponent,
-  name: 'Requests',
-  useAsDefault: true)])
+  const Route(
+      path: '...',
+      component: RequestsComponent,
+      name: 'Requests',
+      useAsDefault: true)
+])
 class AppComponent {
   AppComponent() {}
 }

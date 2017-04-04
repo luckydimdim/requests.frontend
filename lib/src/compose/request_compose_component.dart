@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
@@ -20,14 +21,19 @@ import '../services/requests_service.dart';
 @Component(
     selector: 'request-compose',
     templateUrl: 'request_compose_component.html',
-    providers: const [RequestsService],
+    providers: const [
+      RequestsService
+    ],
     directives: const [
       CmRouterLink,
       GridComponent,
       GridTemplateDirective,
-      ColumnComponent])
+      ColumnComponent
+    ])
 class RequestComposeComponent implements OnInit, OnDestroy {
-  static const DisplayName = const { 'displayName': 'Формирование заявки на проверку' };
+  static const DisplayName = const {
+    'displayName': 'Формирование заявки на проверку'
+  };
 
   final RouteParams _routeParams;
   final CallOffService _callOffService;
@@ -49,7 +55,8 @@ class RequestComposeComponent implements OnInit, OnDestroy {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestComposeComponent(this._router, this._routeParams, this._callOffService, this._requestsService, this._asideService);
+  RequestComposeComponent(this._router, this._routeParams, this._callOffService,
+      this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {
@@ -60,9 +67,10 @@ class RequestComposeComponent implements OnInit, OnDestroy {
     createMode = requestId == null;
 
     _asideService.addPane(PaneType.contractSearch, {
-      'router' : _router,
+      'router': _router,
       'contractId': contractId,
-      'enabled': createMode == true });
+      'enabled': createMode == true
+    });
 
     _asideService.showPane();
 
@@ -81,16 +89,16 @@ class RequestComposeComponent implements OnInit, OnDestroy {
       result.add(order.toMap());
     }
 
-    callOffsDataSource = new DataSource(data: result)
-      ..primaryField = 'id';
+    callOffsDataSource = new DataSource(data: result)..primaryField = 'id';
 
     // Есди компонент работает в режиме "Редактирование"
     if (!createMode) {
-      DetailedRequestModel request = await _requestsService.getRequest(requestId);
+      DetailedRequestModel request =
+          await _requestsService.getRequest(requestId);
 
       // Восстанавливаем состояние чек-боксов
       for (String callOffOrderId in request.callOffOrderIds) {
-        selectedCallOffOrderIds.add(callOffOrderId);
+        toggleCallOffOrder(callOffOrderId);
       }
     }
 
@@ -109,6 +117,41 @@ class RequestComposeComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Проверяет, являются ли все работы выбранными
+   */
+  bool isAllCallOffOrdersSelected() {
+    if ((selectedCallOffOrderIds.length == callOffOrders.length) &&
+        callOffOrders.length > 0)
+      return true;
+    else
+      return false;
+  }
+
+  /**
+   * Проверяет, является ли указанная работа выбранной
+   */
+  bool isCallOffOrderSelected(String id) {
+    return selectedCallOffOrderIds.contains(id);
+  }
+
+  /**
+   * Добавляет / удаляет все работы
+   */
+  void toggleAllCallOffOrders(InputElement columnTooglerElement) {
+    selectedCallOffOrderIds.clear();
+
+    if (columnTooglerElement.checked) {
+      for (CallOffOrder order in callOffOrders) {
+        selectedCallOffOrderIds.add(order.id);
+      }
+    }
+  }
+
+  void rowClicked(dynamic rowData) {
+    toggleCallOffOrder(rowData['id']);
+  }
+
+  /**
    * Созданиие заявки: отправка данных на web-сервис
    */
   composeRequest() async {
@@ -124,7 +167,10 @@ class RequestComposeComponent implements OnInit, OnDestroy {
     else
       newModel = await _requestsService.updateRequest(model);
 
-    _router.navigate(['RequestView', { 'contractId': newModel.contractId, 'requestId': newModel.id }]);
+    _router.navigate([
+      'RequestView',
+      {'contractId': newModel.contractId, 'requestId': newModel.id}
+    ]);
   }
 
   @override

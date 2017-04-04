@@ -33,9 +33,8 @@ class RequestsService {
     Response response = null;
 
     try {
-      response = await _http.get(
-        _config.helper.requestsUrl,
-        headers: {'Content-Type': 'application/json'});
+      response = await _http.get(_config.helper.requestsUrl,
+          headers: {'Content-Type': 'application/json'});
     } catch (e) {
       _logger.error('Failed to get request list: $e');
 
@@ -114,7 +113,8 @@ class RequestsService {
     _logger.trace('Updating request ${ model.toJson() }');
 
     try {
-      response = await _http.put('${ _config.helper.requestsUrl }/${ model.id }',
+      response = await _http.put(
+          '${ _config.helper.requestsUrl }/${ model.id }',
           headers: {'Content-Type': 'application/json'},
           body: JSON.encode(model.callOffOrderIds));
       _logger.trace('Request ${ model.id } successfuly updated');
@@ -150,16 +150,18 @@ class RequestsService {
    * Обновление статуса заявки
    */
   setStatus(String id, RequestStatus status) async {
-    _logger.trace('Change request status. Url: ${ _config.helper.requestsUrl }/$id, Status: ${ status.toString() }');
+    _logger.trace(
+        'Change request status. Url: ${ _config.helper.requestsUrl }/$id, Status: ${ status.toString() }');
 
     try {
-      await _http.put('${ _config.helper.requestsUrl }/$id?status=${ status.toString() }',
-    headers: {'Content-Type': 'application/json'});
-    _logger.trace('Request status changed');
+      await _http.put(
+          '${ _config.helper.requestsUrl }/$id?status=${ status.toString() }',
+          headers: {'Content-Type': 'application/json'});
+      _logger.trace('Request status changed');
     } catch (e) {
-    _logger.error('Failed to update request status: $e');
+      _logger.error('Failed to update request status: $e');
 
-    throw new Exception('Failed to update request status. Cause: $e');
+      throw new Exception('Failed to update request status. Cause: $e');
     }
   }
 }

@@ -12,16 +12,13 @@ import 'package:requests/src/list/request_model.dart';
 import '../pipes/cm_format_money_pipe.dart';
 
 @Component(
-  selector: 'request-list',
-  templateUrl: 'request_list_component.html',
-  providers: const [RequestsService],
-  directives: const [
-    GridComponent,
-    GridTemplateDirective,
-    ColumnComponent],
-  pipes: const [CmFormatMoneyPipe])
+    selector: 'request-list',
+    templateUrl: 'request_list_component.html',
+    providers: const [RequestsService],
+    directives: const [GridComponent, GridTemplateDirective, ColumnComponent],
+    pipes: const [CmFormatMoneyPipe])
 class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
-  static const DisplayName = const { 'displayName': 'Список заявок на проверку' };
+  static const DisplayName = const {'displayName': 'Список заявок на проверку'};
   final AsideService _asideService;
   final RequestsService _requestsService;
   final Router _router;
@@ -49,8 +46,7 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
       listMap.add(request.toMap());
     }
 
-    requestsDataSource = new DataSource(data: listMap)
-      ..primaryField = 'id';
+    requestsDataSource = new DataSource(data: listMap)..primaryField = 'id';
 
     return null;
   }
@@ -58,8 +54,7 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   @override
   ngAfterViewInit() {
     // Добавление в боковую панель компонента выбора договора
-    _asideService.addPane(PaneType.contractSearch,
-    { 'router' : _router });
+    _asideService.addPane(PaneType.contractSearch, {'router': _router});
   }
 
   /**
@@ -75,12 +70,13 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   Map<String, bool> resolveStatusStyleClass(String statusSysName) {
     String status = statusSysName.toUpperCase();
 
-    return new Map<String, bool>()..addAll({
-      'tag-warning': status == 'ERROR',
-      'tag-success': status == 'APPROVED',
-      'tag-danger': status == 'DENY',
-      'tag-primary': status == 'DRAFT'
-    });
+    return new Map<String, bool>()
+      ..addAll({
+        'tag-warning': status == 'ERROR',
+        'tag-success': status == 'APPROVED',
+        'tag-danger': status == 'DENY',
+        'tag-primary': status == 'DRAFT'
+      });
   }
 
   @override
@@ -94,7 +90,10 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Переход к просмотру заявки
    */
   void viewRequest(String contractId, String requestId) {
-    _router.navigate(['RequestView', { 'contractId': contractId, 'requestId': requestId }]);
+    _router.navigate([
+      'RequestView',
+      {'contractId': contractId, 'requestId': requestId}
+    ]);
   }
 
   /**

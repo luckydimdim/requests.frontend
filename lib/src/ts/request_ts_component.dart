@@ -5,13 +5,13 @@ import 'package:angular2/router.dart';
 
 @Component(selector: 'request-ts', templateUrl: 'request_ts_component.html')
 class RequestTsComponent implements AfterViewInit {
-  static const DisplayName = const { 'displayName': 'Табель' };
+  static const DisplayName = const {'displayName': 'Табель'};
   static const String route_name = 'RequestTs';
   static const String route_path = 'time-sheet';
   static const Route route = const Route(
-    path: RequestTsComponent.route_path,
-    component: RequestTsComponent,
-    name: RequestTsComponent.route_name);
+      path: RequestTsComponent.route_path,
+      component: RequestTsComponent,
+      name: RequestTsComponent.route_name);
 
   final Router _router;
 
@@ -20,8 +20,7 @@ class RequestTsComponent implements AfterViewInit {
   void breadcrumbInit() {
     var breadcrumbContent = querySelector('#breadcrumbContent') as HtmlElement;
 
-    if (breadcrumbContent == null)
-      return;
+    if (breadcrumbContent == null) return;
 
     breadcrumbContent.innerHtml = '''
             <li class="breadcrumb-item"><a href="#/master/dashboard">Главная</a></li>
@@ -42,15 +41,14 @@ class RequestTsComponent implements AfterViewInit {
     var table = querySelector('[time-sheet]') as TableElement;
 
     for (int rowIndex = 0; rowIndex < table.rows.length; ++rowIndex) {
-      for (int colIndex = 0; colIndex < table.rows[rowIndex].cells.length; ++colIndex) {
-        if (colIndex == 0)
-          continue;
+      for (int colIndex = 0;
+          colIndex < table.rows[rowIndex].cells.length;
+          ++colIndex) {
+        if (colIndex == 0) continue;
 
-        if (colIndex == table.rows[rowIndex].cells.length - 1)
-          continue;
+        if (colIndex == table.rows[rowIndex].cells.length - 1) continue;
 
-        if (rowIndex == 6 || rowIndex == 10)
-          continue;
+        if (rowIndex == 6 || rowIndex == 10) continue;
 
         TableCellElement currentCell = table.rows[rowIndex].cells[colIndex];
 
@@ -75,11 +73,9 @@ class RequestTsComponent implements AfterViewInit {
     var currentCell = e.currentTarget as TableCellElement;
     double currentValue = double.parse(currentCell.innerHtml, (_) => 0.0);
 
-    if (currentValue == 0)
-      currentCell.innerHtml = '';
+    if (currentValue == 0) currentCell.innerHtml = '';
 
-    if (currentValue <= 0)
-      return;
+    if (currentValue <= 0) return;
 
     currentCell.innerHtml = (currentValue - 0.5).toString();
 
@@ -118,9 +114,10 @@ class RequestTsComponent implements AfterViewInit {
     for (int rowIndex = 0; rowIndex < table.rows.length; ++rowIndex) {
       double rowTotal = 0.0;
 
-      for (int colIndex = 0; colIndex < table.rows[rowIndex].cells.length; ++colIndex) {
-        if (colIndex == 0)
-          continue;
+      for (int colIndex = 0;
+          colIndex < table.rows[rowIndex].cells.length;
+          ++colIndex) {
+        if (colIndex == 0) continue;
 
         TableCellElement currentCell = table.rows[rowIndex].cells[colIndex];
 

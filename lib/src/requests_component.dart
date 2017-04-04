@@ -25,28 +25,29 @@ import 'list/request_list_component.dart';
       name: 'RequestCreate',
       data: RequestComposeComponent.DisplayName),
   const Route(
-    path: '/modify/:contractId/:requestId',
-    component: RequestComposeComponent,
-    name: 'RequestModify',
-    data: RequestComposeComponent.DisplayName),
+      path: '/modify/:contractId/:requestId',
+      component: RequestComposeComponent,
+      name: 'RequestModify',
+      data: RequestComposeComponent.DisplayName),
   const Route(
-    path: '/view/:contractId/:requestId',
-    component: RequestViewComponent,
-    name: 'RequestView',
-    data: RequestViewComponent.DisplayName),
+      path: '/view/:contractId/:requestId',
+      component: RequestViewComponent,
+      name: 'RequestView',
+      data: RequestViewComponent.DisplayName),
   const Route(
-    path: '/cc2/',
-    component: RequestCc2Component,
-    name: 'Cc2',
-    data: RequestCc2Component.DisplayName),
+      path: '/cc2/',
+      component: RequestCc2Component,
+      name: 'Cc2',
+      data: RequestCc2Component.DisplayName),
   const Route(
-    path: '/cc3/',
-    component: RequestCc3Component,
-    name: 'Cc3',
-    data: RequestCc3Component.DisplayName),
+      path: '/cc3/',
+      component: RequestCc3Component,
+      name: 'Cc3',
+      data: RequestCc3Component.DisplayName),
   const Route(
-    path: '/ts/',
-    component: RequestTsComponent,
-    name: 'Ts',
-    data: RequestTsComponent.DisplayName)])
+      path: '/ts/',
+      component: RequestTsComponent,
+      name: 'Ts',
+      data: RequestTsComponent.DisplayName)
+])
 class RequestsComponent {}

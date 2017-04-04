@@ -7,11 +7,9 @@ import 'package:intl/intl.dart';
 
 import 'package:resources_loader/resources_loader.dart';
 
-@Component(
-    selector: 'cc2',
-    templateUrl: 'request_cc2_component.html')
+@Component(selector: 'cc2', templateUrl: 'request_cc2_component.html')
 class RequestCc2Component implements AfterViewInit, OnInit {
-  static const DisplayName = const { 'displayName': 'КС-2' };
+  static const DisplayName = const {'displayName': 'КС-2'};
   static const String route_name = 'Cc2';
   static const String route_path = 'cc-2/:objectName/:contractorName';
   static const Route route = const Route(
@@ -26,11 +24,10 @@ class RequestCc2Component implements AfterViewInit, OnInit {
   RequestCc2Component(
       this._router, this._resourcesLoaderService, this._routeParams);
 
-  void breadcrumbInit(){
-    var  breadcrumbContent = querySelector('#breadcrumbContent') as HtmlElement;
+  void breadcrumbInit() {
+    var breadcrumbContent = querySelector('#breadcrumbContent') as HtmlElement;
 
-    if (breadcrumbContent == null)
-      return;
+    if (breadcrumbContent == null) return;
 
     breadcrumbContent.innerHtml = '''
             <li class="breadcrumb-item"><a href="#/master/dashboard">Главная</a></li>
@@ -63,7 +60,8 @@ class RequestCc2Component implements AfterViewInit, OnInit {
     _resourcesLoaderService.loadStyle(
         'vendor/bootstrap-daterangepicker/', 'daterangepicker.css');
 
-    var printButtonList = querySelectorAll('[print-cc2]') as List<ButtonElement>;
+    var printButtonList =
+        querySelectorAll('[print-cc2]') as List<ButtonElement>;
     printButtonList.forEach((ButtonElement button) {
       button.onClick.listen((MouseEvent e) {
         window.open('/packages/request/src/cc2/cc2.pdf', '_blank');
@@ -74,15 +72,18 @@ class RequestCc2Component implements AfterViewInit, OnInit {
 
     var table = querySelector('[calculation-table]') as TableElement;
     table.rows.forEach((TableRowElement row) {
-      var priceCell = row.querySelector('[data-unit-price]') as TableCellElement;
-      var quantityInput = row.querySelector('[data-unit-quantity]') as InputElement;
+      var priceCell =
+          row.querySelector('[data-unit-price]') as TableCellElement;
+      var quantityInput =
+          row.querySelector('[data-unit-quantity]') as InputElement;
       var totalCell = row.querySelector('[data-total]') as TableCellElement;
 
       if (totalCell != null) {
         quantityInput.onKeyPress.listen((Event e) {
           var newQuantity = e.currentTarget as InputElement;
 
-          totalCell.innerHtml = '${formatter.format(int.parse(priceCell.innerHtml, onError:(_) => 0) * int.parse(newQuantity.value, onError: (_) => 0))} р.';
+          totalCell.innerHtml =
+              '${formatter.format(int.parse(priceCell.innerHtml, onError:(_) => 0) * int.parse(newQuantity.value, onError: (_) => 0))} р.';
         });
       }
     });

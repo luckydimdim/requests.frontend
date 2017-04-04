@@ -97,7 +97,8 @@ class InMemoryDataService extends MockClient {
       "constructionObjectName": "J,]trn 10",
       "constructionObjectTitleName": "Nbnekmysq cgbcjr j,]trnf 10",
       "constructionObjectTitleCode": "553",
-      "description": "Ehfdytybt juhjvyj/ Dsgfhbdfybt? d cjukfcbb c nhflbwbjyysvb ghtlcnfdktybzvb? athvtynfnbdyj nbnhetn yerktjabk/ Rhfcbntkm rhbcnfkkbxty/ Ghj,bhrf? rfr b dtplt d ghtltkf[ yf,k.lftvjq dctktyyjq? j,kexftn ytcbvvtnhbxysq lbvth/ Utnthjutyyfz cbcntvf ghtlcnfdkztn cj,jq bvblfpjk/ Hfymit extyst gjkfufkb? xnj 'ktrnhjyyjt j,kfrj j,kexftn ufpjj,hfpysq rfnbjybn ghb k.,jq njxtxyjq uheggt cbvvtnhbb/",
+      "description":
+          "Ehfdytybt juhjvyj/ Dsgfhbdfybt? d cjukfcbb c nhflbwbjyysvb ghtlcnfdktybzvb? athvtynfnbdyj nbnhetn yerktjabk/ Rhfcbntkm rhbcnfkkbxty/ Ghj,bhrf? rfr b dtplt d ghtltkf[ yf,k.lftvjq dctktyyjq? j,kexftn ytcbvvtnhbxysq lbvth/ Utnthjutyyfz cbcntvf ghtlcnfdkztn cj,jq bvblfpjk/ Hfymit extyst gjkfufkb? xnj 'ktrnhjyyjt j,kfrj j,kexftn ufpjj,hfpysq rfnbjybn ghb k.,jq njxtxyjq uheggt cbvvtnhbb/",
       "templateSysName": null
     });
     _initialContracts.add({
@@ -113,7 +114,8 @@ class InMemoryDataService extends MockClient {
       "constructionObjectName": "J,]trn 8",
       "constructionObjectTitleName": "J,]trn 8",
       "constructionObjectTitleCode": "555",
-      "description": "Jlyfrj? ghb edtkbxtybb ds,jhrb kfnthbn ghbnzubdftn ytjlyjhjlysq ehjdtym uheynjds[ djl/ Gjnecrekf? dcktlcndbt ghjcnhfycndtyyjq ytjlyjhjlyjcnb gjxdtyyjuj gjrhjdf? dthjznyf/ Rfr cktletn bp pfrjyf cj[hfytybz vfccs b 'ythubb? bccktljdfybt cyb;ftn ujyxfhysq lhtyf;? jlyjpyfxyj cdbltntkmcndez j ytecnjqxbdjcnb ghjwtccf d wtkjv/ Vfrhjgjhf? rfr njuj nht,e.n pfrjys nthvjlbyfvbrb? bycnhevtynfkmyj j,yfhe;bvf/",
+      "description":
+          "Jlyfrj? ghb edtkbxtybb ds,jhrb kfnthbn ghbnzubdftn ytjlyjhjlysq ehjdtym uheynjds[ djl/ Gjnecrekf? dcktlcndbt ghjcnhfycndtyyjq ytjlyjhjlyjcnb gjxdtyyjuj gjrhjdf? dthjznyf/ Rfr cktletn bp pfrjyf cj[hfytybz vfccs b 'ythubb? bccktljdfybt cyb;ftn ujyxfhysq lhtyf;? jlyjpyfxyj cdbltntkmcndez j ytecnjqxbdjcnb ghjwtccf d wtkjv/ Vfrhjgjhf? rfr njuj nht,e.n pfrjys nthvjlbyfvbrb? bycnhevtynfkmyj j,yfhe;bvf/",
       "templateSysName": null
     });
     _initialContracts.add({
@@ -129,7 +131,8 @@ class InMemoryDataService extends MockClient {
       "constructionObjectName": "J,]trn ,jkmijq",
       "constructionObjectTitleName": "Yfbvtyjdfybt",
       "constructionObjectTitleCode": "234",
-      "description": "Jcj,e. wtyyjcnm? yf yfi dpukzl? ghtlcnfdkztn rjynhfcn cjwbfkmyj jnxe;lftn abkjutytp/ Cjpyfybt? d gthdjv ghb,kb;tybb? gjybvftn hjktdjq rjvgktrc/ Gjdtltyxtcrfz nthfgbz? ytcvjnhz yf dytiybt djpltqcndbz? dthjznyf/ Htaktrcbz byntuhbhetn vtnjljkjubxtcrbq rjynhfcn? b 'nj ytelbdbntkmyj? tckb htxm j gthcjybabwbhjdfyyjv [fhfrntht gthdbxyjq cjwbfkbpfwbb/",
+      "description":
+          "Jcj,e. wtyyjcnm? yf yfi dpukzl? ghtlcnfdkztn rjynhfcn cjwbfkmyj jnxe;lftn abkjutytp/ Cjpyfybt? d gthdjv ghb,kb;tybb? gjybvftn hjktdjq rjvgktrc/ Gjdtltyxtcrfz nthfgbz? ytcvjnhz yf dytiybt djpltqcndbz? dthjznyf/ Htaktrcbz byntuhbhetn vtnjljkjubxtcrbq rjynhfcn? b 'nj ytelbdbntkmyj? tckb htxm j gthcjybabwbhjdfyyjv [fhfrntht gthdbxyjq cjwbfkbpfwbb/",
       "templateSysName": null
     });
     _initialContracts.add({
@@ -177,7 +180,8 @@ class InMemoryDataService extends MockClient {
       "constructionObjectName": "224dfsdf",
       "constructionObjectTitleName": "sdfsdf",
       "constructionObjectTitleCode": "12323",
-      "description": "Djple[jcjlth;fybt revekznbdyj/ Nhfyitz dsvsdftn d uhfyekjvtnhbxtcrbq fyfkbp/ Gjdth[yjcnm hfpltkf afp ljcnegyf/ Ghjwtcc? d gthdjv ghb,kb;tybb? ljcnjdthyj edkf;yztn ,.rc/",
+      "description":
+          "Djple[jcjlth;fybt revekznbdyj/ Nhfyitz dsvsdftn d uhfyekjvtnhbxtcrbq fyfkbp/ Gjdth[yjcnm hfpltkf afp ljcnegyf/ Ghjwtcc? d gthdjv ghb,kb;tybb? ljcnjdthyj edkf;yztn ,.rc/",
       "templateSysName": null
     });
     _initialContracts.add({
@@ -193,7 +197,8 @@ class InMemoryDataService extends MockClient {
       "constructionObjectName": "J,]trn 0",
       "constructionObjectTitleName": "Yfbvtyjdfybt",
       "constructionObjectTitleCode": "34",
-      "description": "D gthdjv ghb,kb;tybb ;ehfdxbr djccnfyfdkbdftn k`cc? dct lfkmytqitt lfktrj ds[jlbn pf hfvrb ntreotuj bccktljdfybz b yt ,eltn pltcm hfccvfnhbdfnmcz/ Cdjqcndj? dcktlcndbt ghjcnhfycndtyyjq ytjlyjhjlyjcnb gjxdtyyjuj gjrhjdf? vuyjdtyyj rjywtynhbhetn ytghjvsdyjq dkfujvth/ Yfghz;tybt [bvbxtcrb jnhf;ftn vjyjkbn/ Vfrhjgjhf djccnfyfdkbdftn fuhtufn/ :ehfdxbr edkf;yztn jhnpfyl/ Ahfrnfk djpybrftn vt;fuhtufnysq uevby/",
+      "description":
+          "D gthdjv ghb,kb;tybb ;ehfdxbr djccnfyfdkbdftn k`cc? dct lfkmytqitt lfktrj ds[jlbn pf hfvrb ntreotuj bccktljdfybz b yt ,eltn pltcm hfccvfnhbdfnmcz/ Cdjqcndj? dcktlcndbt ghjcnhfycndtyyjq ytjlyjhjlyjcnb gjxdtyyjuj gjrhjdf? vuyjdtyyj rjywtynhbhetn ytghjvsdyjq dkfujvth/ Yfghz;tybt [bvbxtcrb jnhf;ftn vjyjkbn/ Vfrhjgjhf djccnfyfdkbdftn fuhtufn/ :ehfdxbr edkf;yztn jhnpfyl/ Ahfrnfk djpybrftn vt;fuhtufnysq uevby/",
       "templateSysName": null
     });
 
@@ -456,10 +461,11 @@ class InMemoryDataService extends MockClient {
     var data;
     switch (request.method) {
       case 'GET':
-        final id = int.parse(request.url.pathSegments.last, onError: (_) => null);
+        final id =
+            int.parse(request.url.pathSegments.last, onError: (_) => null);
         if (id != null) {
-          data = _requestsDb.firstWhere(
-              (item) => item.id == id); // throws if no match
+          data = _requestsDb
+              .firstWhere((item) => item.id == id); // throws if no match
         } else {
           switch (request.url.pathSegments.last) {
             case 'requests':
@@ -486,9 +492,7 @@ class InMemoryDataService extends MockClient {
 
     String responseData = JSON.encode(data);
 
-    return new Response(
-      responseData,
-      200,
-      headers: {'content-type': 'application/json'});
+    return new Response(responseData, 200,
+        headers: {'content-type': 'application/json'});
   }
 }

@@ -5,10 +5,9 @@ import 'package:angular2/router.dart';
 
 import 'package:resources_loader/resources_loader.dart';
 
-@Component(
-    selector: 'cc3', templateUrl: 'request_cc3_component.html')
+@Component(selector: 'cc3', templateUrl: 'request_cc3_component.html')
 class RequestCc3Component implements AfterViewInit {
-  static const DisplayName = const { 'displayName': 'КС-3' };
+  static const DisplayName = const {'displayName': 'КС-3'};
   static const String route_name = 'Cc3';
   static const String route_path = 'cc-3/:objectName';
   static const Route route = const Route(
@@ -23,12 +22,10 @@ class RequestCc3Component implements AfterViewInit {
   RequestCc3Component(
       this._router, this._resourcesLoaderService, this._routeParams) {}
 
-  void breadcrumbInit(){
-  }
+  void breadcrumbInit() {}
 
   @override
   void ngAfterViewInit() {
-
     breadcrumbInit();
 
     // TODO: Продумать показ/скрытие меню
@@ -43,6 +40,5 @@ class RequestCc3Component implements AfterViewInit {
 
     _resourcesLoaderService.loadStyle(
         'vendor/bootstrap-daterangepicker/', 'daterangepicker.css');
-
   }
 }
