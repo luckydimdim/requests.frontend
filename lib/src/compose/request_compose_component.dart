@@ -39,7 +39,7 @@ class RequestComposeComponent implements OnInit, OnDestroy {
   String contractId = '';
   String requestId = '';
   List<CallOffOrder> callOffOrders = new List<CallOffOrder>();
-  List<CallOffOrder> selectedCallOffOrders = new List<CallOffOrder>();
+  List<String> selectedCallOffOrderIds = new List<String>();
 
   /**
    * Режим создания / изменения
@@ -90,7 +90,7 @@ class RequestComposeComponent implements OnInit, OnDestroy {
 
       // Восстанавливаем состояние чек-боксов
       for (String callOffOrderId in request.callOffOrderIds) {
-        selectedCallOffOrders.add(new CallOffOrder()..id = callOffOrderId);
+        selectedCallOffOrderIds.add(callOffOrderId);
       }
     }
 
@@ -102,29 +102,20 @@ class RequestComposeComponent implements OnInit, OnDestroy {
    * которая будет отправлена на web-сервис
    */
   void toggleCallOffOrder(String id) {
-    CallOffOrder order = selectedCallOffOrders.firstWhere(
-        (order) => order.id == id, orElse: () => null);
-
-    if (order == null)
-      selectedCallOffOrders.add(callOffOrders.firstWhere((order) => order.id == id));
+    if (!selectedCallOffOrderIds.contains(id))
+      selectedCallOffOrderIds.add(id);
     else
-      selectedCallOffOrders.removeWhere((order) => order.id == id);
+      selectedCallOffOrderIds.removeWhere((item) => item == id);
   }
 
   /**
    * Созданиие заявки: отправка данных на web-сервис
    */
   composeRequest() async {
-    var ids = new List<String>();
-
-    for (CallOffOrder order in selectedCallOffOrders) {
-      ids.add(order.id);
-    }
-
     var model = new WriteRequestModel()
       ..id = requestId
       ..contractId = contractId
-      ..callOffOrderIds = ids;
+      ..callOffOrderIds = selectedCallOffOrderIds;
 
     WriteRequestModel newModel = null;
 

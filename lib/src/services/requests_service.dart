@@ -109,18 +109,24 @@ class RequestsService {
    * Изменение данных заявки на проверку
    */
   updateRequest(WriteRequestModel model) async {
+    Response response = null;
+
     _logger.trace('Updating request ${ model.toJson() }');
 
     try {
-      await _http.put('${ _config.helper.requestsUrl }/${ model.id }',
+      response = await _http.put('${ _config.helper.requestsUrl }/${ model.id }',
           headers: {'Content-Type': 'application/json'},
-          body: model.toJsonString());
+          body: JSON.encode(model.callOffOrderIds));
       _logger.trace('Request ${ model.id } successfuly updated');
     } catch (e) {
       _logger.error('Failed to update request: $e');
 
       throw new Exception('Failed to update request. Cause: $e');
     }
+
+    dynamic json = JSON.decode(response.body);
+
+    return new WriteRequestModel().fromJson(json);
   }
 
   /**

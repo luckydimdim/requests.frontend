@@ -29,6 +29,11 @@
                 <div class="text-md-center"><span class="tag" [ngClass]="resolveStatusStyleClass(request['statusSysName'])">{{request['statusName']}}</span></div>
               </template>
             </grid-column>
+            <grid-column width="3%">
+              <template let-request="rowData" grid-template="body">
+                <div class="text-md-center"><button class="btn btn-tiny" (click)="deleteRequest(request['id'])"><i class="icon-trash"></i></button></div>
+              </template>
+            </grid-column>
           </grid>
 
           <!--<div class="row">

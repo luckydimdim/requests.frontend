@@ -26,7 +26,7 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   final RequestsService _requestsService;
   final Router _router;
 
-  var requestsDataSource = new DataSource();
+  DataSource requestsDataSource = new DataSource();
 
   @ViewChild(GridComponent)
   GridComponent grid;
@@ -95,5 +95,14 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   void viewRequest(String contractId, String requestId) {
     _router.navigate(['RequestView', { 'contractId': contractId, 'requestId': requestId }]);
+  }
+
+  /**
+   * Удаление заявки
+   */
+  deleteRequest(String id) async {
+    await _requestsService.deleteRequest(id);
+
+    requestsDataSource.data.removeWhere((item) => item['id'] == id);
   }
 }
