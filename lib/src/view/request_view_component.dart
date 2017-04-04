@@ -165,7 +165,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
   void publish() {
-    _requestsService.setStatus(requestId, RequestStatus.published);
+    _requestsService.setStatus(requestId, RequestStatus.validation);
   }
 
   /**
@@ -176,9 +176,9 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
     return new Map<String, bool>()
       ..addAll({
-        'tag-warning': status == 'NOTFILLED',
-        'tag-success': status == 'APPROVED',
-        'tag-danger': status == 'DENY',
+        'tag-warning': status == 'VALIDATION',
+        'tag-success': status == 'DONE',
+        'tag-danger': status == 'CORRECTION',
         'tag-primary': status == 'DRAFT'
       });
   }

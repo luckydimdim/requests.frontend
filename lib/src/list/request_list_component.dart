@@ -72,9 +72,9 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     return new Map<String, bool>()
       ..addAll({
-        'tag-warning': status == 'ERROR',
-        'tag-success': status == 'APPROVED',
-        'tag-danger': status == 'DENY',
+        'tag-warning': status == 'VALIDATION',
+        'tag-success': status == 'DONE',
+        'tag-danger': status == 'CORRECTION',
         'tag-primary': status == 'DRAFT'
       });
   }
