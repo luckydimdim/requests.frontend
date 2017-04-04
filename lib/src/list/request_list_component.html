@@ -12,11 +12,11 @@
           <grid #grid [dataSource]="requestsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
             <grid-column width="3%">
               <template let-request="rowData" grid-template="body">
-                <div class="text-md-center"><button class="btn btn-tiny"><i class="icon-magnifier"></i></button></div>
+                <div class="text-md-center"><button class="btn btn-tiny" (click)="viewRequest(request['contractId'], request['id'])"><i class="icon-magnifier"></i></button></div>
               </template>
             </grid-column>
-            <grid-column header="Дата создания" field="startDate" styleClass="text-md-center"></grid-column>
-            <grid-column header="Дата изменения" field="updateDate" styleClass="text-md-center"></grid-column>
+            <grid-column header="Дата создания" field="createdAt" styleClass="text-md-center"></grid-column>
+            <grid-column header="Дата изменения" field="updatedAt" styleClass="text-md-center"></grid-column>
             <grid-column header="№ договора" field="contractNumber" styleClass="text-md-center"></grid-column>
             <grid-column header="Подрядчик" field="contractorName" styleClass="text-md-center"></grid-column>
             <grid-column header="Сумма к оплате" field="amount" width="11%" styleClass="text-md-center">

@@ -15,7 +15,7 @@
             <grid-column width="3%">
               <template let-callOff="rowData" grid-template="body">
                 <label class="switch switch-icon switch-primary switch-sm">
-                  <input type="checkbox" class="switch-input" (change)="toggleCallOffOrder(callOff['id'])" />
+                  <input type="checkbox" class="switch-input" (change)="toggleCallOffOrder(callOff['id'])" [attr.checked]="selectedCallOffOrders.contains(callOff['id']) ? 'checked' : null" />
                   <span class="switch-label" data-on="" data-off=""></span>
                   <span class="switch-handle"></span>
                 </label>

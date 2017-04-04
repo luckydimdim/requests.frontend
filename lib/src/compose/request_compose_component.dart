@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
+import 'package:angular_utils/cm_router_link.dart';
 import 'package:grid/grid.dart';
 
 import 'package:call_off_order/call_off_service.dart';
@@ -9,6 +10,9 @@ import 'package:call_off_order/call_off_order.dart';
 
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
+
+import '../view/detailed_request_model.dart';
+import '../view/primary_document.dart';
 
 import '../compose/write_request_model.dart';
 import '../services/requests_service.dart';
@@ -18,11 +22,11 @@ import '../services/requests_service.dart';
     templateUrl: 'request_compose_component.html',
     providers: const [RequestsService],
     directives: const [
-      RouterLink,
+      CmRouterLink,
       GridComponent,
       GridTemplateDirective,
       ColumnComponent])
-class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
+class RequestComposeComponent implements OnInit, OnDestroy {
   static const DisplayName = const { 'displayName': 'Формирование заявки на проверку' };
 
   final RouteParams _routeParams;
@@ -34,7 +38,7 @@ class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
   var callOffsDataSource = new DataSource();
   String contractId = '';
   String requestId = '';
-  List<CallOffOrder> orders = new List<CallOffOrder>();
+  List<CallOffOrder> callOffOrders = new List<CallOffOrder>();
   List<CallOffOrder> selectedCallOffOrders = new List<CallOffOrder>();
 
   /**
@@ -55,6 +59,13 @@ class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
     // Если id заявки не задано, значит компонент работает в режиме "создания"
     createMode = requestId == null;
 
+    _asideService.addPane(PaneType.contractSearch, {
+      'router' : _router,
+      'contractId': contractId,
+      'enabled': createMode == true });
+
+    _asideService.showPane();
+
     await loadCallOffs();
   }
 
@@ -62,26 +73,28 @@ class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
    * Загрузка из web-сервиса списка работ
    */
   Future loadCallOffs() async {
-    orders = await _callOffService.getCallOffOrders(contractId);
+    callOffOrders = await _callOffService.getCallOffOrders(contractId);
 
     var result = new List<dynamic>();
 
-    for (CallOffOrder order in orders) {
+    for (CallOffOrder order in callOffOrders) {
       result.add(order.toMap());
     }
 
     callOffsDataSource = new DataSource(data: result)
       ..primaryField = 'id';
 
-    return null;
-  }
+    // Есди компонент работает в режиме "Редактирование"
+    if (!createMode) {
+      DetailedRequestModel request = await _requestsService.getRequest(requestId);
 
-  @override
-  ngAfterViewInit() {
-    // TODO: тут нужно передавать в панель contractId чтобы панель устанавливала
-    // нужный договор в состоянии "выбранности",
-    // либо блочить выбор договора (для режима modify)
-    _asideService.addPane(PaneType.ContractSearch);
+      // Восстанавливаем состояние чек-боксов
+      for (PrimaryDocument document in request.documents) {
+        selectedCallOffOrders.add(new CallOffOrder()..id = document.id);
+      }
+    }
+
+    return null;
   }
 
   /**
@@ -93,13 +106,13 @@ class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
         (order) => order.id == id, orElse: () => null);
 
     if (order == null)
-      selectedCallOffOrders.add(orders.firstWhere((order) => order.id == id));
+      selectedCallOffOrders.add(callOffOrders.firstWhere((order) => order.id == id));
     else
       selectedCallOffOrders.removeWhere((order) => order.id == id);
   }
 
   /**
-   * Созданиие заявки: отправка данных на web-Сервис
+   * Созданиие заявки: отправка данных на web-сервис
    */
   composeRequest() async {
     var ids = new List<String>();
@@ -110,7 +123,8 @@ class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     var model = new WriteRequestModel()
       ..id = requestId
-      ..workIds = ids;
+      ..contractId = contractId
+      ..callOffOrderIds = ids;
 
     WriteRequestModel newModel = null;
 
@@ -126,6 +140,6 @@ class RequestComposeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     // Удаляется компонент поиска договора из боковой панели
     // перед уходом со страницы с данным компонентом
-    _asideService.removePane(PaneType.ContractSearch);
+    _asideService.removePane(PaneType.contractSearch);
   }
 }

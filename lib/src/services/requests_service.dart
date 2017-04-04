@@ -90,7 +90,7 @@ class RequestsService {
 
     try {
       response = await _http.post(_config.helper.requestsUrl,
-          body: model.toJson(),
+          body: model.toJsonString(),
           headers: {'Content-Type': 'application/json'});
 
       _logger.trace('Request created');
@@ -114,7 +114,7 @@ class RequestsService {
     try {
       await _http.put('${ _config.helper.requestsUrl }/${ model.id }',
           headers: {'Content-Type': 'application/json'},
-          body: model.toJson());
+          body: model.toJsonString());
       _logger.trace('Request ${ model.id } successfuly updated');
     } catch (e) {
       _logger.error('Failed to update request: $e');

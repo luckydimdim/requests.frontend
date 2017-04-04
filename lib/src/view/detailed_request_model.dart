@@ -24,12 +24,17 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
   /**
    * Суммарная информация по заявке
    */
-  RequestSummary summary = null;
+  RequestSummary summary = new RequestSummary();
 
   /**
    * Статус заявки
    */
-  String status = '';
+  String statusName = '';
+
+  /**
+   * Системное имя заявки
+   */
+  String statusSysName = '';
 
   /**
    * Перечень первичных документов

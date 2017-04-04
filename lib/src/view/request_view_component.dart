@@ -11,15 +11,18 @@ import '../services/requests_service.dart';
 import '../view/request_status.dart';
 import 'detailed_request_model.dart';
 import 'primary_document.dart';
+import '../pipes/cm_format_money_pipe.dart';
 
 @Component(
   selector: 'view',
   templateUrl: 'request_view_component.html',
+  providers: const [RequestsService],
   directives: const [
     CmRouterLink,
     GridComponent,
     GridTemplateDirective,
-    ColumnComponent])
+    ColumnComponent],
+  pipes: const [CmFormatMoneyPipe])
 class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const { 'displayName': 'Документация' };
 
@@ -31,7 +34,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
   String contractId = '';
   String requestId = '';
-  DetailedRequestModel model = null;
+  DetailedRequestModel model = new DetailedRequestModel();
 
   @ViewChild(GridComponent)
   GridComponent grid;

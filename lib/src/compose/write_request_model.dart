@@ -20,5 +20,5 @@ class WriteRequestModel extends Object with JsonConverter, MapConverter {
   /**
    * Идентификаторы выбранных (для формирования первички) работ
    */
-  List<String> workIds = new List<String>();
+  List<String> callOffOrderIds = new List<String>();
 }

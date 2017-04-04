@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:angular2/core.dart';
 
+import 'package:angular2/router.dart';
 import 'package:grid/grid.dart';
 
 import 'package:aside/aside_service.dart';
@@ -23,13 +24,14 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   static const DisplayName = const { 'displayName': 'Список заявок на проверку' };
   final AsideService _asideService;
   final RequestsService _requestsService;
+  final Router _router;
 
   var requestsDataSource = new DataSource();
 
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestListComponent(this._asideService, this._requestsService);
+  RequestListComponent(this._asideService, this._requestsService, this._router);
 
   @override
   Future ngOnInit() async {
@@ -56,7 +58,8 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   @override
   ngAfterViewInit() {
     // Добавление в боковую панель компонента выбора договора
-    _asideService.addPane(PaneType.ContractSearch);
+    _asideService.addPane(PaneType.contractSearch,
+    { 'router' : _router });
   }
 
   /**
@@ -70,11 +73,13 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Подставляет нужный css класс в столбце со статусами
    */
   Map<String, bool> resolveStatusStyleClass(String statusSysName) {
+    String status = statusSysName.toUpperCase();
+
     return new Map<String, bool>()..addAll({
-      'tag-warning': statusSysName == 'error',
-      'tag-success': statusSysName == 'approved',
-      'tag-danger': statusSysName == 'deny',
-      'tag-primary': statusSysName == 'new'
+      'tag-warning': status == 'ERROR',
+      'tag-success': status == 'APPROVED',
+      'tag-danger': status == 'DENY',
+      'tag-primary': status == 'DRAFT'
     });
   }
 
@@ -82,6 +87,13 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     // Удаляется компонент поиска договора из боковой панели
     // перед уходом со страницы с данным компонентом
-    _asideService.removePane(PaneType.ContractSearch);
+    _asideService.removePane(PaneType.contractSearch);
+  }
+
+  /**
+   * Переход к просмотру заявки
+   */
+  void viewRequest(String contractId, String requestId) {
+    _router.navigate(['RequestView', { 'contractId': contractId, 'requestId': requestId }]);
   }
 }
