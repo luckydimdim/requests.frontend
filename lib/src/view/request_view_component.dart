@@ -170,4 +170,18 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   void publish() {
     _requestsService.setStatus(requestId, RequestStatus.published);
   }
+
+  /**
+   * Подставляет нужный css класс в столбце со статусами
+   */
+  Map<String, bool> resolveStatusStyleClass(String statusSysName) {
+    String status = statusSysName.toUpperCase();
+
+    return new Map<String, bool>()..addAll({
+      'tag-warning': status == 'NOTFILLED',
+      'tag-success': status == 'APPROVED',
+      'tag-danger': status == 'DENY',
+      'tag-primary': status == 'DRAFT'
+    });
+  }
 }

@@ -74,7 +74,11 @@
                   <div class="text-md-right text-nowrap"><i class="fa fa-{{ request['currencyName'] }}"></i> {{ request['amount'] | cmFormatMoney }}</div>
                 </template>
               </grid-column>
-              <grid-column header="Статус" field="status" styleClass="text-md-center"></grid-column>
+              <grid-column header="Статус" styleClass="text-md-center">
+                <template let-work="rowData" grid-template="body">
+                  <div class="text-md-center"><span class="tag" [ngClass]="resolveStatusStyleClass(work['statusSysName'])">{{ work['statusName'] }}</span></div>
+                </template>
+              </grid-column>
             </grid>
 
           </div>
