@@ -162,13 +162,6 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Обработка нажатия на кнопку "Сохранить"
-   */
-  void save() {
-    _requestsService.setStatus(requestId, RequestStatus.saved);
-  }
-
-  /**
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
   void publish() {
