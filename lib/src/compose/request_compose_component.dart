@@ -89,8 +89,8 @@ class RequestComposeComponent implements OnInit, OnDestroy {
       DetailedRequestModel request = await _requestsService.getRequest(requestId);
 
       // Восстанавливаем состояние чек-боксов
-      for (PrimaryDocument document in request.documents) {
-        selectedCallOffOrders.add(new CallOffOrder()..id = document.id);
+      for (String callOffOrderId in request.callOffOrderIds) {
+        selectedCallOffOrders.add(new CallOffOrder()..id = callOffOrderId);
       }
     }
 

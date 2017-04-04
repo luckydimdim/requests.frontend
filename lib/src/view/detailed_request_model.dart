@@ -22,8 +22,14 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
   String contractId = '';
 
   /**
+   * Перечень наряд-заказов, из которых состоит данная заявка
+   */
+  List<String> callOffOrderIds = new List<String>();
+
+  /**
    * Суммарная информация по заявке
    */
+  @Json(exclude: true)
   RequestSummary summary = new RequestSummary();
 
   /**
@@ -39,6 +45,7 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
   /**
    * Перечень первичных документов
    */
+  @Json(exclude: true)
   List<PrimaryDocument> documents = new List<PrimaryDocument>();
 
   @override
@@ -48,14 +55,16 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
     var summary = new RequestSummary();
     model.summary = summary.fromJson(json['summary']);
 
-    List<dynamic> documentsJson = json['documents'];
-    if (documents != null) {
+    List<dynamic> documentsJson = json['documents'] as List<dynamic>;
+    if (documentsJson != null) {
       for (dynamic documentJson in documentsJson) {
         PrimaryDocument document = _resolveDocument(documentJson);
 
         documents.add(document);
       }
     }
+
+    return this;
   }
 
   /**
