@@ -5,7 +5,10 @@
         <div class="card-header">
           <i class="fa fa-cog"></i>{{ createMode ? 'Формирование заявки на проверку' : 'Изменение состава работ' }}
         </div>
-        <div class="card-block">
+        <div class="card-block" *ngIf="isEmpty">
+          <h4 class="text-muted">Для того чтобы сформировать заявку, сначада <a href="#" (click)="goToContractWorks(contractId)">добавьте работы</a></h4>
+        </div>
+        <div class="card-block" *ngIf="!isEmpty">
           <h4>Выберите работы</h4>
           <p class="text-muted">
             <i class="icon-info"></i>&nbsp;Выберите работы по которым требуется сформировать первичные документы.
@@ -14,14 +17,14 @@
           <grid #grid [dataSource]="callOffsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'" (onRowClick)="rowClicked($event)">
             <grid-column width="3%">
               <template let-col="column" grid-template="header">
-                <label class="switch switch-icon switch-primary switch-sm">
+                <label class="switch switch-icon switch-success switch-sm">
                   <input type="checkbox" #columnToogler class="switch-input" (change)="toggleAllCallOffOrders(columnToogler)" [checked]="isAllCallOffOrdersSelected()" />
                   <span class="switch-label" data-on="" data-off=""></span>
                   <span class="switch-handle"></span>
                 </label>
               </template>
               <template let-callOff="rowData" grid-template="body">
-                <label class="switch switch-icon switch-primary switch-sm">
+                <label class="switch switch-icon switch-success switch-sm">
                   <input type="checkbox" class="switch-input" (change)="toggleCallOffOrder(callOff['id'])" [checked]="isCallOffOrderSelected(callOff['id'])" />
                   <span class="switch-label" data-on="" data-off=""></span>
                   <span class="switch-handle"></span>
@@ -40,8 +43,8 @@
         </div>
         <!-- /card-block -->
 
-        <div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary" (click)="composeRequest()"><i class="fa fa-magic"></i> {{ createMode ? 'Сформировать заявку' : 'Изменить заявку'}}</button>
+        <div class="card-footer" *ngIf="!isEmpty">
+          <button type="submit" class="btn btn-sm btn-success" (click)="composeRequest()"><i class="fa fa-magic"></i> {{ createMode ? 'Сформировать заявку' : 'Изменить заявку'}}</button>
         </div>
         <!-- /card-footer -->
 

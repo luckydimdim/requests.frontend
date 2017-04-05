@@ -3,12 +3,12 @@
     <div class="col-xl-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-files-o"></i> Первичная документация
+          <i class="fa fa-files-o"></i> Первичные документы
         </div>
-        <div class="card-block">
+        <div class="card-block py-0">
 
           <div class="row pl-1 pr-1 d-table-row">
-            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none" style="border-right: 1px solid #d1d4d7;"
+            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-1 py-1" style="border-right: 1px solid #d1d4d7;"
                  sticky-top>
               <div sticky>
                 <div>
@@ -23,7 +23,7 @@
                   <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]"
                      class="font-xs">Изменить</a>
 
-                  <div class="font-weight-bold mt-2">
+                  <!--<div class="font-weight-bold mt-2">
                     <span class="text-uppercase mb-q">Материалы</span>
                   </div>
                   <ul class="leaders font-xs mb-0">
@@ -35,7 +35,7 @@
                   <div>
                     <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]"
                        class="font-xs">Изменить</a>
-                  </div>
+                  </div>-->
                 </div>
                 <div class="pb-2">
                   <div class="font-weight-bold mt-2">
@@ -65,12 +65,15 @@
             </div>
             <!--./col-->
 
-            <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none">
+            <div class="card-block" *ngIf="isEmpty">
+              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a href="javascript:void(0)" (click)="goToRequestModify(contractId, requestId)">наряд-заказы</a></h4>
+            </div>
+            <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none py-1" *ngIf="!isEmpty">
 
               <grid #grid [dataSource]="worksDataSource"
                     [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
                 <grid-column width="3%">
-                  <template let-request="rowData" grid-template="body">
+                  <template let-work="rowData" grid-template="body">
                     <div class="text-md-center">
                       <button class="btn btn-tiny"><i class="icon-magnifier"></i></button>
                     </div>
@@ -82,16 +85,16 @@
                 <grid-column header="Должность" field="position" styleClass="text-md-center"></grid-column>
 
                 <grid-column header="Сумма" field="amount" width="11%" styleClass="text-md-center">
-                  <template let-request="rowData" grid-template="body">
-                    <div class="text-md-right text-nowrap"><i class="fa fa-{{ request['currencyName'] }}"></i> {{
-                      request['amount'] | cmFormatMoney }}
+                  <template let-work="rowData" grid-template="body">
+                    <div class="text-md-right text-nowrap"><i class="fa fa-{{ work['currencyName'] }}"></i> {{
+                      work['amount'] | cmFormatMoney }}
                     </div>
                   </template>
                 </grid-column>
                 <grid-column header="Статус" styleClass="text-md-center">
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-center"><span class="tag"
-                                                      [ngClass]="resolveStatusStyleClass(work['statusSysName'])">{{ work['statusName'] }}</span>
+                      [ngClass]="resolveStatusStyleClass(work['statusSysName'])">{{ work['statusName'] }}</span>
                     </div>
                   </template>
                 </grid-column>

@@ -19,4 +19,14 @@ abstract class PrimaryDocument extends Object with JsonConverter, MapConverter {
    * Тип первичного документа
    */
   PrimaryDocumentType type = PrimaryDocumentType.none;
+
+  /**
+   * Название статуса
+   */
+  String statusName = '';
+
+  /**
+   * Системное имя статуса
+   */
+  String statusSysName = '';
 }

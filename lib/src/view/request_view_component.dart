@@ -34,12 +34,19 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   final Router _router;
   final RouteParams _routeParams;
 
+  /**
+   * Первичные документы отсутствуют
+   */
+  bool isEmpty = false;
+
   var worksDataSource = new DataSource();
   final RequestsService _requestsService;
 
   String contractId = '';
   String requestId = '';
   DetailedRequestModel model = new DetailedRequestModel();
+
+
 
   @ViewChild(GridComponent)
   GridComponent grid;
@@ -67,6 +74,8 @@ class RequestViewComponent implements OnInit, AfterViewInit {
     }
 
     worksDataSource = new DataSource(data: documentMaps)..primaryField = 'id';
+
+    isEmpty = model.documents.isEmpty;
 
     return null;
   }
@@ -114,6 +123,10 @@ class RequestViewComponent implements OnInit, AfterViewInit {
     });
 
     bool topWasSet = false;
+
+    /*window.onMouseWheel.listen((Event e) {
+      print(e.offset.y);
+    });*/
 
     // При прокрутке окна устанавливается position: fixed
     window.onScroll.listen((Event e) {
@@ -176,10 +189,20 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
     return new Map<String, bool>()
       ..addAll({
+        'tag-default': status == 'NOTFILLED',
         'tag-warning': status == 'VALIDATION',
         'tag-success': status == 'DONE',
         'tag-danger': status == 'CORRECTION',
         'tag-primary': status == 'CREATION'
       });
+  }
+
+  /**
+   * Переход к разделу выбора наряд-заказов
+   */
+  void goToRequestModify(String contractId, String requestId) {
+    _router.navigate(['RequestModify', {
+      'contractId': contractId,
+      'requestId': requestId }]);
   }
 }

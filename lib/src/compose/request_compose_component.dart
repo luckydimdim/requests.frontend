@@ -41,9 +41,15 @@ class RequestComposeComponent implements OnInit, OnDestroy {
   final AsideService _asideService;
   final Router _router;
 
-  var callOffsDataSource = new DataSource();
+  DataSource callOffsDataSource = new DataSource();
   String contractId = '';
   String requestId = '';
+
+  /**
+   * Работы отсутствуют
+   */
+  bool isEmpty = false;
+
   List<CallOffOrder> callOffOrders = new List<CallOffOrder>();
   List<String> selectedCallOffOrderIds = new List<String>();
 
@@ -90,6 +96,8 @@ class RequestComposeComponent implements OnInit, OnDestroy {
     }
 
     callOffsDataSource = new DataSource(data: result)..primaryField = 'id';
+
+    isEmpty = result.isEmpty;
 
     // Есди компонент работает в режиме "Редактирование"
     if (!createMode) {
@@ -178,5 +186,12 @@ class RequestComposeComponent implements OnInit, OnDestroy {
     // Удаляется компонент поиска договора из боковой панели
     // перед уходом со страницы с данным компонентом
     _asideService.removePane(PaneType.contractSearch);
+  }
+
+  /**
+   * Перейти к разделу создания работ
+   */
+  void goToContractWorks(contractId) {
+    // TODO: implement
   }
 }

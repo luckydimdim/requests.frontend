@@ -41,14 +41,4 @@ class TimeSheet extends PrimaryDocument {
    * Системное имя валюты
    */
   String currencySysName = '';
-
-  /**
-   * Название статуса
-   */
-  String statusName = '';
-
-  /**
-   * Системное имя статуса
-   */
-  String statusSysName = '';
 }
