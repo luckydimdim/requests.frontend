@@ -65,8 +65,8 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Показать/скрыть боклвую панель
    */
-  togglePane() {
-    _asideService.togglePane();
+  showPane() {
+    _asideService.showPane();
   }
 
   /**
