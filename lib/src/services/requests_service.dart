@@ -150,13 +150,16 @@ class RequestsService {
    * Обновление статуса заявки
    */
   setStatus(String id, RequestStatus status) async {
+
+    String changeStatusUrl = '${ _config.helper.requestsUrl }/$id/status';
+
     _logger.trace(
-        'Change request status. Url: ${ _config.helper.requestsUrl }/$id, Status: ${ status.toString() }');
+        'Change request status. Url: $changeStatusUrl, Status: ${ status.toString() }');
 
     try {
-      await _http.put('${ _config.helper.requestsUrl }/$id',
+      await _http.put('$changeStatusUrl',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.encode({'status': status.toString()}));
+          body: status.toString().split('.')[1]);
       _logger.trace('Request status changed');
     } catch (e) {
       _logger.error('Failed to update request status: $e');

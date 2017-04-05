@@ -1,7 +1,7 @@
 /**
  * Статус заявки на проверку
  */
-enum RequestStatus {
+enum RequestStatus{
   /**
    * Нет никакого статуса
    */
@@ -25,5 +25,5 @@ enum RequestStatus {
   /**
    * Проверена, согласована
    */
-  done
+  done,
 }
