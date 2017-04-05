@@ -179,7 +179,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
         'tag-warning': status == 'VALIDATION',
         'tag-success': status == 'DONE',
         'tag-danger': status == 'CORRECTION',
-        'tag-primary': status == 'DRAFT'
+        'tag-primary': status == 'CREATION'
       });
   }
 }
