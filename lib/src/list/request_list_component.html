@@ -15,8 +15,16 @@
                 <div class="text-md-center"><button class="btn btn-tiny" (click)="viewRequest(request['id'])"><i class="icon-magnifier"></i></button></div>
               </template>
             </grid-column>
-            <grid-column header="Дата создания" field="createdAt" styleClass="text-md-center"></grid-column>
-            <grid-column header="Дата изменения" field="updatedAt" styleClass="text-md-center"></grid-column>
+            <grid-column header="Дата создания" styleClass="text-md-center">
+              <template let-request="rowData" grid-template="body">
+                {{ request['createdAt'] | date:'dd.MM.yyyy' }}
+              </template>
+            </grid-column>
+            <grid-column header="Дата изменения" styleClass="text-md-center">
+              <template let-request="rowData" grid-template="body">
+                {{ request['updatedAt'] | date:'dd.MM.yyyy' }}
+              </template>
+            </grid-column>
             <grid-column header="№ договора" field="contractNumber" styleClass="text-md-center"></grid-column>
             <grid-column header="Подрядчик" field="contractorName" styleClass="text-md-center"></grid-column>
             <grid-column header="Сумма к оплате" field="amount" width="11%" styleClass="text-md-center">

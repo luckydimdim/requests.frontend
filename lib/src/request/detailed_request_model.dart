@@ -11,8 +11,6 @@ import 'time_sheet.dart';
  * Модель заявки на проверку
  */
 class DetailedRequestModel extends Object with JsonConverter, MapConverter {
-  DateTime dt = new DateTime.now();
-
   /**
    * Внутренний уникальный идентификатор заявки
    */

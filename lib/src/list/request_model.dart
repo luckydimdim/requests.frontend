@@ -20,12 +20,12 @@ class RequestModel extends Object with JsonConverter, MapConverter {
   /**
    * Дата создания
    */
-  String createdAt;
+  DateTime createdAt;
 
   /**
    * Дата последнего изменения
    */
-  String updatedAt;
+  DateTime updatedAt;
 
   /**
    * Номер договора

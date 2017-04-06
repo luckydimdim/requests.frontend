@@ -25,5 +25,5 @@ enum RequestStatus{
   /**
    * Проверена, согласована
    */
-  done,
+  done
 }

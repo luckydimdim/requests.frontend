@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:angular2/common.dart';
 import 'package:angular2/core.dart';
 
 import 'package:angular2/router.dart';
@@ -17,7 +18,7 @@ import '../pipes/cm_format_money_pipe.dart';
     templateUrl: 'request_list_component.html',
     providers: const [RequestsService],
     directives: const [GridComponent, GridTemplateDirective, ColumnComponent],
-    pipes: const [CmFormatMoneyPipe])
+    pipes: const [CmFormatMoneyPipe, DatePipe])
 class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   static const DisplayName = const {'displayName': 'Список заявок на проверку'};
   final AsideService _asideService;

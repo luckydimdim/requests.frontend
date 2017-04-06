@@ -136,10 +136,10 @@ class RequestModifyComponent implements OnInit, OnDestroy {
   /**
    * Добавляет / удаляет все работы
    */
-  void toggleAllCallOffOrders(InputElement columnTooglerElement) {
+  void toggleAllCallOffOrders(InputElement columnToglerElement) {
     selectedCallOffOrderIds.clear();
 
-    if (columnTooglerElement.checked) {
+    if (columnToglerElement.checked) {
       for (CallOffOrder order in callOffOrders) {
         selectedCallOffOrderIds.add(order.id);
       }
@@ -161,7 +161,7 @@ class RequestModifyComponent implements OnInit, OnDestroy {
 
     await _requestsService.updateRequest(model);
 
-    _router.parent.navigate(['Request']);
+    _router.parent.navigate(['Request', { 'id': requestId }]);
   }
 
   @override
