@@ -164,10 +164,4 @@ class RequestCreateComponent implements OnInit, OnDestroy {
     _asideService.removePane(PaneType.contractSearch);
   }
 
-  /**
-   * Перейти к разделу создания работ
-   */
-  void goToContractWorks(contractId) {
-    // TODO: implement
-  }
-}
+ }

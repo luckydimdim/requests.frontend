@@ -6,7 +6,7 @@
           <i class="fa fa-cog"></i>{{ createMode ? 'Формирование заявки на проверку' : 'Изменение состава работ' }}
         </div>
         <div class="card-block" *ngIf="isEmpty">
-          <h4 class="text-muted">Для того чтобы сформировать заявку, сначада <a href="#" (click)="goToContractWorks(contractId)">добавьте работы</a></h4>
+          <h4 class="text-muted">Для того чтобы сформировать заявку, сначала <a [cmRouterLink]="['/Master/Contracts/Contract',{'id': contractId}, 'ContractWorks']">добавьте работы</a></h4>
         </div>
         <div class="card-block" *ngIf="!isEmpty">
           <h4>Выберите работы</h4>
