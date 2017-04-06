@@ -50,7 +50,7 @@
             <!--./col-->
 
             <div class="card-block" *ngIf="isEmpty">
-              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a href="javascript:void(0)" (click)="goToRequestModify(requestId)">наряд-заказы</a></h4>
+              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a [cmRouterLink]="['RequestModify',{'id': requestId}]">наряд-заказы</a></h4>
             </div>
             <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none py-1 pl-2" *ngIf="!isEmpty">
 

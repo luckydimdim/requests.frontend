@@ -197,14 +197,4 @@ class RequestViewComponent implements OnInit, AfterViewInit {
         'tag-primary': status == 'CREATION'
       });
   }
-
-  /**
-   * Переход к разделу выбора наряд-заказов
-   */
-  void goToRequestModify(String requestId) {
-    _router.navigate([
-      'RequestModify',
-      {'id': requestId}
-    ]);
-  }
 }
