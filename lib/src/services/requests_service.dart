@@ -6,10 +6,10 @@ import 'package:angular2/core.dart';
 import 'package:config/config_service.dart';
 import 'package:logger/logger_service.dart';
 
-import '../view/detailed_request_model.dart';
-import '../compose/write_request_model.dart';
+import '../request/detailed_request_model.dart';
+import '../request/write_request_model.dart';
 import '../list/request_model.dart';
-import '../view/request_status.dart';
+import '../request/request_status.dart';
 
 /**
  * Работа с web-сервисом. Раздел "Заявки на проверку"

@@ -8,7 +8,7 @@ import 'package:angular_utils/directives.dart';
 import 'package:grid/grid.dart';
 
 import '../services/requests_service.dart';
-import '../view/request_status.dart';
+import 'request_status.dart';
 import 'detailed_request_model.dart';
 import 'primary_document.dart';
 import '../pipes/cm_format_money_pipe.dart';
@@ -46,8 +46,6 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   String requestId = '';
   DetailedRequestModel model = new DetailedRequestModel();
 
-
-
   @ViewChild(GridComponent)
   GridComponent grid;
 
@@ -55,17 +53,20 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
   @override
   ngOnInit() async {
-    contractId = _routeParams.get('contractId');
-    requestId = _routeParams.get('requestId');
+    Instruction ci = _router.parent.parent.currentInstruction;
+    String id = ci.component.params['id'];
 
-    await _loadRequest();
+    await _loadRequest(id);
   }
 
   /**
    * Загрузака из web-сервиса данных по заявке на проверку
    */
-  Future _loadRequest() async {
-    model = await _requestsService.getRequest(requestId);
+  Future _loadRequest(String id) async {
+    model = await _requestsService.getRequest(id);
+
+    requestId = model.id;
+    contractId = model.contractId;
 
     List<Map<String, String>> documentMaps = new List<Map<String, String>>();
 
@@ -200,9 +201,10 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   /**
    * Переход к разделу выбора наряд-заказов
    */
-  void goToRequestModify(String contractId, String requestId) {
-    _router.navigate(['RequestModify', {
-      'contractId': contractId,
-      'requestId': requestId }]);
+  void goToRequestModify(String requestId) {
+    _router.navigate([
+      'RequestModify',
+      {'id': requestId}
+    ]);
   }
 }

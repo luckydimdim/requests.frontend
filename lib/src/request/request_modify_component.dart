@@ -12,14 +12,13 @@ import 'package:call_off_order/call_off_order.dart';
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
-import '../view/detailed_request_model.dart';
-import '../view/primary_document.dart';
+import 'detailed_request_model.dart';
 
-import '../compose/write_request_model.dart';
+import 'write_request_model.dart';
 import '../services/requests_service.dart';
 
 @Component(
-    selector: 'request-compose',
+    selector: 'request-modify',
     templateUrl: 'request_compose_component.html',
     providers: const [
       RequestsService
@@ -30,10 +29,8 @@ import '../services/requests_service.dart';
       GridTemplateDirective,
       ColumnComponent
     ])
-class RequestComposeComponent implements OnInit, OnDestroy {
-  static const DisplayName = const {
-    'displayName': 'Формирование заявки на проверку'
-  };
+class RequestModifyComponent implements OnInit, OnDestroy {
+  static const DisplayName = const {'displayName': 'Правка заявки на проверку'};
 
   final RouteParams _routeParams;
   final CallOffService _callOffService;
@@ -56,38 +53,40 @@ class RequestComposeComponent implements OnInit, OnDestroy {
   /**
    * Режим создания / изменения
    */
-  bool createMode = true;
+  final bool createMode = false;
 
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestComposeComponent(this._router, this._routeParams, this._callOffService,
+  RequestModifyComponent(this._router, this._routeParams, this._callOffService,
       this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {
-    contractId = _routeParams.get('contractId');
-    requestId = _routeParams.get('requestId');
+    Instruction ci = _router.parent.parent.currentInstruction;
+    String id = ci.component.params['id'];
 
-    // Если id заявки не задано, значит компонент работает в режиме "создания"
-    createMode = requestId == null;
+    await loadCallOffs(id);
 
-    _asideService.addPane(PaneType.contractSearch, {
-      'router': _router,
-      'contractId': contractId,
-      'enabled': createMode == true
-    });
+    // Загрузка и добавление боковой панели
+    _asideService.addPane(PaneType.contractSearch,
+        {'router': _router, 'contractId': contractId, 'enabled': false});
 
     _asideService.showPane();
-
-    await loadCallOffs();
   }
 
   /**
    * Загрузка из web-сервиса списка работ
    */
-  Future loadCallOffs() async {
-    callOffOrders = await _callOffService.getCallOffOrders(contractId);
+  Future loadCallOffs(String id) async {
+    DetailedRequestModel request = await _requestsService.getRequest(id);
+
+    // Восстанавливаем состояние чек-боксов
+    for (String callOffOrderId in request.callOffOrderIds) {
+      toggleCallOffOrder(callOffOrderId);
+    }
+
+    callOffOrders = await _callOffService.getCallOffOrders(request.contractId);
 
     var result = new List<dynamic>();
 
@@ -99,16 +98,8 @@ class RequestComposeComponent implements OnInit, OnDestroy {
 
     isEmpty = result.isEmpty;
 
-    // Есди компонент работает в режиме "Редактирование"
-    if (!createMode) {
-      DetailedRequestModel request =
-          await _requestsService.getRequest(requestId);
-
-      // Восстанавливаем состояние чек-боксов
-      for (String callOffOrderId in request.callOffOrderIds) {
-        toggleCallOffOrder(callOffOrderId);
-      }
-    }
+    requestId = request.id;
+    contractId = request.contractId;
 
     return null;
   }
@@ -170,15 +161,9 @@ class RequestComposeComponent implements OnInit, OnDestroy {
 
     WriteRequestModel newModel = null;
 
-    if (createMode)
-      newModel = await _requestsService.createRequest(model);
-    else
-      newModel = await _requestsService.updateRequest(model);
+    newModel = await _requestsService.updateRequest(model);
 
-    _router.navigate([
-      'RequestView',
-      {'contractId': newModel.contractId, 'requestId': newModel.id}
-    ]);
+    _router.navigate(['RequestView']);
   }
 
   @override

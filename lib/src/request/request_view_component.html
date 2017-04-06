@@ -19,22 +19,7 @@
                     <li><span>На сумму</span><span>{{model.summary.worksAmount}} {{model.summary.currencyName}}</span>
                     </li>
                   </ul>
-                  <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]"
-                     class="font-xs">Изменить</a>
-
-                  <!--<div class="font-weight-bold mt-2">
-                    <span class="text-uppercase mb-q">Материалы</span>
-                  </div>
-                  <ul class="leaders font-xs mb-0">
-                    <li><span>Выбрано материалов</span> <span>{{model.summary.materialsQuantity}}</span></li>
-                    <li>
-                      <span>На сумму</span><span>{{model.summary.materialsAmount}} {{model.summary.currencyName}}</span>
-                    </li>
-                  </ul>
-                  <div>
-                    <a [cmRouterLink]="['RequestModify', { 'contractId': contractId, 'requestId': requestId }]"
-                       class="font-xs">Изменить</a>
-                  </div>-->
+                  <a [cmRouterLink]="['RequestModify']" class="font-xs">Изменить</a>
                 </div>
                 <div class="pb-2">
                   <div class="font-weight-bold mt-2">
@@ -65,7 +50,7 @@
             <!--./col-->
 
             <div class="card-block" *ngIf="isEmpty">
-              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a href="javascript:void(0)" (click)="goToRequestModify(contractId, requestId)">наряд-заказы</a></h4>
+              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a href="javascript:void(0)" (click)="goToRequestModify(requestId)">наряд-заказы</a></h4>
             </div>
             <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none py-1 pl-2" *ngIf="!isEmpty">
 

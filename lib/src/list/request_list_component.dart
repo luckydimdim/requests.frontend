@@ -34,10 +34,6 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   @override
   Future ngOnInit() async {
     await loadRequests();
-
-    // String input = '2017-04-04T05:20:12.433847+03:00';
-    // DateFormat format = new DateFormat('y-M-dTH:m:s.S+Z');
-    // print(format.parse(input));
   }
 
   /**
@@ -94,10 +90,10 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Переход к просмотру заявки
    */
-  void viewRequest(String contractId, String requestId) {
+  void viewRequest(String requestId) {
     _router.navigate([
-      'RequestView',
-      {'contractId': contractId, 'requestId': requestId}
+      'Request',
+      {'id': requestId}
     ]);
   }
 
@@ -113,10 +109,8 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Переход к редактированию заявки
    */
-  editRequest(String contractId, String requestId) {
-    _router.navigate([
-      'RequestModify',
-      {'contractId': contractId, 'requestId': requestId}
-    ]);
+  editRequest(String requestId) {
+    // TODO: сделать перенаправление при помощи navigate()
+    _router.navigateByUrl('$requestId/modify');
   }
 }

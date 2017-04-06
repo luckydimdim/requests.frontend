@@ -8,7 +8,6 @@ import 'package:angular2/platform/common.dart';
 
 import 'package:http/http.dart';
 import 'package:http/browser_client.dart';
-import 'package:requests/in_memory_data_service.dart';
 
 import 'package:logger/logger_service.dart';
 import 'package:config/config_service.dart';
@@ -18,10 +17,8 @@ import 'package:angular_utils/cm_router_link.dart';
 
 import 'package:master_layout/master_layout_component.dart';
 
+import 'package:requests/in_memory_data_service.dart';
 import 'package:requests/requests_component.dart';
-
-import 'package:contracts/contracts_service.dart';
-import 'package:contracts/contract_general_service.dart';
 
 bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
