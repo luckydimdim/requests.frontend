@@ -44,7 +44,7 @@
         <!-- /card-block -->
 
         <div class="card-footer" *ngIf="!isEmpty">
-          <button type="submit" class="btn btn-sm btn-success" (click)="composeRequest()"><i class="fa fa-magic"></i> {{ createMode ? 'Сформировать заявку' : 'Сохранить'}}</button>
+          <button type="submit" class="btn btn-sm btn-success" (click)="composeRequest()" [disabled]="selectedCallOffOrderIds.length == 0"><i class="fa fa-magic"></i> {{ createMode ? 'Сформировать заявку' : 'Сохранить'}}</button>
         </div>
         <!-- /card-footer -->
 
