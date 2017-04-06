@@ -136,10 +136,10 @@ class RequestModifyComponent implements OnInit, OnDestroy {
   /**
    * Добавляет / удаляет все работы
    */
-  void toggleAllCallOffOrders(InputElement columnToglerElement) {
+  void toggleAllCallOffOrders(InputElement columnTogglerElement) {
     selectedCallOffOrderIds.clear();
 
-    if (columnToglerElement.checked) {
+    if (columnTogglerElement.checked) {
       for (CallOffOrder order in callOffOrders) {
         selectedCallOffOrderIds.add(order.id);
       }

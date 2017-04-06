@@ -15,16 +15,16 @@ import 'request_view_component.dart';
     directives: const [RouterOutlet])
 @RouteConfig(const [
   const Route(
-    path: '',
-    component: RequestViewComponent,
-    name: 'RequestView',
-    data: RequestViewComponent.DisplayName,
-    useAsDefault: true),
+      path: '',
+      component: RequestViewComponent,
+      name: 'RequestView',
+      data: RequestViewComponent.DisplayName,
+      useAsDefault: true),
   const Route(
-    path: 'modify',
-    component: RequestModifyComponent,
-    name: 'RequestModify',
-    data: RequestModifyComponent.DisplayName),
+      path: 'modify',
+      component: RequestModifyComponent,
+      name: 'RequestModify',
+      data: RequestModifyComponent.DisplayName),
   const Route(
       path: 'create',
       component: RequestCreateComponent,
@@ -47,5 +47,5 @@ import 'request_view_component.dart';
       data: RequestTsComponent.DisplayName)
 ])
 class RequestComponent {
-  static const DisplayName = const { 'displayName': 'Заявка на проверку' };
+  static const DisplayName = const {'displayName': 'Заявка на проверку'};
 }
