@@ -159,11 +159,9 @@ class RequestModifyComponent implements OnInit, OnDestroy {
       ..contractId = contractId
       ..callOffOrderIds = selectedCallOffOrderIds;
 
-    WriteRequestModel newModel = null;
+    await _requestsService.updateRequest(model);
 
-    newModel = await _requestsService.updateRequest(model);
-
-    _router.navigate(['RequestView']);
+    _router.parent.navigate(['Request']);
   }
 
   @override

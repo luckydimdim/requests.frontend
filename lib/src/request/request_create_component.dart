@@ -152,7 +152,7 @@ class RequestCreateComponent implements OnInit, OnDestroy {
     newModel = await _requestsService.createRequest(model);
 
     _router.parent.navigate([
-      'RequestView',
+      'Request',
       {'id': newModel.id}
     ]);
   }
