@@ -24,4 +24,6 @@ import 'request/request_component.dart';
       name: 'Request',
       data: RequestComponent.DisplayName)
 ])
-class RequestsComponent {}
+class RequestsComponent {
+  static const DisplayName = const {'displayName': 'Заявки'};
+}
