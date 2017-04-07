@@ -111,6 +111,6 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Переход к редактированию заявки
    */
   editRequest(String requestId) {
-    _router.navigate(['Request/RequestModify', { 'id': requestId }]);
+    _router.navigate(['Request',{ 'id': requestId },'RequestModify']);
   }
 }
