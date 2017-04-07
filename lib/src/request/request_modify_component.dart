@@ -169,6 +169,7 @@ class RequestModifyComponent implements OnInit, OnDestroy {
     // Удаляется компонент поиска договора из боковой панели
     // перед уходом со страницы с данным компонентом
     _asideService.removePane(PaneType.contractSearch);
+    _asideService.hidePane();
   }
 
   /**
