@@ -54,13 +54,13 @@ transformers:
         resolved_identifiers:
             BrowserClient: 'package:http/browser_client.dart'
             Client: 'package:http/http.dart'
+    - reflectable:
+         entry_points:
+           - web/main.dart # The path to your main file
+         formatted: true # Optional.
     - dart_to_js_script_rewriter
     - $dart2js:
         commandLineOptions:
             - --trust-type-annotations
             - --trust-primitives
             - --show-package-warnings # Show warnings and hints generated from packages.
-    - reflectable:
-         entry_points:
-           - web/main.dart # The path to your main file
-         formatted: true # Optional.
