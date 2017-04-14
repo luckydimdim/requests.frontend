@@ -72,7 +72,7 @@ class RequestsService {
       throw new Exception('Failed to get requet. Cause: $e');
     }
 
-    _logger.trace('Contract requested: $response.');
+    _logger.trace('Request successfuly requested: $response.');
 
     dynamic json = JSON.decode(response.body);
 

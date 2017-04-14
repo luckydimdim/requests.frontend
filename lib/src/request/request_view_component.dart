@@ -197,4 +197,11 @@ class RequestViewComponent implements OnInit, AfterViewInit {
         'tag-primary': status == 'CREATION'
       });
   }
+
+  /**
+   * Переход к просмотру Time sheet'a
+   */
+  void goToDocument(String id) {
+    _router.navigate(['TimeSheet', { 'id': id }]);
+  }
 }

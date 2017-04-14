@@ -3,7 +3,7 @@
     <div class="col-xl-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-files-o"></i> Первичные документы
+          <i class="fa fa-files-o"></i> Заявка на проверку
         </div>
         <div class="card-block py-0">
 
@@ -59,7 +59,7 @@
                 <grid-column width="3%">
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-center">
-                      <button class="btn btn-tiny"><i class="icon-magnifier"></i></button>
+                      <button class="btn btn-tiny" (click)="goToDocument(work['id'])"><i class="icon-magnifier"></i></button>
                     </div>
                   </template>
                 </grid-column>

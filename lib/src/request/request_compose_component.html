@@ -11,7 +11,7 @@
         <div class="card-block" *ngIf="!isEmpty">
           <h4>Выберите работы</h4>
           <p class="text-muted">
-            <i class="icon-info"></i>&nbsp;Выберите работы по которым требуется сформировать первичные документы.
+            <i class="icon-info"></i>&nbsp;Выберите работы по которым требуется сформировать первичные документы
           </p>
 
           <grid #grid [dataSource]="callOffsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'" (onRowClick)="rowClicked($event)">

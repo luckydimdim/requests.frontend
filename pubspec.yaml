@@ -18,6 +18,8 @@ dependencies:
     intl: any
     json_object: any
     reflectable: ^1.0.2                   # Allows programmers to reduce certain usages of dynamic reflection to a transformer generated specialization with the same behavior. https://pub.dartlang.org/packages/reflectable
+    auth:
+      git: http://cm-ylng-msk-04/git/auth.frontend.git
     grid:
       git: http://cm-ylng-msk-04/git/grid.frontend.git
     auth_router_outlet:
@@ -36,6 +38,8 @@ dependencies:
       git: http://cm-ylng-msk-04/git/aside.frontend.git
     converters:
       git: http://cm-ylng-msk-04/git/converters.frontend.git
+    time_sheet:
+      git: http://cm-ylng-msk-04/git/time_sheet.frontend.git
 
 dev_dependencies:
     test: ^0.12.18                        # A library for writing dart unit tests. https://pub.dartlang.org/packages/test
