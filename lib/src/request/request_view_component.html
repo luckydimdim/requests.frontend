@@ -3,7 +3,7 @@
     <div class="col-xl-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-files-o"></i> Заявка на проверку
+          <i class="fa fa-files-o"></i> Заявка на проверку <span class="tag tag-primary">не заполнена</span>
         </div>
         <div class="card-block py-0">
 
@@ -11,7 +11,16 @@
             <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" sticky-top *ngIf="!isEmpty">
               <div sticky>
                 <div>
-                  <div class="font-weight-bold">
+                  <ul class="leaders font-xs mb-0">
+                    <li><span>Подрядчик</span> <span>Название</span></li>
+                    <li><span>Договор</span> <span>123 А 321</span></li>
+                    <li><span>Сумма</span> <span>300 000 000 руб</span></li>
+                    <li><span>Заключен</span> <span>11.12.2016</span></li>
+                    <li><span>Истекает</span> <span>04.08.2017</span></li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="font-weight-bold mt-2">
                     <span class="text-uppercase mb-q">Работы</span>
                   </div>
                   <ul class="leaders font-xs mb-0">
@@ -34,7 +43,7 @@
                       <span>{{model.summary.prepaidAmount}} {{model.summary.currencyName}}</span></li>
                     <li><span>Удержано резерва</span> <span>{{model.summary.reserveAmount}} {{model.summary.currencyName}}</span>
                     </li>
-                    <li><span class="font-weight-bold">Итого к оплате</span> <span
+                    <li class="mt-1"><span class="font-weight-bold">Итого к оплате</span> <span
                       class="font-weight-bold">{{model.summary.total}} {{model.summary.currencyName}}</span></li>
                   </ul>
 
@@ -53,9 +62,9 @@
               <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a [cmRouterLink]="['RequestModify',{'id': requestId}]">наряд-заказы</a></h4>
             </div>
             <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none py-1 pl-2" *ngIf="!isEmpty">
-
+              <h4>Ежемесячные табели учета рабочего времени</h4>
               <grid #grid [dataSource]="worksDataSource"
-                    [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
+                    [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered mt-1'">
                 <grid-column width="3%">
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-center">
