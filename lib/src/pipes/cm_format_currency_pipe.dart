@@ -2,7 +2,7 @@ import 'package:angular2/angular2.dart';
 
 @Pipe(name: 'cmFormatCurrency')
 /**
- * Пайпа для преобразования числовых значений к денежному формату
+ * Пайпа для преобразования кодов валют
  */
 class CmFormatCurrencyPipe extends PipeTransform {
   String transform(String value, String currency) => parseCurrency(value, currency);
