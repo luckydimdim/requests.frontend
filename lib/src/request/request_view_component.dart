@@ -12,6 +12,7 @@ import 'request_status.dart';
 import 'detailed_request_model.dart';
 import 'primary_document.dart';
 import '../pipes/cm_format_money_pipe.dart';
+import '../pipes/cm_format_currency_pipe.dart';
 
 @Component(
     selector: 'view',
@@ -26,7 +27,7 @@ import '../pipes/cm_format_money_pipe.dart';
       ColumnComponent
     ],
     pipes: const [
-      CmFormatMoneyPipe
+      CmFormatMoneyPipe, CmFormatCurrencyPipe
     ])
 class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const {'displayName': 'Документация'};

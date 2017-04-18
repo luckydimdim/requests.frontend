@@ -10,7 +10,7 @@ class CmFormatCurrencyPipe extends PipeTransform {
   String parseCurrency(String value, String currency) {
     String result = '';
 
-    switch (value.toUpperCase()) {
+    switch (currency.toUpperCase()) {
       case 'RUB':
       case 'RUR':
         result = '$value руб';
