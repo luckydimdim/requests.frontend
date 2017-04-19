@@ -3,8 +3,13 @@
     <div class="col-xl-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-files-o"></i> Заявка на проверку № 12456 от {{ model.createdAt | date:'d.MM.y' }}
-          <span class="tag" [ngClass]="resolveStatusStyleClass(model.statusSysName)">{{ model.statusName }}</span>
+            <i class="fa fa-files-o"></i> Заявка на проверку № 12456 от {{ model.createdAt | date:'d.MM.y' }}
+            <span class="tag" [ngClass]="resolveStatusStyleClass(model.statusSysName)">{{ model.statusName }}</span>
+  
+          <button type="button" class="btn btn-sm btn-success float-xs-right" (click)="publish()"><i
+                  class="icon-rocket"></i>&nbsp;
+            Отправить на согласование
+          </button>
         </div>
         <div class="card-block py-0">
 
@@ -40,12 +45,7 @@
                       class="font-weight-bold">{{model.summary.total}} {{model.summary.currencyName}}</span></li>
                   </ul>
 
-                  <div class="mt-3">
-                    <button type="button" class="btn btn-success btn-block mt-1" (click)="publish()"><i
-                      class="icon-rocket"></i>&nbsp;
-                      Отправить на согласование
-                    </button>
-                  </div>
+                  
                 </div>
               </div>
             </div>
