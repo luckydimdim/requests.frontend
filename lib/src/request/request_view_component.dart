@@ -191,7 +191,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
     return new Map<String, bool>()
       ..addAll({
-        'tag-default': status == 'NOTFILLED',
+        'tag-default': status == 'EMPTY',
         'tag-warning': status == 'VALIDATION',
         'tag-success': status == 'DONE',
         'tag-danger': status == 'CORRECTION',
