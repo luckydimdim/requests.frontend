@@ -11,41 +11,33 @@ import 'time_sheet.dart';
  * Модель заявки на проверку
  */
 class DetailedRequestModel extends Object with JsonConverter, MapConverter {
-  /**
-   * Внутренний уникальный идентификатор заявки
-   */
+  // Внутренний уникальный идентификатор заявки
   String id = '';
 
-  /**
-   * Идентификатор контракта, к которому принадлежит данная заявка
-   */
+  // Дата создания
+  DateTime createdAt = null;
+
+  // Дата последнего изменения
+  DateTime updatedAt = null;
+
+  // Идентификатор контракта, к которому принадлежит данная заявка
   String contractId = '';
 
-  /**
-   * Перечень наряд-заказов, из которых состоит данная заявка
-   */
+  // Перечень наряд-заказов, из которых состоит данная заявка
   List<String> callOffOrderIds = new List<String>();
 
-  /**
-   * Суммарная информация по заявке
-   */
   @Json(exclude: true)
+  // Суммарная информация по заявке
   RequestSummary summary = new RequestSummary();
 
-  /**
-   * Статус заявки
-   */
+  // Статус заявки
   String statusName = '';
 
-  /**
-   * Системное имя заявки
-   */
+  // Системное имя заявки
   String statusSysName = '';
 
-  /**
-   * Перечень первичных документов
-   */
   @Json(exclude: true)
+  // Перечень первичных документов
   List<PrimaryDocument> documents = new List<PrimaryDocument>();
 
   @override
@@ -67,9 +59,7 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
     return this;
   }
 
-  /**
-   * Получение модели первичного документа из json
-   */
+  // Получение модели первичного документа из json
   PrimaryDocument _resolveDocument(dynamic documentJson) {
     PrimaryDocument result = null;
 
