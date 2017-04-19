@@ -9,9 +9,9 @@
           <h4 class="text-muted">Для того чтобы сформировать заявку, сначала <a [cmRouterLink]="['/Master/Contracts/Contract',{'id': contractId}, 'ContractWorks']">добавьте работы</a></h4>
         </div>
         <div class="card-block" *ngIf="!isEmpty">
-          <h4>Выберите работы</h4>
+          <h4>Выберите наряд-заказы</h4>
           <p class="text-muted">
-            <i class="icon-info"></i>&nbsp;Выберите работы по которым требуется сформировать первичные документы
+            <i class="icon-info"></i>&nbsp;Выберите наряд-заказы по которым требуется сформировать первичные документы
           </p>
 
           <grid #grid [dataSource]="callOffsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'" (onRowClick)="rowClicked($event)">
