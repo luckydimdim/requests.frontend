@@ -8,6 +8,7 @@ import 'package:angular_utils/directives.dart';
 import 'package:grid/grid.dart';
 
 import '../services/requests_service.dart';
+import '../info_pane/contract_info_pane.dart';
 import 'request_status.dart';
 import 'detailed_request_model.dart';
 import 'primary_document.dart';
@@ -24,7 +25,8 @@ import '../pipes/cm_format_currency_pipe.dart';
       CmRouterLink,
       GridComponent,
       GridTemplateDirective,
-      ColumnComponent
+      ColumnComponent,
+      ContractInfoPaneComponent
     ],
     pipes: const [
       CmFormatMoneyPipe, CmFormatCurrencyPipe

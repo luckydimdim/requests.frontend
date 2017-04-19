@@ -7,6 +7,7 @@ import 'package:angular2/router.dart';
 import 'package:angular2/platform/common.dart';
 
 import 'package:auth/auth_service.dart';
+import 'package:contracts/contracts_service.dart';
 import 'package:http/http.dart';
 import 'package:http/browser_client.dart';
 
@@ -62,6 +63,7 @@ main() async {
     const Provider(LoggerService),
     const Provider(ConfigService),
     const Provider(AuthenticationService),
+    const Provider(ContractsService),
     // provide(Client, useClass: InMemoryDataService)
     // Using a real back end?
     // Import browser_client.dart and change the above to:

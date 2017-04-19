@@ -11,15 +11,7 @@
           <div class="row pl-1 pr-1 d-table-row">
             <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" sticky-top *ngIf="!isEmpty">
               <div sticky>
-                <div>
-                  <ul class="leaders font-xs mb-0">
-                    <li><span>Подрядчик</span> <span>Название</span></li>
-                    <li><span>Договор</span> <span>123 А 321</span></li>
-                    <li><span>Сумма</span> <span>300 000 000 руб</span></li>
-                    <li><span>Заключен</span> <span>11.12.2016</span></li>
-                    <li><span>Истекает</span> <span>04.08.2017</span></li>
-                  </ul>
-                </div>
+                <contract-info-pane contractId="{{ model.contractId }}"></contract-info-pane>
                 <div>
                   <div class="font-weight-bold mt-2">
                     <span class="text-uppercase mb-q">Работы</span>
