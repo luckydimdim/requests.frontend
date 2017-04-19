@@ -2,8 +2,18 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
-          <i class="fa fa-cog"></i>{{ createMode ? 'Формирование заявки на проверку' : 'Изменение состава работ' }}
+        <div class="card-header" [ngSwitch]="createMode">
+          <template [ngSwitchWhen]="true">
+            <i class="fa fa-cog"></i>Формирование заявки на проверку
+            <button type="submit" class="btn btn-sm btn-success float-xs-right ml-1" (click)="composeRequest()" [disabled]="selectedCallOffOrderIds.length == 0"><i class="fa fa-magic"></i> Сформировать заявку</button>
+            <a href="#" [cmRouterLink]="['../../RequestList']" class="btn btn-sm btn-primary float-xs-right"><i class="fa fa-close"></i> Отменить</a>
+          </template>
+          <template [ngSwitchWhen]="false">
+            <i class="fa fa-cog"></i>Изменение состава работ
+            <button type="submit" class="btn btn-sm btn-success float-xs-right ml-1" (click)="composeRequest()" [disabled]="selectedCallOffOrderIds.length == 0"><i class="fa fa-save"></i> Сохранить</button>
+            <a href="#" [cmRouterLink]="['../../Request',{'id': requestId}]" class="btn btn-sm btn-primary float-xs-right"><i class="fa fa-close"></i> Отменить</a>
+          </template>
+        
         </div>
         <div class="card-block" *ngIf="isEmpty">
           <h4 class="text-muted">Для того чтобы сформировать заявку, сначала <a [cmRouterLink]="['/Master/Contracts/Contract',{'id': contractId}, 'ContractWorks']">добавьте работы</a></h4>
@@ -43,11 +53,7 @@
         </div>
         <!-- /card-block -->
 
-        <div class="card-footer" *ngIf="!isEmpty">
-          <button type="submit" class="btn btn-sm btn-success" (click)="composeRequest()" [disabled]="selectedCallOffOrderIds.length == 0"><i class="fa fa-magic"></i> {{ createMode ? 'Сформировать заявку' : 'Сохранить'}}</button>
-        </div>
-        <!-- /card-footer -->
-
+       
       </div>
     </div>
   </div>
