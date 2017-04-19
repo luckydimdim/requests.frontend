@@ -18,7 +18,6 @@ class ContractInfoPaneComponent implements OnInit {
 
   @override
   ngOnInit() async {
-    print(contractId);
     model = await _service.general.getContract(contractId);
   }
 }
