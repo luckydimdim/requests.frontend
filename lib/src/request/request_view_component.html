@@ -16,7 +16,7 @@
           <div class="row pl-1 pr-1 d-table-row">
             <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" sticky-top *ngIf="!isEmpty">
               <div sticky>
-                <contract-info-pane contractId="{{ model.contractId }}"></contract-info-pane>
+                <contract-info-pane [contractId]="model.contractId" *ngIf="model.contractId != ''"></contract-info-pane>
                 <div>
                   <div class="font-weight-bold mt-2">
                     <span class="text-uppercase mb-q">Работы</span>
