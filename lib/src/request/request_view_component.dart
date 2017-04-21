@@ -180,8 +180,10 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   /**
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
-  void publish() {
-    _requestsService.setStatus(requestId, RequestStatus.validation);
+  Future publish() async {
+    await _requestsService.setStatus(requestId, RequestStatus.validation);
+
+    _router.navigate(['../../RequestList',]);
   }
 
   /**
