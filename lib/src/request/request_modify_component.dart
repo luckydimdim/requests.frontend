@@ -32,7 +32,6 @@ import '../services/requests_service.dart';
 class RequestModifyComponent implements OnInit, OnDestroy {
   static const DisplayName = const {'displayName': 'Правка заявки на проверку'};
 
-  final RouteParams _routeParams;
   final CallOffService _callOffService;
   final RequestsService _requestsService;
   final AsideService _asideService;
@@ -58,8 +57,7 @@ class RequestModifyComponent implements OnInit, OnDestroy {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestModifyComponent(this._router, this._routeParams, this._callOffService,
-      this._requestsService, this._asideService);
+  RequestModifyComponent(this._router, this._callOffService, this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {

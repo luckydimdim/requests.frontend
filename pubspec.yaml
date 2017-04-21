@@ -18,6 +18,7 @@ dependencies:
     intl: any
     json_object: any
     reflectable: ^1.0.2                   # Allows programmers to reduce certain usages of dynamic reflection to a transformer generated specialization with the same behavior. https://pub.dartlang.org/packages/reflectable
+    uuid: any
     auth:
       git: http://cm-ylng-msk-04/git/auth.frontend.git
     grid:

@@ -35,7 +35,6 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const {'displayName': 'Документация'};
 
   final Router _router;
-  final RouteParams _routeParams;
 
   /**
    * Первичные документы отсутствуют
@@ -52,7 +51,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestViewComponent(this._router, this._routeParams, this._requestsService);
+  RequestViewComponent(this._router, this._requestsService);
 
   @override
   ngOnInit() async {

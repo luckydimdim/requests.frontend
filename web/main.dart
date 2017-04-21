@@ -19,7 +19,6 @@ import 'package:angular_utils/cm_router_link.dart';
 
 import 'package:master_layout/master_layout_component.dart';
 
-import 'package:requests/in_memory_data_service.dart';
 import 'package:requests/requests_component.dart';
 
 bool get isDebug =>
@@ -64,9 +63,6 @@ main() async {
     const Provider(ConfigService),
     const Provider(AuthenticationService),
     const Provider(ContractsService),
-    // provide(Client, useClass: InMemoryDataService)
-    // Using a real back end?
-    // Import browser_client.dart and change the above to:
     provide(Client, useFactory: () => new BrowserClient(), deps: [])
   ]);
 

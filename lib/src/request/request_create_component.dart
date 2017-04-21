@@ -32,7 +32,6 @@ class RequestCreateComponent implements OnInit, OnDestroy {
     'displayName': 'Создание заявки на проверку'
   };
 
-  final RouteParams _routeParams;
   final CallOffService _callOffService;
   final RequestsService _requestsService;
   final AsideService _asideService;
@@ -57,8 +56,7 @@ class RequestCreateComponent implements OnInit, OnDestroy {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestCreateComponent(this._router, this._routeParams, this._callOffService,
-      this._requestsService, this._asideService);
+  RequestCreateComponent(this._router, this._callOffService, this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {

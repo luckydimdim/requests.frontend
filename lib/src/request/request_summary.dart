@@ -35,7 +35,7 @@ class RequestSummary extends Object with JsonConverter, MapConverter {
   /**
    * Сумма с учетом НДС
    */
-  num amountWithVat = 0;
+  num vat = 0;
 
   /**
    * Зачет аванса

@@ -15,12 +15,9 @@ class RequestCc3Component implements AfterViewInit {
       component: RequestCc3Component,
       name: RequestCc3Component.route_name);
 
-  final Router _router;
   final ResourcesLoaderService _resourcesLoaderService;
-  final RouteParams _routeParams;
 
-  RequestCc3Component(
-      this._router, this._resourcesLoaderService, this._routeParams) {}
+  RequestCc3Component(this._resourcesLoaderService);
 
   void breadcrumbInit() {}
 

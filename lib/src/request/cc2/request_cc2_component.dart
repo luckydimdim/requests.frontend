@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:resources_loader/resources_loader.dart';
 
 @Component(selector: 'cc2', templateUrl: 'request_cc2_component.html')
-class RequestCc2Component implements AfterViewInit, OnInit {
+class RequestCc2Component implements AfterViewInit {
   static const DisplayName = const {'displayName': 'КС-2'};
   static const String route_name = 'Cc2';
   static const String route_path = 'cc-2/:objectName/:contractorName';
@@ -17,12 +17,9 @@ class RequestCc2Component implements AfterViewInit, OnInit {
       component: RequestCc2Component,
       name: RequestCc2Component.route_name);
 
-  final Router _router;
   final ResourcesLoaderService _resourcesLoaderService;
-  final RouteParams _routeParams;
 
-  RequestCc2Component(
-      this._router, this._resourcesLoaderService, this._routeParams);
+  RequestCc2Component(this._resourcesLoaderService);
 
   void breadcrumbInit() {
     var breadcrumbContent = querySelector('#breadcrumbContent') as HtmlElement;
@@ -36,13 +33,6 @@ class RequestCc2Component implements AfterViewInit, OnInit {
             <li class="breadcrumb-item"><a href="#/master/request/view">Первичная документация</a></li>
             <li class="breadcrumb-item active">Акт КС-2 по объекту &laquo;Морской порт&raquo; подрядчика &laquo;Подрядчик раз два три&raquo;</li>
     ''';
-  }
-
-  @override
-  ngOnInit() {
-    breadcrumbInit();
-    String objectName = _routeParams.get('objectName');
-    String contractorName = _routeParams.get('contractorName');
   }
 
   @override
@@ -82,8 +72,9 @@ class RequestCc2Component implements AfterViewInit, OnInit {
         quantityInput.onKeyPress.listen((Event e) {
           var newQuantity = e.currentTarget as InputElement;
 
-          totalCell.innerHtml =
-              '${formatter.format(int.parse(priceCell.innerHtml, onError:(_) => 0) * int.parse(newQuantity.value, onError: (_) => 0))} р.';
+          totalCell.innerHtml = '${formatter.format(
+            int.parse(priceCell.innerHtml, onError: (_) => 0) *
+              int.parse(newQuantity.value, onError: (_) => 0))} р.';
         });
       }
     });

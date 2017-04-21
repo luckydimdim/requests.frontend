@@ -9,7 +9,6 @@ import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
 import '../services/requests_service.dart';
-import 'package:intl/intl.dart';
 import 'package:requests/src/list/request_model.dart';
 import '../pipes/cm_format_money_pipe.dart';
 
