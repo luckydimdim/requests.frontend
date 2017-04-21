@@ -53,11 +53,6 @@ class RequestSummary extends Object with JsonConverter, MapConverter {
   num total = 0;
 
   /**
-   * Название валюты
-   */
-  String currencyName;
-
-  /**
    * Системное имя валюты
    */
   String currencySysName;

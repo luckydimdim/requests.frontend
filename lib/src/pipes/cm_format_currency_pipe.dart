@@ -8,24 +8,27 @@ class CmFormatCurrencyPipe extends PipeTransform {
   String transform(String value, String currency) => parseCurrency(value, currency);
 
   String parseCurrency(String value, String currency) {
-    String result = '';
+    String result = value;
+
+    if (currency == null || currency.trim() == '')
+      return result;
 
     switch (currency.toUpperCase()) {
       case 'RUB':
       case 'RUR':
-        result = '$value руб';
+        result += ' руб';
         break;
 
       case 'USD':
-        result = '\$ $value';
+        result = '\$ '+ result;
         break;
 
       case 'EUR':
-        result = '€ $value';
+        result = '€ '+ result;
         break;
 
       case 'JPY':
-        result = '¥ $value';
+        result = '¥ '+ result;
         break;
     }
 

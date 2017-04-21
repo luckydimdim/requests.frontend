@@ -23,7 +23,7 @@
                   </div>
                   <ul class="leaders font-xs mb-0">
                     <li><span>Выбрано работ</span> <span>{{ model.summary.worksQuantity }}</span></li>
-                    <li><span>На сумму</span><span>{{ model.summary.worksAmount }} {{ model.summary.currencyName }}</span>
+                    <li><span>На сумму</span><span>{{ model.summary.worksAmount | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span>
                     </li>
                   </ul>
                   <a [cmRouterLink]="['RequestModify']" class="font-xs">Изменить</a>
@@ -34,17 +34,16 @@
                   </div>
                   <ul class="leaders font-xs mb-0">
                     <li><span>Общая стоимость</span>
-                      <span>{{model.summary.amount}} {{model.summary.currencyName}}</span></li>
+                      <span>{{ model.summary.amount | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span></li>
                     <li><span>В том числе НДС</span>
-                      <span>{{ model.summary.vat }} {{ model.summary.currencyName }}</span></li>
+                      <span>{{ model.summary.vat | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span></li>
                     <!--<li><span>Зачет аванса</span>
-                      <span>{{model.summary.prepaidAmount}} {{model.summary.currencyName}}</span></li>
-                    <li><span>Удержано резерва</span> <span>{{model.summary.reserveAmount}} {{model.summary.currencyName}}</span>
+                      <span>{{model.summary.prepaidAmount}} {{model.summary.currencySysName}}</span></li>
+                    <li><span>Удержано резерва</span> <span>{{model.summary.reserveAmount}} {{model.summary.currencySysName}}</span>
                     </li>-->
                     <li class="mt-1"><span class="font-weight-bold">Итого к оплате</span> <span
-                      class="font-weight-bold">{{model.summary.total}} {{model.summary.currencyName}}</span></li>
+                      class="font-weight-bold">{{ model.summary.total | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span></li>
                   </ul>
-
                   
                 </div>
               </nav>
@@ -73,7 +72,7 @@
                 <grid-column header="Сумма" field="amount" width="11%" styleClass="text-md-center">
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-right text-nowrap"> {{
-                      work['amount'] | cmFormatMoney | cmFormatCurrency:work['currencyName']  }}
+                      work['amount'] | cmFormatMoney | cmFormatCurrency:work['currencyName'] }}
                     </div>
                   </template>
                 </grid-column>
