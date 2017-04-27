@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'package:angular2/common.dart';
 import 'package:angular2/core.dart';
-
 import 'package:angular2/router.dart';
+
 import 'package:grid/grid.dart';
+import 'package:angular_utils/cm_format_money_pipe.dart';
 
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
 import '../services/requests_service.dart';
 import 'package:requests/src/list/request_model.dart';
-import '../pipes/cm_format_money_pipe.dart';
 
 @Component(
     selector: 'request-list',
