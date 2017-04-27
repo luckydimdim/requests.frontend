@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:angular2/core.dart';
 import 'package:config/config_service.dart';
+import 'package:http_wrapper/http_wrapper.dart';
 import 'package:logger/logger_service.dart';
 
 import '../request/detailed_request_model.dart';
@@ -16,7 +17,7 @@ import '../request/request_status.dart';
  */
 @Injectable()
 class RequestsService {
-  final Client _http;
+  final HttpWrapper _http;
   final ConfigService _config;
   LoggerService _logger;
 
@@ -38,7 +39,7 @@ class RequestsService {
     } catch (e) {
       _logger.error('Failed to get request list: $e');
 
-      throw new Exception('Failed to get request list. Cause: $e');
+      rethrow;
     }
 
     _logger.trace('Requests requested: $response.');
@@ -69,7 +70,7 @@ class RequestsService {
     } catch (e) {
       _logger.error('Failed to get request: $e');
 
-      throw new Exception('Failed to get requet. Cause: $e');
+      rethrow;
     }
 
     _logger.trace('Request successfuly requested: $response.');
@@ -96,7 +97,7 @@ class RequestsService {
     } catch (e) {
       print('Failed to compose request: $e');
 
-      throw new Exception('Failed to compose request. Cause: $e');
+      rethrow;
     }
 
     dynamic json = JSON.decode(response.body);
@@ -121,7 +122,7 @@ class RequestsService {
     } catch (e) {
       _logger.error('Failed to update request: $e');
 
-      throw new Exception('Failed to update request. Cause: $e');
+      rethrow;
     }
 
     dynamic json = JSON.decode(response.body);
@@ -142,7 +143,7 @@ class RequestsService {
     } catch (e) {
       _logger.error('Failed to remove request: $e');
 
-      throw new Exception('Failed to remove request. Cause: $e');
+      rethrow;
     }
   }
 
@@ -164,7 +165,7 @@ class RequestsService {
     } catch (e) {
       _logger.error('Failed to update request status: $e');
 
-      throw new Exception('Failed to update request status. Cause: $e');
+      rethrow;
     }
   }
 }
