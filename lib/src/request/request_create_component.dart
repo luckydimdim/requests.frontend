@@ -39,6 +39,7 @@ class RequestCreateComponent implements OnInit, OnDestroy {
 
   DataSource callOffsDataSource = new DataSource();
   String contractId = '';
+  String requestId = '';  // не используется нигде. Используется для подавления предупреждения. TODO: разделить
 
   /**
    * Работы отсутствуют
