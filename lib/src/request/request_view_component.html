@@ -3,18 +3,17 @@
     <div class="col-xl-12">
       <div class="card">
         <div class="card-header">
-            <i class="fa fa-files-o"></i> Заявка на проверку № {{ model.id }} от {{ model.createdAt | date:'d.MM.y' }}
+            <i class="fa fa-files-o"></i> Заявка на проверку №{{ model.id }} от {{ model.createdAt | date:'d.MM.y' }}
             <span class="tag" [ngClass]="resolveStatusStyleClass(model.statusSysName)">{{ model.statusName }}</span>
   
-          <button type="button" class="btn btn-sm btn-success float-xs-right" (click)="publish()"><i
-                  class="icon-rocket"></i>&nbsp;
+          <button type="button" [disabled]="hasEmptyTimeSheets && !allTimeSheetsAreApproved" class="btn btn-sm btn-success float-xs-right" (click)="publish()"><i class="icon-rocket"></i>&nbsp;
             Отправить на согласование
           </button>
         </div>
         <div class="card-block py-0">
 
           <div class="row pl-1 pr-1 d-table-row">
-            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" sticky-top *ngIf="!isEmpty">
+            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" sticky-top *ngIf="!listIsEmpty">
               <nav sticky>
                 <contract-info-pane [contractId]="model.contractId" *ngIf="model.contractId != ''"></contract-info-pane>
                 <div>
@@ -50,10 +49,10 @@
             </div>
             <!--./col-->
 
-            <div class="card-block" *ngIf="isEmpty">
-              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a [cmRouterLink]="['RequestModify',{'id': requestId}]">наряд-заказы</a></h4>
+            <div class="card-block" *ngIf="listIsEmpty">
+              <h4 class="text-muted">Для формирования списка первичных документов, сначала выберите <a [cmRouterLink]="['RequestModify', { 'id': requestId } ]">наряд-заказы</a></h4>
             </div>
-            <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none py-1 pl-2" *ngIf="!isEmpty">
+            <div class="col-xl-10 col-md-9 d-100vh-va-top float-xl-none py-1 pl-2" *ngIf="!listIsEmpty">
               <h4>Ежемесячные табели учета рабочего времени</h4>
               <grid #grid [dataSource]="worksDataSource"
                     [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered mt-1'">
@@ -69,7 +68,7 @@
                 <grid-column header="ФИО" field="assignee" styleClass="text-md-center"></grid-column>
                 <grid-column header="Должность" field="position" styleClass="text-md-center"></grid-column>
 
-                <grid-column header="Сумма" field="amount" width="11%" styleClass="text-md-center">
+                <grid-column header="Сумма" field="amount" width="11%" styleClass="text-md-center">,
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-right text-nowrap"> {{
                       work['amount'] | cmFormatMoney | cmFormatCurrency:work['currencyName'] }}

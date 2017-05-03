@@ -40,9 +40,19 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   /**
    * Первичные документы отсутствуют
    */
-  bool isEmpty = false;
+  bool listIsEmpty = false;
 
-  var worksDataSource = new DataSource();
+  /**
+   * Имеются незаполненные табели
+   */
+  bool hasEmptyTimeSheets = false;
+
+  /**
+   * Все табели согласованы
+   */
+  bool allTimeSheetsAreApproved = false;
+
+  DataSource worksDataSource = new DataSource();
   final RequestsService _requestsService;
 
   String contractId = '';
@@ -79,7 +89,9 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
     worksDataSource = new DataSource(data: documentMaps)..primaryField = 'id';
 
-    isEmpty = model.documents.isEmpty;
+    hasEmptyTimeSheets = worksDataSource.data.firstWhere((x) => x['statusSysName']?.toUpperCase() == 'EMPTY', orElse: () => null) != null;
+    allTimeSheetsAreApproved = worksDataSource.data.firstWhere((x) => x['statusSysName']?.toUpperCase() != 'DONE', orElse: () => null) == null;
+    listIsEmpty = model.documents.isEmpty;
 
     return null;
   }
