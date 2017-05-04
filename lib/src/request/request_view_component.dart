@@ -59,6 +59,8 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   String requestId = '';
   DetailedRequestModel model = new DetailedRequestModel();
 
+  bool readOnly = true;
+
   @ViewChild(GridComponent)
   GridComponent grid;
 
@@ -92,6 +94,13 @@ class RequestViewComponent implements OnInit, AfterViewInit {
     hasEmptyTimeSheets = worksDataSource.data.firstWhere((x) => x['statusSysName']?.toUpperCase() == 'EMPTY', orElse: () => null) != null;
     allTimeSheetsAreApproved = worksDataSource.data.firstWhere((x) => x['statusSysName']?.toUpperCase() != 'DONE', orElse: () => null) == null;
     listIsEmpty = model.documents.isEmpty;
+
+    var statusSysName = model.statusSysName.toUpperCase();
+
+    if (statusSysName == 'DONE' || statusSysName == 'VALIDATION')
+      readOnly = true;
+    else
+      readOnly = false;
 
     return null;
   }
