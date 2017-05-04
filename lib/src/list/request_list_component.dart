@@ -112,4 +112,18 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   editRequest(String requestId) {
     _router.navigate(['Request',{ 'id': requestId },'RequestModify']);
   }
+
+  bool isReadOnly(dynamic rowData) {
+    String statusSysName = rowData['statusSysName'];
+
+    if (statusSysName == null || statusSysName == '')
+      return true;
+
+    statusSysName = statusSysName.toUpperCase();
+
+    if (statusSysName == 'DONE' || statusSysName == 'VALIDATION')
+      return true;
+
+    return false;
+  }
 }
