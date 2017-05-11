@@ -10,6 +10,7 @@ import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
 
 import '../services/requests_service.dart';
+import '../request_utils.dart';
 import 'package:requests/src/list/request_model.dart';
 
 @Component(
@@ -69,15 +70,7 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Подставляет нужный css класс в столбце со статусами
    */
   Map<String, bool> resolveStatusStyleClass(String statusSysName) {
-    String status = statusSysName.toUpperCase();
-
-    return new Map<String, bool>()
-      ..addAll({
-        'tag-warning': status == 'VALIDATION',
-        'tag-success': status == 'DONE',
-        'tag-danger': status == 'CORRECTION',
-        'tag-primary': status == 'CREATION'
-      });
+    return RequestUtils.resolveStatusStyleClass(statusSysName);
   }
 
   @override
@@ -110,18 +103,21 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Переход к редактированию заявки
    */
   editRequest(String requestId) {
-    _router.navigate(['Request',{ 'id': requestId },'RequestModify']);
+    _router.navigate([
+      'Request',
+      {'id': requestId},
+      'RequestModify'
+    ]);
   }
 
   bool isReadOnly(dynamic rowData) {
     String statusSysName = rowData['statusSysName'];
 
-    if (statusSysName == null || statusSysName == '')
-      return true;
+    if (statusSysName == null || statusSysName == '') return true;
 
     statusSysName = statusSysName.toUpperCase();
 
-    if (statusSysName == 'DONE' || statusSysName == 'VALIDATION')
+    if (statusSysName == 'APPROVED' || statusSysName == 'APPROVING')
       return true;
 
     return false;

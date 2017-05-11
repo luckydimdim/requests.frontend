@@ -4,9 +4,9 @@ import 'package:contracts/contract_general_model.dart';
 import 'package:contracts/contracts_service.dart';
 
 @Component(
-  selector: 'contract-info-pane',
-  providers: const [ContractsService],
-  templateUrl: 'contract_info_pane.html')
+    selector: 'contract-info-pane',
+    providers: const [ContractsService],
+    templateUrl: 'contract_info_pane.html')
 class ContractInfoPaneComponent implements OnInit {
   final ContractsService _service;
 

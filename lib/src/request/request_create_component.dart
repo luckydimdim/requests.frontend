@@ -39,7 +39,8 @@ class RequestCreateComponent implements OnInit, OnDestroy {
 
   DataSource callOffsDataSource = new DataSource();
   String contractId = '';
-  String requestId = '';  // не используется нигде. Используется для подавления предупреждения. TODO: разделить
+  String requestId =
+      ''; // не используется нигде. Используется для подавления предупреждения. TODO: разделить
 
   /**
    * Работы отсутствуют
@@ -57,7 +58,8 @@ class RequestCreateComponent implements OnInit, OnDestroy {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestCreateComponent(this._router, this._callOffService, this._requestsService, this._asideService);
+  RequestCreateComponent(this._router, this._callOffService,
+      this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {
@@ -162,5 +164,4 @@ class RequestCreateComponent implements OnInit, OnDestroy {
     // перед уходом со страницы с данным компонентом
     _asideService.removePane(PaneType.contractSearch);
   }
-
- }
+}

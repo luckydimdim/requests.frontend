@@ -5,11 +5,13 @@ import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
 import 'package:angular_utils/directives.dart';
+import 'package:auth/auth_service.dart';
 import 'package:grid/grid.dart';
 
 import 'package:angular_utils/cm_format_money_pipe.dart';
 import 'package:angular_utils/cm_format_currency_pipe.dart';
 
+import '../request_utils.dart';
 import '../services/requests_service.dart';
 import '../info_pane/contract_info_pane.dart';
 import 'request_status.dart';
@@ -30,7 +32,8 @@ import 'primary_document.dart';
       ContractInfoPaneComponent
     ],
     pipes: const [
-      CmFormatMoneyPipe, CmFormatCurrencyPipe
+      CmFormatMoneyPipe,
+      CmFormatCurrencyPipe
     ])
 class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const {'displayName': 'Документация'};
@@ -42,18 +45,9 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    */
   bool listIsEmpty = false;
 
-  /**
-   * Имеются незаполненные табели
-   */
-  bool hasEmptyTimeSheets = false;
-
-  /**
-   * Все табели согласованы
-   */
-  bool allTimeSheetsAreApproved = false;
-
   DataSource worksDataSource = new DataSource();
   final RequestsService _requestsService;
+  final AuthorizationService _authorizationService;
 
   String contractId = '';
   String requestId = '';
@@ -61,10 +55,13 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
   bool readOnly = true;
 
+  String statusSysName = '';
+
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestViewComponent(this._router, this._requestsService);
+  RequestViewComponent(
+      this._router, this._requestsService, this._authorizationService);
 
   @override
   ngOnInit() async {
@@ -91,13 +88,11 @@ class RequestViewComponent implements OnInit, AfterViewInit {
 
     worksDataSource = new DataSource(data: documentMaps)..primaryField = 'id';
 
-    hasEmptyTimeSheets = worksDataSource.data.firstWhere((x) => x['statusSysName']?.toUpperCase() == 'EMPTY', orElse: () => null) != null;
-    allTimeSheetsAreApproved = worksDataSource.data.firstWhere((x) => x['statusSysName']?.toUpperCase() != 'DONE', orElse: () => null) == null;
     listIsEmpty = model.documents.isEmpty;
 
-    var statusSysName = model.statusSysName.toUpperCase();
+    statusSysName = model.statusSysName.toUpperCase();
 
-    if (statusSysName == 'DONE' || statusSysName == 'VALIDATION')
+    if (statusSysName == 'APPROVED' || statusSysName == 'APPROVING')
       readOnly = true;
     else
       readOnly = false;
@@ -203,31 +198,85 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
   Future publish() async {
-    await _requestsService.setStatus(requestId, RequestStatus.validation);
+    await _requestsService.setStatus(requestId, RequestStatus.approving);
 
-    _router.navigate(['../../RequestList',]);
+    _router.navigate([
+      '../../RequestList',
+    ]);
+  }
+
+  /**
+   *
+   */
+  Future done() async {
+    await _requestsService.setStatus(requestId, RequestStatus.approved);
+
+    _router.navigate([
+      '../../RequestList',
+    ]);
+  }
+
+  /**
+   *
+   */
+  Future correct() async {
+    await _requestsService.setStatus(requestId, RequestStatus.correcting);
+
+    _router.navigate([
+      '../../RequestList',
+    ]);
   }
 
   /**
    * Подставляет нужный css класс в столбце со статусами
    */
   Map<String, bool> resolveStatusStyleClass(String statusSysName) {
-    String status = statusSysName.toUpperCase();
-
-    return new Map<String, bool>()
-      ..addAll({
-        'tag-default': status == 'EMPTY',
-        'tag-warning': status == 'VALIDATION',
-        'tag-success': status == 'DONE',
-        'tag-danger': status == 'CORRECTION',
-        'tag-primary': (status == 'CREATION' || status == 'CREATING')
-      });
+    return RequestUtils.resolveStatusStyleClass(statusSysName);
   }
 
   /**
    * Переход к просмотру Time sheet'a
    */
   void goToDocument(String id) {
-    _router.navigate(['TimeSheet', { 'id': id }]);
+    _router.navigate([
+      'TimeSheet',
+      {'id': id}
+    ]);
+  }
+
+  bool isCustomer() {
+    return _authorizationService.isInRole(Role.Customer);
+  }
+
+  bool canSendToCorrect() {
+    if (worksDataSource.data == null) return false;
+
+    if (!worksDataSource.data
+        .any((x) => x['statusSysName']?.toUpperCase() == 'CORRECTING'))
+      return false;
+
+    var statuses = ['CORRECTING', 'APPROVED'];
+
+    if (worksDataSource.data
+        .any((x) => !statuses.contains(x['statusSysName']?.toUpperCase())))
+      return false;
+
+    return true;
+  }
+
+  bool canApprove() {
+    if (worksDataSource.data == null) return false;
+
+    return !worksDataSource.data
+        .any((x) => x['statusSysName']?.toUpperCase() != 'APPROVED');
+  }
+
+  bool canPublish() {
+    if (worksDataSource.data == null) return false;
+
+    var statuses = ['EMPTY', 'CREATING', 'CORRECTING'];
+
+    return !worksDataSource.data
+        .any((x) => statuses.contains(x['statusSysName']?.toUpperCase()));
   }
 }

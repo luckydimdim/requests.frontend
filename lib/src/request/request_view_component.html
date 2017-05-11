@@ -4,10 +4,16 @@
       <div class="card">
         <div class="card-header">
             <i class="fa fa-files-o"></i> Заявка на проверку №{{ model.id }} от {{ model.createdAt | date:'d.MM.y' }}
-            <span class="tag" [ngClass]="resolveStatusStyleClass(model.statusSysName)">{{ model.statusName }}</span>
+            <span class="tag tag-pill" [ngClass]="resolveStatusStyleClass(model.statusSysName)">{{ model.statusName }}</span>
   
-          <button type="button" [disabled]="hasEmptyTimeSheets && !allTimeSheetsAreApproved" class="btn btn-sm btn-success float-xs-right" (click)="publish()"><i class="icon-rocket"></i>&nbsp;
+          <button *ngIf="statusSysName!='APPROVING' && canPublish()" type="button" class="btn btn-sm btn-success float-xs-right" (click)="publish()"><i class="icon-rocket"></i>&nbsp;
             Отправить на согласование
+          </button>
+          <button *ngIf="statusSysName=='APPROVING' && isCustomer() && canApprove()" type="button" class="btn btn-sm btn-success float-xs-right ml-1" (click)="done()"><i class="fa fa-check-square-o"></i>&nbsp;
+            Одобрено
+          </button>
+          <button *ngIf="statusSysName=='APPROVING'  && isCustomer() && canSendToCorrect()" type="button" class="btn btn-sm btn-danger float-xs-right" (click)="correct()"><i class="fa fa-exclamation"></i>&nbsp;
+            Отправить на исправление
           </button>
         </div>
         <div class="card-block py-0">

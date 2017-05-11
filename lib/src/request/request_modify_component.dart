@@ -57,7 +57,8 @@ class RequestModifyComponent implements OnInit, OnDestroy {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestModifyComponent(this._router, this._callOffService, this._requestsService, this._asideService);
+  RequestModifyComponent(this._router, this._callOffService,
+      this._requestsService, this._asideService);
 
   @override
   ngOnInit() async {
@@ -159,7 +160,10 @@ class RequestModifyComponent implements OnInit, OnDestroy {
 
     await _requestsService.updateRequest(model);
 
-    _router.parent.navigate(['Request', { 'id': requestId }]);
+    _router.parent.navigate([
+      'Request',
+      {'id': requestId}
+    ]);
   }
 
   @override

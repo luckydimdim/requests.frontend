@@ -65,7 +65,10 @@ main() async {
     const Provider(AuthenticationService),
     const Provider(ContractsService),
     provide(Client, useFactory: () => new BrowserClient(), deps: []),
-    provide(HttpWrapper, useFactory: (_http, _authenticationService) => new HttpWrapper(_http, _authenticationService), deps: [Client, AuthenticationService])
+    provide(HttpWrapper,
+        useFactory: (_http, _authenticationService) =>
+            new HttpWrapper(_http, _authenticationService),
+        deps: [Client, AuthenticationService])
   ]);
 
   if (isDebug) {

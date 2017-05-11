@@ -151,7 +151,6 @@ class RequestsService {
    * Обновление статуса заявки
    */
   setStatus(String id, RequestStatus status) async {
-
     String changeStatusUrl = '${ _config.helper.requestsUrl }/$id/status';
 
     _logger.trace(
