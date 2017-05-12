@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:html';
+
 import 'package:angular2/angular2.dart';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
@@ -94,6 +96,10 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Удаление заявки
    */
   deleteRequest(String id) async {
+
+    if(!window.confirm('Удалить заявку?'))
+      return;
+
     await _requestsService.deleteRequest(id);
 
     requestsDataSource.data.removeWhere((item) => item['id'] == id);
