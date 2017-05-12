@@ -274,6 +274,9 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   bool canPublish() {
     if (worksDataSource.data == null) return false;
 
+    if (statusSysName == 'APPROVING' || statusSysName == 'APPROVED')
+      return false;
+
     var statuses = ['EMPTY', 'CREATING', 'CORRECTING'];
 
     return !worksDataSource.data
