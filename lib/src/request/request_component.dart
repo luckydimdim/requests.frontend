@@ -24,7 +24,7 @@ import 'request_view_component.dart';
   const Route(
       path: 'time-sheets',
       component: RequestViewComponent,
-      name: 'RequestView',
+      name: 'RequestTimeSheetsView',
       data: RequestViewComponent.DisplayName),
   const Route(
       path: 'modify',
