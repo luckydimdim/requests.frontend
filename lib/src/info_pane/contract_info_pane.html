@@ -7,6 +7,11 @@
     <li><span>Подрядчик</span> <span>{{ model.contractorName }}</span></li>
     <li><span>Заключен</span> <span>{{ model.startDate  | date:'dd.MM.yyyy'}}</span></li>
     <li><span>Истекает</span> <span>{{ model.finishDate  | date:'dd.MM.yyyy'}}</span></li>
-    <li><span>Сумма</span> <span>{{ model.amount }} {{ model.currency }}</span></li>
+    <li>
+      <span class="font-weight-bold">Стоимость</span>
+      <span>
+          <div class="text-md-right" *ngFor="let amount of model.amounts">{{amount.value | cmFormatMoney }} {{amount.currencySysName}}</div>
+        </span>
+    </li>
   </ul>
 </div>
