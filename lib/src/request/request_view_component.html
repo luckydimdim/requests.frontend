@@ -28,8 +28,13 @@
                   </div>
                   <ul class="leaders font-xs mb-0">
                     <li><span>Выбрано работ</span> <span>{{ model.summary.worksQuantity }}</span></li>
-                    <li><span>На сумму</span><span>{{ model.summary.worksAmount | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span>
+                    <li>
+                      <span>На сумму</span>
+                      <span>
+                        <div class="text-md-right" *ngFor="let worksAmount of model.summary.worksAmount">{{worksAmount.value | cmFormatMoney }} {{worksAmount.currencySysName}}</div>
+                      </span>
                     </li>
+                    
                   </ul>
                   <a *ngIf="!readOnly" [cmRouterLink]="['RequestModify']" class="font-xs">Изменить</a>
                 </div>
@@ -39,15 +44,22 @@
                   </div>
                   <ul class="leaders font-xs mb-0">
                     <li><span>Общая стоимость</span>
-                      <span>{{ model.summary.amount | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span></li>
-                    <li><span>В том числе НДС</span>
-                      <span>{{ model.summary.vat | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span></li>
-                    <!--<li><span>Зачет аванса</span>
-                      <span>{{model.summary.prepaidAmount}} {{model.summary.currencySysName}}</span></li>
-                    <li><span>Удержано резерва</span> <span>{{model.summary.reserveAmount}} {{model.summary.currencySysName}}</span>
-                    </li>-->
-                    <li class="mt-1"><span class="font-weight-bold">Итого к оплате</span> <span
-                      class="font-weight-bold">{{ model.summary.total | cmFormatMoney | cmFormatCurrency:model.summary.currencySysName }}</span></li>
+	                  <span>
+		                   <div class="text-md-right" *ngFor="let amount of model.summary.amounts">{{amount.value | cmFormatMoney }} {{amount.currencySysName}}</div>
+	                  </span>
+                    </li>
+                    <li>
+	                  <span>В том числе НДС</span>
+	                    <span>
+		                   <div class="text-md-right" *ngFor="let vat of model.summary.vats">{{vat.value | cmFormatMoney }} {{vat.currencySysName}}</div>
+	                  </span>
+                    </li>
+                    <li class="mt-1">
+	                    <span class="font-weight-bold">Итого к оплате</span>
+	                    <span>
+		                   <div class="text-md-right" *ngFor="let total of model.summary.totals">{{total.value | cmFormatMoney }} {{total.currencySysName}}</div>
+	                  </span>
+                    </li>
                   </ul>
                   
                 </div>
