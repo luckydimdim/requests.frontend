@@ -2,6 +2,8 @@ import 'package:converters/json_converter.dart';
 import 'package:converters/map_converter.dart';
 import 'package:converters/reflector.dart';
 
+import '../request/amount.dart';
+
 @reflectable
 /**
  * Модель заявки на проверку
@@ -45,7 +47,8 @@ class RequestModel extends Object with JsonConverter, MapConverter {
   /**
    * Сумма к оплате
    */
-  num amount;
+  @Json(exclude: true)
+  List<Amount> amounts = new List<Amount>();
 
   /**
    * Имя статуса для показа
@@ -61,4 +64,35 @@ class RequestModel extends Object with JsonConverter, MapConverter {
    * Идентификаторы выбранных (для формирования первички) работ
    */
   List<String> workIds = new List<String>();
+
+  @override
+  dynamic fromJson(dynamic json) {
+    super.fromJson(json);
+
+    for (dynamic amountJson in json['amounts']) {
+      amounts.add(new Amount().fromJson(amountJson));
+    }
+
+    return this;
+  }
+
+  @override
+  Map toJson() {
+    var result = super.toJson();
+
+    var amountsList = new List<Map>();
+
+    amounts.forEach((a){
+      amountsList.add(a.toJson());
+    });
+
+    result['amounts'] = amountsList;
+
+    return result;
+  }
+
+  @override
+  Map toMap() {
+    return toJson();
+  }
 }

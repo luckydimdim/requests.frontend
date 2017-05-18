@@ -7,6 +7,7 @@ import 'package:angular2/router.dart';
 
 import 'package:grid/grid.dart';
 import 'package:angular_utils/cm_format_money_pipe.dart';
+import 'package:angular_utils/cm_format_currency_pipe.dart';
 
 import 'package:aside/aside_service.dart';
 import 'package:aside/pane_types.dart';
@@ -20,7 +21,7 @@ import 'package:requests/src/list/request_model.dart';
     templateUrl: 'request_list_component.html',
     providers: const [RequestsService],
     directives: const [GridComponent, GridTemplateDirective, ColumnComponent],
-    pipes: const [CmFormatMoneyPipe, DatePipe])
+    pipes: const [CmFormatMoneyPipe, DatePipe, CmFormatCurrencyPipe])
 class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   static const DisplayName = const {'displayName': 'Список заявок на проверку'};
   final AsideService _asideService;
