@@ -33,11 +33,6 @@ class TimeSheet extends PrimaryDocument {
   num amount = 0;
 
   /**
-   * Название валюты
-   */
-  String currencyName = '';
-
-  /**
    * Системное имя валюты
    */
   String currencySysName = '';
