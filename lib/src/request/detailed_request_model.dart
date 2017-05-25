@@ -14,6 +14,9 @@ class DetailedRequestModel extends Object with JsonConverter, MapConverter {
   // Внутренний уникальный идентификатор заявки
   String id = '';
 
+  // Счетчик - аналог идентификатора
+  String counter = '';
+
   // Дата создания
   DateTime createdAt = null;
 

@@ -15,6 +15,11 @@ class RequestModel extends Object with JsonConverter, MapConverter {
   String id;
 
   /**
+   * Счетчик - аналог идентификатора
+   */
+  String counter;
+
+  /**
    * Идентификатор контракта, к которому принадлежит данная заявка
    */
   String contractId;

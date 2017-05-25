@@ -3,7 +3,7 @@
     <div class="col-xl-12">
       <div class="card">
         <div class="card-header">
-            <i class="fa fa-files-o"></i> Заявка на проверку №{{ model.id }} от {{ model.createdAt | date:'d.MM.y' }}
+            <i class="fa fa-files-o"></i> Заявка на проверку №{{ model.counter }} от {{ model.createdAt | date:'d.MM.y' }}
             <span class="tag tag-pill" [ngClass]="resolveStatusStyleClass(model.statusSysName)">{{ model.statusName }}</span>
   
           <button *ngIf="statusSysName!='APPROVING' && canPublish()" type="button" class="btn btn-sm btn-success float-xs-right" (click)="publish()"><i class="icon-rocket"></i>&nbsp;

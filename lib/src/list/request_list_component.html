@@ -15,7 +15,7 @@
                 <div class="text-md-center">Номер</div>
               </template>
               <template let-request="rowData" grid-template="body">
-                <a href="javascript: void(0)" (click)="viewRequest(request['id'])">{{ request['id'] }}</a>
+                <a href="javascript: void(0)" (click)="viewRequest(request['id'])">{{ request['counter'] }}</a>
               </template>
             </grid-column>
             <grid-column header="Дата создания" styleClass="text-md-center">
