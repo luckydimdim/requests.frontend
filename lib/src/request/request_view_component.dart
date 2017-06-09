@@ -10,6 +10,7 @@ import 'package:grid/grid.dart';
 
 import 'package:angular_utils/cm_format_money_pipe.dart';
 import 'package:angular_utils/cm_format_currency_pipe.dart';
+import 'package:alert/alert_service.dart';
 
 import '../request_utils.dart';
 import '../services/requests_service.dart';
@@ -39,6 +40,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   static const DisplayName = const {'displayName': 'Документация'};
 
   final Router _router;
+  final AlertService _alertService;
 
   /**
    * Первичные документы отсутствуют
@@ -61,7 +63,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   GridComponent grid;
 
   RequestViewComponent(
-      this._router, this._requestsService, this._authorizationService);
+      this._router, this._requestsService, this._authorizationService, this._alertService);
 
   @override
   ngOnInit() async {
@@ -198,6 +200,30 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
   Future publish() async {
+
+
+
+    try {
+      var avalableAmount = await _requestsService.checkAmount(requestId);
+
+      bool ok = !avalableAmount.any((a)=>a.amount < 0);
+
+      var text = 'Превышение суммы договора на ';
+      
+      for (var a in avalableAmount.where((am)=> am.amount < 0)) {
+        text += '${a.amount} ${a.currencySysName} ';
+      }
+
+      if (!ok) {
+        _alertService.Warning(text);
+        return;
+      }
+
+    }
+    catch(e) {
+      print(e);
+    }
+
     await _requestsService.setStatus(requestId, RequestStatus.approving);
 
     _router.navigate([

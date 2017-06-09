@@ -11,6 +11,7 @@ import '../request/detailed_request_model.dart';
 import '../request/write_request_model.dart';
 import '../list/request_model.dart';
 import '../request/request_status.dart';
+import '../request/check_available_amount.dart';
 
 /**
  * Работа с web-сервисом. Раздел "Заявки на проверку"
@@ -78,6 +79,34 @@ class RequestsService {
     dynamic json = JSON.decode(response.body);
 
     return new DetailedRequestModel().fromJson(json);
+  }
+
+  Future<List<CheckAvailableAmount>> checkAmount(String requestId) async {
+    Response response = null;
+
+    //_logger.trace('Getting request. Url: ${ _config.helper.requestsUrl }/$id');
+
+    try {
+      response = await _http.get('${ _config.helper.requestsUrl }/$requestId/check-amount',
+          headers: {'Content-Type': 'application/json'});
+    } catch (e) {
+      //_logger.error('Failed to get request: $e');
+
+      rethrow;
+    }
+
+    //_logger.trace('Request successfuly requested: $response.');
+
+    dynamic jsonList = JSON.decode(response.body);
+
+    var result = new List<CheckAvailableAmount>();
+
+    for (var json in jsonList) {
+      var a = new CheckAvailableAmount().fromJson(json);
+      result.add(a);
+    }
+
+    return result;
   }
 
   /**
