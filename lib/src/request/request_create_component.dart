@@ -4,6 +4,7 @@ import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
 import 'package:angular_utils/cm_router_link.dart';
+import 'package:angular_utils/cm_loading_btn_directive.dart';
 import 'package:grid/grid.dart';
 
 import 'package:call_off_order/call_off_service.dart';
@@ -25,7 +26,8 @@ import '../services/requests_service.dart';
       CmRouterLink,
       GridComponent,
       GridTemplateDirective,
-      ColumnComponent
+      ColumnComponent,
+      CmLoadingBtnDirective
     ])
 class RequestCreateComponent implements OnInit, OnDestroy {
   static const DisplayName = const {
@@ -152,7 +154,7 @@ class RequestCreateComponent implements OnInit, OnDestroy {
 
     newModel = await _requestsService.createRequest(model);
 
-    _router.parent.navigate([
+    await _router.parent.navigate([
       'Request',
       {'id': newModel.id}
     ]);

@@ -5,8 +5,9 @@
         <div class="card-header">
           Список заявок на проверку
           <span class="btn btn-sm btn-info float-xs-right cursor-pointer" (click)="showPane()">
-            Создать заявку
-            <i class="fa fa-plus-circle"></i></span>
+            <i class="fa fa-plus-circle"></i>
+            &nbsp;Создать заявку
+            </span>
         </div>
         <div class="card-block">
           <grid #grid [dataSource]="requestsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">

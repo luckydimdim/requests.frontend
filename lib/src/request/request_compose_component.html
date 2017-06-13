@@ -5,12 +5,16 @@
         <div class="card-header" [ngSwitch]="createMode">
           <template [ngSwitchWhen]="true">
             <i class="fa fa-cog"></i>Формирование заявки на проверку
-            <button type="submit" class="btn btn-sm btn-success float-xs-right ml-1" (click)="composeRequest()" [disabled]="selectedCallOffOrderIds.length == 0"><i class="fa fa-magic"></i> Сформировать заявку</button>
+            <button type="submit" class="btn btn-sm btn-success float-xs-right ml-1" [cmLoadingBtn]="composeRequest" [disabled]="selectedCallOffOrderIds.length == 0">
+              <i class="fa fa-magic"></i>
+              <span class="ladda-label">&nbsp;Сформировать заявку</span>
+              </button>
             <a href="#" [cmRouterLink]="['../../RequestList']" class="btn btn-sm btn-primary float-xs-right"><i class="fa fa-close"></i> Отменить</a>
           </template>
           <template [ngSwitchWhen]="false">
             <i class="fa fa-cog"></i>Изменение состава работ
-            <button type="submit" class="btn btn-sm btn-success float-xs-right ml-1" (click)="composeRequest()" [disabled]="selectedCallOffOrderIds.length == 0"><i class="fa fa-save"></i> Сохранить</button>
+            <button type="submit" class="btn btn-sm btn-success float-xs-right ml-1" [cmLoadingBtn]="composeRequest" [disabled]="selectedCallOffOrderIds.length == 0">
+              <i class="fa fa-save"></i> <span class="ladda-label">&nbsp;Сохранить</span></button>
             <a href="#" [cmRouterLink]="['../../Request',{'id': requestId}]" class="btn btn-sm btn-primary float-xs-right"><i class="fa fa-close"></i> Отменить</a>
           </template>
         

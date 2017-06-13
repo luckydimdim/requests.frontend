@@ -8,8 +8,8 @@ import 'package:angular_utils/directives.dart';
 import 'package:auth/auth_service.dart';
 import 'package:grid/grid.dart';
 
-import 'package:angular_utils/cm_format_money_pipe.dart';
-import 'package:angular_utils/cm_format_currency_pipe.dart';
+import 'package:angular_utils/pipes.dart';
+import 'package:angular_utils/directives.dart';
 import 'package:alert/alert_service.dart';
 
 import '../request_utils.dart';
@@ -30,7 +30,8 @@ import 'primary_document.dart';
       GridComponent,
       GridTemplateDirective,
       ColumnComponent,
-      ContractInfoPaneComponent
+      ContractInfoPaneComponent,
+      CmLoadingBtnDirective
     ],
     pipes: const [
       CmFormatMoneyPipe,
