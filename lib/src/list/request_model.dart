@@ -87,7 +87,7 @@ class RequestModel extends Object with JsonConverter, MapConverter {
 
     var amountsList = new List<Map>();
 
-    amounts.forEach((a){
+    amounts.forEach((a) {
       amountsList.add(a.toJson());
     });
 

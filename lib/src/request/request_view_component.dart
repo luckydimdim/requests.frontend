@@ -62,8 +62,8 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   @ViewChild(GridComponent)
   GridComponent grid;
 
-  RequestViewComponent(
-      this._router, this._requestsService, this._authorizationService, this._alertService);
+  RequestViewComponent(this._router, this._requestsService,
+      this._authorizationService, this._alertService);
 
   @override
   ngOnInit() async {
@@ -200,28 +200,20 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    * Обработка нажатия на кнопку "Отправить на согласование"
    */
   Future publish() async {
+    // Проверяем, что сумма табелей по заявке не превышает суммы договора
+    var avalableAmount = await _requestsService.checkAmount(requestId);
 
+    bool ok = !avalableAmount.any((a) => a.amount < 0);
 
+    var text = 'Превышение суммы договора на ';
 
-    try {
-      var avalableAmount = await _requestsService.checkAmount(requestId);
-
-      bool ok = !avalableAmount.any((a)=>a.amount < 0);
-
-      var text = 'Превышение суммы договора на ';
-      
-      for (var a in avalableAmount.where((am)=> am.amount < 0)) {
-        text += '${a.amount} ${a.currencySysName} ';
-      }
-
-      if (!ok) {
-        _alertService.Warning(text);
-        return;
-      }
-
+    for (var a in avalableAmount.where((am) => am.amount < 0)) {
+      text += '${a.amount} ${a.currencySysName} ';
     }
-    catch(e) {
-      print(e);
+
+    if (!ok) {
+      _alertService.Warning(text);
+      return;
     }
 
     await _requestsService.setStatus(requestId, RequestStatus.approving);

@@ -97,9 +97,7 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
    * Удаление заявки
    */
   deleteRequest(String id) async {
-
-    if(!window.confirm('Удалить заявку?'))
-      return;
+    if (!window.confirm('Удалить заявку?')) return;
 
     await _requestsService.deleteRequest(id);
 

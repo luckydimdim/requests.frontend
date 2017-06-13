@@ -87,7 +87,8 @@ class RequestsService {
     //_logger.trace('Getting request. Url: ${ _config.helper.requestsUrl }/$id');
 
     try {
-      response = await _http.get('${ _config.helper.requestsUrl }/$requestId/check-amount',
+      response = await _http.get(
+          '${ _config.helper.requestsUrl }/$requestId/check-amount',
           headers: {'Content-Type': 'application/json'});
     } catch (e) {
       //_logger.error('Failed to get request: $e');

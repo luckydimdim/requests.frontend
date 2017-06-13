@@ -4,8 +4,7 @@ import 'package:converters/reflector.dart';
 import 'package:converters/reflector.dart';
 
 @reflectable
-class CheckAvailableAmount extends Object with JsonConverter, MapConverter{
-
+class CheckAvailableAmount extends Object with JsonConverter, MapConverter {
   double amount;
 
   String currencySysName;

@@ -8,8 +8,7 @@ import 'package:angular_utils/cm_format_money_pipe.dart';
     selector: 'contract-info-pane',
     providers: const [ContractsService],
     templateUrl: 'contract_info_pane.html',
-    pipes: const [CmFormatMoneyPipe]
-)
+    pipes: const [CmFormatMoneyPipe])
 class ContractInfoPaneComponent implements OnInit {
   final ContractsService _service;
 
