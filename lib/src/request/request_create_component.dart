@@ -39,7 +39,7 @@ class RequestCreateComponent implements OnInit, OnDestroy {
   final AsideService _asideService;
   final Router _router;
 
-  DataSource callOffsDataSource = new DataSource();
+  DataSource callOffsDataSource;
   String contractId = '';
   String requestId =
       ''; // не используется нигде. Используется для подавления предупреждения. TODO: разделить

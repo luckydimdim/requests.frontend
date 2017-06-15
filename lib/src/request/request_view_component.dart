@@ -48,7 +48,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
    */
   bool listIsEmpty = false;
 
-  DataSource worksDataSource = new DataSource();
+  DataSource worksDataSource;
   final RequestsService _requestsService;
   final AuthorizationService _authorizationService;
 
@@ -268,7 +268,7 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   }
 
   bool canSendToCorrect() {
-    if (worksDataSource.data == null) return false;
+    if (worksDataSource == null) return false;
 
     if (!worksDataSource.data
         .any((x) => x['statusSysName']?.toUpperCase() == 'CORRECTING'))
@@ -284,14 +284,14 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   }
 
   bool canApprove() {
-    if (worksDataSource.data == null) return false;
+    if (worksDataSource == null) return false;
 
     return !worksDataSource.data
         .any((x) => x['statusSysName']?.toUpperCase() != 'APPROVED');
   }
 
   bool canPublish() {
-    if (worksDataSource.data == null) return false;
+    if (worksDataSource == null) return false;
 
     if (statusSysName == 'APPROVING' || statusSysName == 'APPROVED')
       return false;
