@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:angular2/core.dart';
 import 'package:angular2/router.dart';
 
-import 'package:angular_utils/directives.dart';
 import 'package:auth/auth_service.dart';
 import 'package:grid/grid.dart';
 
@@ -15,6 +14,7 @@ import 'package:alert/alert_service.dart';
 import '../request_utils.dart';
 import '../services/requests_service.dart';
 import '../info_pane/contract_info_pane.dart';
+import '../info_pane/request_info_pane.dart';
 import 'request_status.dart';
 import 'detailed_request_model.dart';
 import 'primary_document.dart';
@@ -31,6 +31,7 @@ import 'primary_document.dart';
       GridTemplateDirective,
       ColumnComponent,
       ContractInfoPaneComponent,
+      RequestInfoPaneComponent,
       CmLoadingBtnDirective
     ],
     pipes: const [
@@ -43,6 +44,9 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   final Router _router;
   final AlertService _alertService;
 
+  @ViewChild('contractInfoPane')
+  ContractInfoPaneComponent contractInfoPane;
+
   /**
    * Первичные документы отсутствуют
    */
@@ -52,9 +56,9 @@ class RequestViewComponent implements OnInit, AfterViewInit {
   final RequestsService _requestsService;
   final AuthorizationService _authorizationService;
 
-  String contractId = '';
+  String contractId = null;
   String requestId = '';
-  DetailedRequestModel model = new DetailedRequestModel();
+  DetailedRequestModel model = null;
 
   bool readOnly = true;
 
@@ -83,6 +87,8 @@ class RequestViewComponent implements OnInit, AfterViewInit {
     requestId = model.id;
     contractId = model.contractId;
 
+    await contractInfoPane.contractChanged(contractId);
+
     List<Map<String, String>> documentMaps = new List<Map<String, String>>();
 
     for (PrimaryDocument document in model.documents) {
@@ -99,12 +105,10 @@ class RequestViewComponent implements OnInit, AfterViewInit {
       readOnly = true;
     else
       readOnly = false;
-
-    return null;
   }
 
   @override
-  void ngAfterViewInit() {
+  ngAfterViewInit() async {
     window.scrollTo(0, 0);
 
     sticky();

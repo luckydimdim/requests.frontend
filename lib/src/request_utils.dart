@@ -5,6 +5,8 @@ class RequestUtils {
   static Map<String, bool> resolveStatusStyleClass(String statusSysName) {
     Map<String, bool> result = new Map<String, bool>();
 
+    if (statusSysName == null) return result;
+
     String status = statusSysName.toUpperCase();
 
     switch (status) {
