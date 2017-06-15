@@ -28,7 +28,7 @@ class RequestListComponent implements OnInit, AfterViewInit, OnDestroy {
   final RequestsService _requestsService;
   final Router _router;
 
-  DataSource requestsDataSource = new DataSource();
+  DataSource requestsDataSource;
 
   @ViewChild(GridComponent)
   GridComponent grid;
