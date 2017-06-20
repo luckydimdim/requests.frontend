@@ -19,10 +19,12 @@
         <div class="card-block py-0">
 
           <div class="row pl-1 pr-1 d-table-row">
-            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" sticky-top *ngIf="!listIsEmpty">
-              <nav sticky>
-                <contract-info-pane [contractId]="contractId" #contractInfoPane></contract-info-pane>
-                <request-info-pane [model]="model" [readOnly]="readOnly"></request-info-pane>
+            <div class="col-xl-2 col-md-3 d-100vh-va-top float-xl-none pr-2 py-1" style="border-right: 1px solid #d1d4d7;" *ngIf="!listIsEmpty">
+              <nav sticky-top>
+                <nav sticky>
+                  <contract-info-pane [contractId]="contractId" #contractInfoPane></contract-info-pane>
+                  <request-info-pane [model]="model" [readOnly]="readOnly"></request-info-pane>
+                </nav>
               </nav>
             </div>
             <!--./col-->
