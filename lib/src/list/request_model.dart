@@ -70,6 +70,11 @@ class RequestModel extends Object with JsonConverter, MapConverter {
    */
   List<String> workIds = new List<String>();
 
+  /**
+   * Возможность удаления
+   */
+  bool canDelete;
+
   @override
   dynamic fromJson(dynamic json) {
     super.fromJson(json);
