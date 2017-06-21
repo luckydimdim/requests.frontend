@@ -11,20 +11,17 @@
         </div>
         <div class="card-block">
           <grid #grid [dataSource]="requestsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'">
-            <grid-column width="3%">
-              <template grid-template="header">
-                <div class="text-md-center">Номер</div>
-              </template>
+            <grid-column header="Номер" width="8%" field="counter">
               <template let-request="rowData" grid-template="body">
                 <a href="javascript: void(0)" (click)="viewRequest(request['id'])">{{ request['counter'] }}</a>
               </template>
             </grid-column>
-            <grid-column header="Дата создания" styleClass="text-md-center">
+            <grid-column header="Дата создания" styleClass="text-md-center" field="createdAt">
               <template let-request="rowData" grid-template="body">
                 {{ request['createdAt'] | date:'dd.MM.yyyy' }}
               </template>
             </grid-column>
-            <grid-column header="Дата изменения" styleClass="text-md-center">
+            <grid-column header="Дата изменения" styleClass="text-md-center" field="updatedAt">
               <template let-request="rowData" grid-template="body">
                 {{ request['updatedAt'] | date:'dd.MM.yyyy' }}
               </template>
@@ -38,12 +35,12 @@
                 </div>
               </template>
             </grid-column>
-            <grid-column header="Статус" field="status" styleClass="text-md-center">
+            <grid-column header="Статус" field="status" styleClass="text-md-center" [sortable]="false">
               <template let-request="rowData" grid-template="body">
                 <div class="text-md-center"><span class="tag" [ngClass]="resolveStatusStyleClass(request['statusSysName'])">{{request['statusName']}}</span></div>
               </template>
             </grid-column>
-            <grid-column width="3%">
+            <grid-column width="3%" [sortable]="false">
               <template let-request="rowData" grid-template="body">
                 <div *ngIf="request['canDelete'] == true" class="text-md-center"><button class="btn btn-tiny" (click)="deleteRequest(request['id'])"><i class="fa fa-trash-o"></i></button></div>
               </template>

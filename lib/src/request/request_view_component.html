@@ -36,7 +36,7 @@
               <h4>Ежемесячные табели учета рабочего времени</h4>
               <grid #grid [dataSource]="worksDataSource"
                     [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered mt-1'">
-                <grid-column width="3%">
+                <grid-column width="3%"  [sortable]="false">
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-center">
                       <button class="btn btn-tiny" (click)="goToDocument(work['id'])"><i class="icon-magnifier"></i></button>
@@ -55,7 +55,7 @@
                     </div>
                   </template>
                 </grid-column>
-                <grid-column header="Статус" styleClass="text-md-center">
+                <grid-column header="Статус" styleClass="text-md-center"  [sortable]="false">
                   <template let-work="rowData" grid-template="body">
                     <div class="text-md-center"><span class="tag"
                       [ngClass]="resolveStatusStyleClass(work['statusSysName'])">{{ work['statusName'] }}</span>

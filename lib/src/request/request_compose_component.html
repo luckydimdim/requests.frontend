@@ -29,7 +29,7 @@
           </p>
 
           <grid #grid [dataSource]="callOffsDataSource" [tableStyleClass]="'table table-condensed table-striped table-hover table-bordered'" (onRowClick)="rowClicked($event)">
-            <grid-column width="3%">
+            <grid-column width="3%"  [sortable]="false">
               <template let-col="column" grid-template="header">
                 <label class="switch switch-icon switch-success switch-sm">
                   <input type="checkbox" #columnToogler class="switch-input" (change)="toggleAllCallOffOrders(columnToogler)" [checked]="isAllCallOffOrdersSelected()" />
@@ -46,7 +46,7 @@
               </template>
             </grid-column>
             <grid-column header="Номер" field="number" width="10%"></grid-column>
-            <grid-column header="Период" width="19%">
+            <grid-column header="Период" width="19%"  [sortable]="false">
               <template let-callOff="rowData" grid-template="body">
                 <span>{{ callOff['startDate']  | date:'dd.MM.yyyy' }} - {{ callOff['finishDate']  | date:'dd.MM.yyyy' }}</span>
               </template>
