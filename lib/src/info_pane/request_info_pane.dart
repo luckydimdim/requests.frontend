@@ -9,8 +9,6 @@ import '../request/detailed_request_model.dart';
     pipes: const [CmFormatMoneyPipe],
     directives: const [CmRouterLink])
 class RequestInfoPaneComponent implements OnInit {
-  final ContractsService _service;
-
   @Input()
   DetailedRequestModel model;
 
